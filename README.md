@@ -1,0 +1,2 @@
+# MasterThesis
+Praca magisterska
