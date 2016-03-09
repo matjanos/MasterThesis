@@ -10,8 +10,10 @@ before_install:
 script:
  - mkdir out
  - apt-cache show lyx
- - cp ./Docs/Thesis/src/dcsbook.layout ~/.lyx/layouts/dcsbook.layout
- - lyx -batch --export-to pdf2 ./out/MasterThesis.pdf ./Docs/Thesis/src/RestTestingFramework.lyx 
+ - ls /usr/share/
+ - ls /usr/share/lyx
+ - cp ./Docs/Thesis/src/dcsbook.layout /usr/share/lyx/layouts/dcsbook.layout
+ - lyx -batch --export pdf2 ./Docs/Thesis/src/RestTestingFramework.lyx 
 after_success:
  - zip -r $OUT_NAME out
 deploy:
