@@ -13,8 +13,8 @@ script:
  - lyx -batch --export-to pdf2 ./out/MasterThesis.pdf ./Docs/Thesis/src/RestTestingFramework.lyx 
  - ls -la ./out
 after_success:
- - zip -r $OUT_NAME out
-  - ls -la ./out
+ - zip -r $OUT_NAME out/*
+ - ls -la
 deploy:
   provider: releases
   api_key: $GITHUB_KEY
