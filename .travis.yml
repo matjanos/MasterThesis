@@ -11,7 +11,7 @@ after_success:
 	- zip -r $OUT_NAME out
 deploy:
   provider: releases
-  api_key: 003b50a92b1c31d13c51e4817bef5bdb28b62d93	
+  api_key: $GITHUB_KEY
   file: $OUT_NAME
   skip_cleanup: true
   on:
