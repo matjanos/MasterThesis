@@ -10,13 +10,8 @@ before_install:
 
 script:
  - mkdir out
- - mkdir -p ~/.texmf/tex/latex/layouts
- - sudo tlmgr conf texmf TEXMFHOME ~/.texmf
- - sudo cp ./Docs/Thesis/src/dcsbook.layout /usr/share/lyx/layouts/dcsbook.layout
- - sudo cp ./Docs/Thesis/src/dcsbook.cls ~/.texmf/tex/latex/
- - mktexlsr ~/.texmf
  - lyx -batch --export-to pdf2 ../../out/MasterThesis.pdf ./Docs/Thesis/src/RestTestingFramework.lyx 
- - ls ./out
+ - ls -la ./out
 after_success:
  - zip -r $OUT_NAME out
 deploy:
