@@ -1,14 +1,14 @@
 env:
-	global:
-		- OUT_NAME=$MAJOR.$TRAVIS_BUILD_NUMBER.$TRAVIS_COMMIT.zip
+ global:
+  - OUT_NAME=$MAJOR.$TRAVIS_BUILD_NUMBER.$TRAVIS_COMMIT.zip
 before_install:
-	- sudo apt-get update -qq
-	- sudo apt-get install -qq lyx
+ - sudo apt-get update -qq
+ - sudo apt-get install -qq lyx
 script:
-	- mkdir out
-	- lyx -E pdf2 .\out\MasterThesis.pdf .\Docs\Thesis\src\RestTestingFramework.lyx 
+ - mkdir out
+ - lyx -E pdf2 .\out\MasterThesis.pdf .\Docs\Thesis\src\RestTestingFramework.lyx 
 after_success:
-	- zip -r $OUT_NAME out
+ - zip -r $OUT_NAME out
 deploy:
   provider: releases
   api_key: $GITHUB_KEY
