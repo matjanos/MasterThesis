@@ -102,7 +102,7 @@ Style Supervisor
   LeftMargin     "MMMMMMMMMM:"
   Margin         Static
   LabelType      Static
-  LabelString    "Supervisor:"
+  LabelString    "Promotor:"
   LabelSep       xxx
   LabelFont
     Series       Bold
@@ -113,21 +113,26 @@ End
 Style Subtitle
   CopyStyle      Supervisor
   LatexName      subtitle
-  LabelString    "Subtitle: "
+  LabelString    "Podtytuł: "
 End
 
 Style University
   CopyStyle      Supervisor
   LatexName      university
-  LabelString    "University: "
+  LabelString    "Uniwersytet: "
 End
 
 Style Institute
   CopyStyle      Supervisor
   LatexName      institute
-  LabelString    "Institute: "
+  LabelString    "Instytut: "
 End
 
+Style Faculty
+  CopyStyle      Supervisor
+  LatexName      faculty
+  LabelString    "Wydział: "
+End
 
 # Abstract style definition
 Style Abstract
