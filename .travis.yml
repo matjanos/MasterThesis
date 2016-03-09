@@ -6,7 +6,7 @@ before_install:
  - sudo apt-get install -qq lyx
 script:
  - mkdir out
- - lyx -E pdf2 .\out\MasterThesis.pdf .\Docs\Thesis\src\RestTestingFramework.lyx 
+ - lyx -batch -E pdf2 .\out\MasterThesis.pdf .\Docs\Thesis\src\RestTestingFramework.lyx 
 after_success:
  - zip -r $OUT_NAME out
 deploy:
