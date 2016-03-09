@@ -1,6 +1,6 @@
 env:
  global:
-  - OUT_NAME=$TRAVIS_TAG.$TRAVIS_BRANCH.zip
+  - OUT_NAME=$PROJ_NAME-$TRAVIS_BRANCH.zip
 before_install:
  - sudo add-apt-repository ppa:lyx-devel/release -y
  - sudo apt-get update -qq
