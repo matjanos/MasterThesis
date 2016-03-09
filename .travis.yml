@@ -11,9 +11,9 @@ before_install:
 script:
  - mkdir out
  - mkdir -p ~/.texmf/tex/latex/layouts
- - sudo /usr/local/texlive/2012/bin/x86_64-linux/tlmgr conf texmf TEXMFHOME ~/.texmf
+ - sudo tlmgr conf texmf TEXMFHOME ~/.texmf
  - sudo cp ./Docs/Thesis/src/dcsbook.layout /usr/share/lyx/layouts/dcsbook.layout
- - sudo cp dcsbook.cls ~/.texmf/tex/latex/
+ - sudo cp ./Docs/Thesis/src/dcsbook.cls ~/.texmf/tex/latex/
  - mktexlsr ~/.texmf
  - lyx -batch --export-to pdf2 ../../out/MasterThesis.pdf ./Docs/Thesis/src/RestTestingFramework.lyx 
  - ls ./out
