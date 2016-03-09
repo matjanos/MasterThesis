@@ -2,7 +2,7 @@
 \lyxformat 474
 \begin_document
 \begin_header
-\textclass dcsbook
+\textclass report
 \begin_preamble
 \usepackage{color}
 \usepackage{listings}
@@ -81,9 +81,6 @@ identifierstyle=\color{red},
 \captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white, singlelinecheck=false, margin=0pt, font={bf,footnotesize}}
 \end_preamble
 \use_default_options false
-\begin_removed_modules
-dcs
-\end_removed_modules
 \maintain_unincluded_children false
 \language polish
 \language_package default
