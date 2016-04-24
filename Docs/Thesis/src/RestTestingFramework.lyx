@@ -261,6 +261,29 @@ Poznań, 2016 r.
 
 \end_layout
 
+\begin_layout Abstract
+W dobie zapotrzebowania na skalowalne systemy informatyczne, coraz częściej
+ stosowane są podejścia architektoniczne pozwalające na zapewnienie możliwości
+ rozproszenia obliczeń i operacji.
+ Popularnym ostatnimi czasy TODO: ref do Google trends(micro-services) podejście
+m jest wyizolowanie wielu niewielkich komponentów spełniających zasadę pojedyncz
+ej odpowiedzialności, które komunikując się ze sobą w środowisku sieciowym,
+ wspólnie realizują cel systemu.
+ Potencjalna mnogość takich komponentów wymaga od zespołu programistów wykonywan
+ie dodatkowych testów, które zweryfikują czy interfejsy wszystkich komponentów
+ działają zgodnie z założeniami.
+ Niniejsza praca ma na celu zamodelowanie i stworzenie narzędzia, które
+ na podstawie formalnej specyfikacji, wygeneruje kod testów jednostkowych
+ pokrywających połączenia między mikrousługami.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
