@@ -1,0 +1,131 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass dcsbook
+\use_default_options true
+\begin_removed_modules
+dcs
+\end_removed_modules
+\maintain_unincluded_children false
+\language polish
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language polish
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Wstęp
+\end_layout
+
+\begin_layout Standard
+W ciągu ostatnich paru lat w informatyce można zaobserwować wyjątkowo szybki
+ rozwój tematyki przetwarzania w chmurze obliczeniowej (ang.
+ Cloud Computing), a co za tym idzie, zainteresowanie stylami i wzorcami
+ architektonicznymi, które w efektywny sposób są w stanie wykorzystać potencjał
+ aplikacji rozproszonych.
+ Takie podejście prezentuje między innymi idea mikro-serwisów, czyli małych,
+ niezależnych komponentów komunikujących się między sobą prostymi protokołami
+ sieciowymi.
+ Najczęściej stosowanym rozwiązaniem jest używanie komunikacji HTTP w konwencji
+ REST, gdyż zostało zarekomendowane przez prekursorów idei rozproszonych
+ mikrousług - Martina Fowlera oraz ....//TODO w ich publikacji.
+ 
+\end_layout
+
+\begin_layout Standard
+W rozbudowanych systemach bazujących na architekturze mikroserwisowej, naturalni
+e powstaje bardzo wiele usług, które komunikują się ze sobą nieustannie.
+ Nieodzownym elementem testowania takiego oprogramowania jest więc sprawdzanie
+ punktów styku między usługami (and.
+ end points) pod kątem ich poprawności i zgodności ze specyfikacją.
+ Zgodnie z wiedzą autora, w systemach zgodnych z architekturą mikroserwisową,
+ testy jednostkowe skupiają się na funkcjonalnościach każdej z usług, a
+ walidacja poprawności zwracania i wymiany danych jest często ignorowana.
+\end_layout
+
+\begin_layout Section
+Cel pracy
+\end_layout
+
+\begin_layout Standard
+Niniejsza praca ma na celu zaprezentowanie modelu narzędzia do generowania
+ testów jednostkowych połączeń między mikrousługami na podstawie ich specyfikacj
+i zapisanej w języku RAML, zaimplementowanie tego modelu w języku C#, a
+ także dokonania weryfikacji istniejącego systemu opartego o komunikację
+ REST w celu oceny wartości zaproponowanego rozwiązania.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+NOTES:
+\end_layout
+
+\begin_layout Standard
+Aby ta komunikacja była uporządkowana, warto zastosować konwencję, która
+ definiowała będzie sposób odwoływania się do zasobów 
+\end_layout
+
+\end_body
+\end_document

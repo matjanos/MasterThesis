@@ -2,7 +2,7 @@
 \lyxformat 474
 \begin_document
 \begin_header
-\textclass report
+\textclass dcsbook
 \begin_preamble
 \usepackage{color}
 \usepackage{listings}
@@ -81,6 +81,9 @@ identifierstyle=\color{red},
 \captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white, singlelinecheck=false, margin=0pt, font={bf,footnotesize}}
 \end_preamble
 \use_default_options false
+\begin_removed_modules
+dcs
+\end_removed_modules
 \maintain_unincluded_children false
 \language polish
 \language_package default
@@ -148,6 +151,9 @@ identifierstyle=\color{red},
 
 \begin_layout Standard
 \align center
+\begin_inset Newpage cleardoublepage
+\end_inset
+
 Politechnika Poznańska
 \end_layout
 
@@ -197,7 +203,7 @@ status open
 
 \series bold
 \size largest
-Jakiś tam  temat
+Automatyczne testowanie interfejsów programistycznych typu RESTful
 \end_layout
 
 \begin_layout Standard
@@ -262,6 +268,54 @@ LatexCommand tableofcontents
 \end_inset
 
 
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "01-wstep.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "02-wprowadzenie.lyx"
+
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand include
+filename "03-model.lyx"
+
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand include
+filename "04-testy.lyx"
+
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand include
+filename "05-wnioski.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
