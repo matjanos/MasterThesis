@@ -80,8 +80,72 @@ Wprowadzenie
 Architektura oparta o mikrousługi
 \end_layout
 
+\begin_layout Subsection
+Domain Driven Design jako źródło mikrousług
+\end_layout
+
+\begin_layout Standard
+Procesem rozwoju oprogramowania rządzi szereg podstawowucj zasad, które
+ umożliwiają skuteczne pisanie, a przede wszystkich utrzymywanie istniejącego
+ kodu.
+ Jedną z najważniejszch w ocenie autora reguł jest zasada pojedynczej odpowiedzi
+alności, stanowiąca o tym, że każda funkcjonalność powinna być realizowana
+ przez jedną wydzieloną część kodu i tylko przez nią.
+ Na poziomie programowania zorientowanego obiektowo jest to klasa, na poziomie
+ projektu jest to pakiet, a na poziomie architektury może być to komponent.
+ Koncepcja projektowania aplikacji w oparciu o tę zasadę została nazwana
+ zasadą projektowania sterowanego dziedziną (ang.
+
+\emph on
+ Domain Driven Design
+\emph default
+)
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Evans2004"
+
+\end_inset
+
+ i ostatnio bardzo często spotykanym paradygmatem prezentowania rzeczywistego
+ świata w kodzie źródłowym.
+ 
+\end_layout
+
+\begin_layout Standard
+Według tego podejścia proces projektowania 
+\end_layout
+
+\begin_layout Subsection
+Zasada autonomiczności jako źródło problemów
+\end_layout
+
+\begin_layout Standard
+Tworzenie mikrousług zgodnie z zaleceniami twórców tego konceptu wymaga
+ również zmian w strukturach organizacji, która wytwarza ten system.
+ Zmiana taka powinna polegać na zorganizowaniu całych zespołów wokół każdej
+ usługi.
+ Oczywiście każdy zespół może realizować prace związane z wieloma usługami,
+ ale ważne jest aby jedna usługa była rozwijana i ustrzymywana przez jeden
+ zespół.
+ Podejście takie wymaga stworzenia kilkuosobowych zespołów, w których znajdują
+ się graficy, testerzy, projektanci i programiści.
+ Zespół ten sam decyduje, kiedy wdroży nową wersję swojej usługi.
+ 
+\end_layout
+
+\begin_layout Standard
+Problem pojawia się w momencie kiedy nowa wersja usługi wprowadza zmiany
+ w interfejsie API.
+ 
+\end_layout
+
 \begin_layout Section
 Komunikacja REST
+\end_layout
+
+\begin_layout Standard
+NOTE: Aby ta komunikacja była uporządkowana, warto zastosować konwencję,
+ która definiowała będzie sposób odwoływania się do zasobów 
 \end_layout
 
 \begin_layout Section

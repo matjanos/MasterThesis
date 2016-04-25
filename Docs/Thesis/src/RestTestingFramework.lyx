@@ -80,6 +80,7 @@ identifierstyle=\color{red},
 \DeclareCaptionFormat{listing}{\colorbox{blue}{\parbox{\textwidth}{\hspace{15pt}#1#2#3}}}
 \captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white, singlelinecheck=false, margin=0pt, font={bf,footnotesize}}
 \end_preamble
+\options thesis
 \use_default_options false
 \begin_removed_modules
 dcs
@@ -262,19 +263,42 @@ Poznań, 2016 r.
 \end_layout
 
 \begin_layout Abstract
-W dobie zapotrzebowania na skalowalne systemy informatyczne, coraz częściej
- stosowane są podejścia architektoniczne pozwalające na zapewnienie możliwości
- rozproszenia obliczeń i operacji.
- Popularnym ostatnimi czasy TODO: ref do Google trends(micro-services) podejście
-m jest wyizolowanie wielu niewielkich komponentów spełniających zasadę pojedyncz
-ej odpowiedzialności, które komunikując się ze sobą w środowisku sieciowym,
- wspólnie realizują cel systemu.
+W dobie rosnącego zapotrzebowania na skalowalne systemy informatyczne, coraz
+ częściej stosowane są podejścia architektoniczne pozwalające na zapewnienie
+ możliwości rozproszenia obliczeń i operacji.
+ Popularnym ostatnimi czasy podejściem, jest wyizolowanie wielu niewielkich
+ komponentów zwanych mikrousługami, spełniających zasadę pojedynczej odpowiedzia
+lności, które komunikując się ze sobą w środowisku sieciowym, wspólnie realizują
+ cel systemu.
  Potencjalna mnogość takich komponentów wymaga od zespołu programistów wykonywan
-ie dodatkowych testów, które zweryfikują czy interfejsy wszystkich komponentów
+ia dodatkowych testów, które zweryfikują czy interfejsy wszystkich komponentów
  działają zgodnie z założeniami.
  Niniejsza praca ma na celu zamodelowanie i stworzenie narzędzia, które
- na podstawie formalnej specyfikacji, wygeneruje kod testów jednostkowych
- pokrywających połączenia między mikrousługami.
+ wygeneruje kod testów jednostkowych pokrywających połączenia między mikrousługa
+mi, na podstawie formalnej specyfikacji.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Abstract
+
+\lang english
+Nowadays, when we observe incrising demand for scalable systems, there are
+ many cases of using achitectural aproches which enable to provide posibilty
+ to distribute calculations and operations.
+ A proposal which gets more and more popular last months is to isolate many
+ small components, named microservices, which follows single responsibility
+ principle.
+ Those components communicate with each other in network environment to
+ achive a system goal.
+ Potential lots of such components requires from development teams performing
+ additional tests that verify whether interfaces of each service work under
+ the dictates of initial assumptions.
+ The present work has a purpose to model and create a tool, which generates
+ unit tests code covering microservices boundaries, basing on formal specificati
+on.
 \end_layout
 
 \begin_layout Standard

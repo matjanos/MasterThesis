@@ -235,7 +235,6 @@
 
   \renewenvironment{abstract}
     {
-     \cleardoublepage
      \thispagestyle{plain}
      \mbox{}\vfill
      \begin{list}{}{
