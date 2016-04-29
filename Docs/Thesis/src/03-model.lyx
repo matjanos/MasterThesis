@@ -73,6 +73,12 @@ dcs
 \begin_body
 
 \begin_layout Chapter
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Proponowane-rozwiązanie-3"
+
+\end_inset
+
 Proponowane rozwiązanie
 \end_layout
 

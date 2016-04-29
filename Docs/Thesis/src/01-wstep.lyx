@@ -73,6 +73,12 @@ dcs
 \begin_body
 
 \begin_layout Chapter
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Wstęp-1"
+
+\end_inset
+
 Wstęp
 \end_layout
 
@@ -145,8 +151,15 @@ zne.
 \end_layout
 
 \begin_layout Standard
-Rozdział drugi ma na celu wprowadzenie czytelnika w tematykę postawionego
- problemu oraz opisanie głównych pojęć związanych z tematyką pracy.
+Rozdział drugi
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Wprowadzenie-2"
+
+\end_inset
+
+ ma na celu wprowadzenie czytelnika w tematykę postawionego problemu oraz
+ opisanie głównych pojęć związanych z tematyką pracy.
  Przeanalizowany zostanie styl architektoniczny oparty o mikrousługi, uwidacznia
 jąc przyczyny jego powstania, zasady działania oraz najbardziej znaczące
  zalety.
@@ -154,7 +167,74 @@ jąc przyczyny jego powstania, zasady działania oraz najbardziej znaczące
  które według publikacji, mogłyby je redukować.
  Pamiętając o komunikacji mikrousług, opisana zostanie najczęściej używana
  metoda ich komunikacji czyli interfejsy REST z użyciem protokołu HTTP.
+ W dalszym ciągu rozdziału nastąpi przybliżenie potrzeby dokumentacji interfejsó
+w programistycznych (
+\emph on
+API
+\emph default
+), korzyści z nich płynących oraz standardów.
+ Ta sekcja zostanie opisana na przykładzie języka RAML w wersji 1.0.
+ W końcowej części tego rozdziału zaprezentowany zostanie koncept testowania
+ jednostkowego, zasady pisania takich testów oraz korzyści z nich płynące.
  
+\end_layout
+
+\begin_layout Standard
+Rozdział trzeci
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Proponowane-rozwiązanie-3"
+
+\end_inset
+
+ zawiera opis proponowanego przez autora rozwiązania.
+ Począwszy od modelu tworzonego narzędzia, poprzez projekt architektury
+ zaprezentowane zostanie rozwiązanie problemów związanych z rosnącą popularności
+ą komunikacji międzyusługowej.
+ Rozdział uwzględnia rówież zmiany kultury pracy i dyscypliny deweloperskiej,
+ która jest niezbęna przy stosowaniu takich rozwiązań procesowych.
+ W końcowej części rozdziału spojrzymy na rezultaty implementacji, przedstawiają
+c główne funkcjonalności.
+\end_layout
+
+\begin_layout Standard
+W rozdziale czwartym
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Weryfikacja-i-przeprowadzone-4"
+
+\end_inset
+
+ skupimy się na weryfikacji proponowanego rozwiązania.
+ Przybliżony zostanie istniejący system oparty o komunikację sieciową HTTP/REST.
+ Następnie opisana zostanie metodologia przeprowadzania testów, czyli kryteria
+ testowania oraz sposób weryfikowania poprawności działania stworzonego
+ rozwiązania.
+ W ostatniej sekcji tego rozdziału zaprezentowane zostaną otrzymane rezultaty
+ testów i weryfikacji.
+\end_layout
+
+\begin_layout Standard
+Ostatni rozdział
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Wnioski-i-podsumowanie-5"
+
+\end_inset
+
+ zawiera anailizę rezulatów testów wyszczególnonych w rozdziale czwartym
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Weryfikacja-i-przeprowadzone-4"
+
+\end_inset
+
+, a następnie kreślone zostaną wyciągnięte wnioski na podstawie analizy
+ wyników.
+ W dalszej części, wybiegając w przyszłość, zidentyfikowane zostaną najważniejsz
+e ścieżki udoskonalenia narzędzia nakreślając tym samym kierunki rozwoju
+ całej dziedziny poruszanej w niniejszej pracy.
+ W ostatniej sekcji całej pracy zostanie ona podsumowana.
 \end_layout
 
 \end_body

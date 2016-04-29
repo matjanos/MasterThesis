@@ -73,6 +73,12 @@ dcs
 \begin_body
 
 \begin_layout Chapter
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Wnioski-i-podsumowanie-5"
+
+\end_inset
+
 Wnioski i podsumowanie
 \end_layout
 
