@@ -266,7 +266,7 @@ Poznań, 2016 r.
 W dobie rosnącego zapotrzebowania na skalowalne systemy informatyczne, coraz
  częściej stosowane są podejścia architektoniczne pozwalające na zapewnienie
  możliwości rozproszenia obliczeń i operacji.
- Popularnym ostatnimi czasy podejściem, jest wyizolowanie wielu niewielkich
+ Popularnym ostatnimi czasy podejściem jest wyizolowanie wielu niewielkich
  komponentów zwanych mikrousługami, spełniających zasadę pojedynczej odpowiedzia
 lności, które komunikując się ze sobą w środowisku sieciowym, wspólnie realizują
  cel systemu.
@@ -275,7 +275,7 @@ ia dodatkowych testów, które zweryfikują czy interfejsy wszystkich komponent�
  działają zgodnie z założeniami.
  Niniejsza praca ma na celu zamodelowanie i stworzenie narzędzia, które
  wygeneruje kod testów jednostkowych pokrywających połączenia między mikrousługa
-mi, na podstawie formalnej specyfikacji.
+mi na podstawie formalnej specyfikacji.
 \end_layout
 
 \begin_layout --Separator--
@@ -285,20 +285,20 @@ mi, na podstawie formalnej specyfikacji.
 \begin_layout Abstract
 
 \lang english
-Nowadays, when we observe incrising demand for scalable systems, there are
- many cases of using achitectural aproches which enable to provide posibilty
- to distribute calculations and operations.
- A proposal which gets more and more popular last months is to isolate many
- small components, named microservices, which follows single responsibility
- principle.
+Nowadays, when we observe increasing demand for scalable systems, there
+ are many cases of using achitectural aproaches which enable to provide
+ posibilty to distribute calculations and operations.
+ A proposal which gets more and more popular throughout last months is to
+ isolate many small components, called microservices, which follows single
+ responsibility principle.
  Those components communicate with each other in network environment to
  achive a system goal.
- Potential lots of such components requires from development teams performing
+ Potential lots of such components require from development teams performing
  additional tests that verify whether interfaces of each service work under
  the dictates of initial assumptions.
  The present work has a purpose to model and create a tool, which generates
- unit tests code covering microservices boundaries, basing on formal specificati
-on.
+ unit tests code covering microservices boundaries, basing` on formal specificat
+ion.
 \end_layout
 
 \begin_layout Standard
