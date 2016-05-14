@@ -5,6 +5,7 @@ before_install:
  - sudo add-apt-repository ppa:lyx-devel/release -y
  - sudo apt-get update -qq
  - sudo apt-get install -qq lyx
+ - sudo apt-get install -qq texlive-full
  - sudo apt-get install -qq texlive-fonts-extra
  - sudo apt-get install -qq texlive-lang-polish
  - mkdir ~/texmf
