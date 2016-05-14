@@ -2,17 +2,16 @@ env:
  global:
   - OUT_NAME=$PROJ_NAME-$TRAVIS_BRANCH.zip
 before_install:
- - sudo add-apt-repository ppa:lyx-devel/daily -y
+ - sudo add-apt-repository ppa:lyx-devel/release -y
  - sudo apt-get -qq update
  - sudo apt-get -qq install lyx
  - sudo apt-get -qq install texlive-full
- - mkdir ~/texmf
- - mkdir ~/texmf/tex
- - mkdir ~/texmf/tex/latex
- - cp ./Docs/Thesis/src/dcsbook.cls ~/texmf/tex/latex/dcsbook.cls
- - cp ./Docs/Thesis/src/dcslib.sty ~/texmf/tex/latex/dcslib.sty
- - cp ./Docs/Thesis/src/dcsbook.layout ~/texmf/tex/latex/dcsbook.layout
- - lyx -version
+ - mkdir ~/.lyx
+ - mkdir ~/.lyx/layouts
+ - cp ./Docs/Thesis/src/dcsbook.cls ~/.lyx/layouts/dcsbook.cls
+ - cp ./Docs/Thesis/src/dcslib.sty ~/.lyx/layouts/dcslib.sty
+ - cp ./Docs/Thesis/src/dcsbook.layout ~/.lyx/layouts/dcsbook.layout
+ - /usr/share/lyx/configure.py
 script:
  - mkdir out
  - lyx -batch --export-to pdf2 ./out/MasterThesis.pdf ./Docs/Thesis/src/RestTestingFramework.lyx 
