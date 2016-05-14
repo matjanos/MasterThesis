@@ -5,13 +5,13 @@ before_install:
  - sudo add-apt-repository ppa:lyx-devel/release -y
  - sudo apt-get -qq update
  - sudo apt-get -qq install lyx
- - sudo apt-get -qq install texlive-full
+ - sudo apt-get install -qq texlive-fonts-extra
+ - sudo apt-get install -qq texlive-lang-polish
  - mkdir ~/.lyx
  - mkdir ~/.lyx/layouts
  - cp ./Docs/Thesis/src/dcsbook.cls ~/.lyx/layouts/dcsbook.cls
  - cp ./Docs/Thesis/src/dcslib.sty ~/.lyx/layouts/dcslib.sty
  - cp ./Docs/Thesis/src/dcsbook.layout ~/.lyx/layouts/dcsbook.layout
- - /usr/share/lyx/configure.py
 script:
  - mkdir out
  - lyx -batch --export-to pdflatex ./out/MasterThesis.pdf ./Docs/Thesis/src/RestTestingFramework.lyx 
