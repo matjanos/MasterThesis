@@ -14,7 +14,7 @@ before_install:
  - /usr/share/lyx/configure.py
 script:
  - mkdir out
- - lyx -batch --export-to pdf2 ./out/MasterThesis.pdf ./Docs/Thesis/src/RestTestingFramework.lyx 
+ - lyx -batch --export-to pdflatex ./out/MasterThesis.pdf ./Docs/Thesis/src/RestTestingFramework.lyx 
  - ls -la ./out
 after_success:
  - zip -r -j $OUT_NAME out/*
