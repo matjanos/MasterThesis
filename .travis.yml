@@ -2,7 +2,6 @@ env:
  global:
   - OUT_NAME=$PROJ_NAME-$TRAVIS_BRANCH.zip
 before_install:
- - sudo apt-get -y -o Dpkg::Options::=--force-confnew dist-upgrade
  - sudo add-apt-repository ppa:lyx-devel/daily -y
  - sudo apt-get -qq update
  - sudo apt-get -qq install lyx
