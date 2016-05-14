@@ -7,6 +7,9 @@ before_install:
  - sudo apt-get install -qq lyx
  - sudo apt-get install -qq texlive-fonts-extra
  - sudo apt-get install -qq texlive-lang-polish
+ - mkdir ~/texmf
+ - mkdir ~/texmf/tex
+ - mkdir ~/texmf/tex/latex
  - cp ./Docs/Thesis/src/dcsbook.cls ~/texmf/tex/latex/dcsbook.cls
  - cp ./Docs/Thesis/src/dcslib.sty ~/texmf/tex/latex/dcslib.sty
  - cp ./Docs/Thesis/src/dcsbook.layout ~/texmf/tex/latex/dcsbook.layout
