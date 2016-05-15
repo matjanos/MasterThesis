@@ -12,10 +12,18 @@ before_install:
  - cp ./Docs/Thesis/src/dcsbook.cls ~/.lyx/layouts/dcsbook.cls
  - cp ./Docs/Thesis/src/dcslib.sty ~/.lyx/layouts/dcslib.sty
  - cp ./Docs/Thesis/src/dcsbook.layout ~/.lyx/layouts/dcsbook.layout
+mono:
+  - latest
+install:
+ - curl -sSL https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.sh | DNX_BRANCH=dev sh && source ~/.dnx/dnvm/dnvm.sh
+ - dnvm upgrade
+ - dnu restore
 script:
  - mkdir out
  - lyx -batch --export-to pdflatex ./out/MasterThesis.pdf ./Docs/Thesis/src/RestTestingFramework.lyx 
  - ls -la ./out
+ - dnx -p ./Soft/MasterThesis.RestTestsGenerator.Tests/project.json test
+ - dnu publish .\Soft\MasterThesis.RestTestsGenerator\project.json -o .\Out\soft
 after_success:
  - zip -r -j $OUT_NAME out/*
  - ls -la

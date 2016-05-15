@@ -9,8 +9,9 @@
 		"Xunit.runner.dnx": "2.1.0-rc1-*",
 		"xunit": "2.1.0-*",
 		"xunit.runners": "2.0.0",
-		"MasterThesis.RestTestsGenerator": "1.0.0-*",
+		"MasterThesis.RestTestsGenerator": "1.0.0-*"
 	},
+	"testRunner": "xunit",
 	"commands": {
 		"test": "xunit.runner.dnx"
 	},
@@ -21,8 +22,5 @@
 				"System.Runtime": "4.0.0-rc1-*"
 			}
 		}
-	},
-	"runtimes": {
-		"win10-x86": { }
 	}
 }
