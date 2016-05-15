@@ -14,7 +14,6 @@ before_install:
  - sudo apt-get -qq install lyx
  - sudo apt-get install -qq texlive-fonts-extra
  - sudo apt-get install -qq texlive-lang-polish
- - sudo apt-get install dotnet=1.0.0.001598-1
  - mkdir ~/.lyx
  - mkdir ~/.lyx/layouts
  - cp ./Docs/Thesis/src/dcsbook.cls ~/.lyx/layouts/dcsbook.cls
