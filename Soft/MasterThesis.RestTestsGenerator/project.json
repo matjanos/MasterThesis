@@ -1,0 +1,27 @@
+{
+	"version": "1.0.0-*",
+	"sdk": {
+		"version": "1.0.0-rc1-update2",
+		"runtime": "coreclr",
+		"architecture": "x86"
+	},
+	"compilationOptions": {
+		"emitEntryPoint": true
+	},
+	"commands": {
+		"run": "dotnet run"
+	},
+
+	"dependencies": {
+		"NETStandard.Library": "1.0.0-rc2-23811"
+	},
+
+	"frameworks": {
+		"dnxcore50": {
+			"imports": "portable-net45+win8+wp8+wpa81",
+			"dependencies": {
+				"System.Runtime": "4.0.0-rc1-*"
+			}
+		}
+	}
+}
