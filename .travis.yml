@@ -7,6 +7,7 @@ before_install:
  - sudo apt-get -qq install lyx
  - sudo apt-get install -qq texlive-fonts-extra
  - sudo apt-get install -qq texlive-lang-polish
+ - sudo apt-get install -qq mono
  - mkdir ~/.lyx
  - mkdir ~/.lyx/layouts
  - cp ./Docs/Thesis/src/dcsbook.cls ~/.lyx/layouts/dcsbook.cls
