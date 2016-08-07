@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Globalization;
 using System.IO;
+using System.Linq;
+using System.Security.Policy;
 using System.Threading.Tasks;
 using MasterThesis.Common.Helpers;
+using MasterThesis.RestTestsGenerator.IntermediateCodeGenerator;
 using NLog;
 using Raml.Parser;
 using Raml.Parser.Expressions;
@@ -45,24 +48,16 @@ namespace MasterThesis.RestTestsGenerator
             }
         }
 
-        public void GenerateTest(IUnitTestWriter unitTestWriter)
+        public void GenerateTest(IUnitTestWriter unitTestWriter, IIntermidiateCodeGenerator intermidiateCodeGenerator)
         {
+            intermidiateCodeGenerator.WriteDocumentStart();
+
             foreach (var resource in ramlDocument.Resources)
             {
-                foreach (var method in resource.Methods)
-                {
-                    HttpMethod currentMethod;
-
-                    if (!EnumHelper.TryGetEnumValueFromDescription<HttpMethod>(method.Verb, out currentMethod))
-                    {
-                        Log.Warn("Unknown method {0} for {1} resource. Skipping...");
-                        continue;
-                    }
-
-                    Log.Info("Creating for {0}: {1}", method.Verb, method.Description);
-
-                }
+                intermidiateCodeGenerator.WriteResource(resource, ramlDocument.Schemas.SingleOrDefault(x => x.ContainsKey(resource.DisplayName)), ramlDocument.BaseUri);
             }
+
+            intermidiateCodeGenerator.WriteDocumentEnd();
         }
     }
 }

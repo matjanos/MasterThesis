@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<testDefinition>
+	<resource name="/sales" link="http://remote-vending/api/sales">
+		<method value="post" timeout="200">
+			<case />
+		</method>
+		<method value="get" timeout="200">
+			<case>
+				<header key="Content-Type" value="application/json" />
+				<result code="200">{
+    "count" : 2,
+    "sales" : [
+      {
+        "dateAndTime" : "2013-10-22 16:17:00",
+        "value" : 450,
+        "machineId" : "ZX4102",
+        "productId" : "Cad-CB1012"
+      },
+      {
+        "dateAndTime" : "2013-10-22 16:17:00",
+        "value" : 150,
+        "machineId" : "ZX5322",
+        "productId" : "CC-LB1"
+      }
+    ],
+    "totalValue" : 600
+}
+</result>
+			</case>
+		</method>
+	</resource>
+	<resource name="/machines" link="http://remote-vending/api/machines">
+		<method value="get" timeout="200">
+			<case>
+				<header key="Content-Type" value="application/json" />
+				<result code="200">{
+    "count" : 3,
+    "machines" : [
+      {
+        "id" : "ZX4102",
+        "location" : "Starbuck's, 442 Geary Street, San Francisco, CA 94102"
+      },
+      {
+        "id" : "ZX5322",
+        "location" : "Starbuck's, 462 Powell Street, San Francisco, CA 94102"
+      },
+      {
+        "id" : "ZX6792",
+        "location" : "Cafe La Taza, 470 Post Street, San Francisco, CA 94102"
+      }
+    ]
+}
+</result>
+			</case>
+		</method>
+	</resource>
+	<resource name="/{machine}" link="http://remote-vending/api/machines/0">
+		<method value="get" timeout="200">
+			<case>
+				<header key="Content-Type" value="application/json" />
+				<result code="200">{
+    "id" : "ZX4102",
+    "location" : "Starbuck's, 442 Geary Street, San Francisco, CA 94102",
+    "sales" : [
+      {
+        "dateAndTime" : "2013-10-22 16:17:00",
+        "value" : 450,
+        "machineId" : "ZX4102",
+        "productId" : "Cad-CB1012"
+      },
+      {
+        "dateAndTime" : "2013-10-22 16:17:00",
+        "value" : 150,
+        "machineId" : "ZX5322",
+        "productId" : "CC-LB1"
+      }
+    ],
+    "floatsToBeReplenished" : [20, 40, 20, 80, 20, 40, 40],
+    "stockToBeReplenished" : 54
+}
+</result>
+			</case>
+		</method>
+	</resource>
+</testDefinition>

@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Net;
+using MasterThesis.RestTestsGenerator.IntermediateCodeGenerator;
 using Xunit;
 
 namespace MasterThesis.RestTestsGenerator.Tests
@@ -22,12 +23,21 @@ namespace MasterThesis.RestTestsGenerator.Tests
         [Fact]
         public async void GenerateTest()
         {
-            var generator = new RestTestGenerator("../../TestFiles/XKCD/api.raml");
+            var generator = new RestTestGenerator("../../TestFiles/test.raml");
+            var intermediateExpected = "../../AssertOutFiles/test1.xml";
+            var intermediateFilePath = intermediateExpected;//Path.Combine(Path.GetTempPath(), "test1.xml");
 
-            var result = await generator.LoadFile();
-            generator.GenerateTest(new XUnitTestWriter());
+            await generator.LoadFile();
+            using (var gen = new XmlIntermidiateCodeGenerator(intermediateFilePath))
+            {
+                generator.GenerateTest(new XUnitTestWriter(), gen);
+            }
 
-            Assert.True(result);
+            var expected = new StreamReader(intermediateExpected);
+            var actual = new StreamReader(intermediateFilePath);
+            Assert.Equal(expected.ReadToEnd(), actual.ReadToEnd());
         }
+
+
     }
 }
