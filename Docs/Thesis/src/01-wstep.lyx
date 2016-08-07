@@ -84,7 +84,14 @@ W ciągu ostatnich paru lat, w informatyce można zaobserwować wyjątkowo szybk
  aplikacji rozproszonych.
  Takie podejście prezentuje między innymi idea mikro-serwisów, czyli małych,
  niezależnych komponentów komunikujących się między sobą prostymi protokołami
- sieciowymi.
+ sieciowymi
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Thoenes2015"
+
+\end_inset
+
+.
  Najczęściej stosowanym rozwiązaniem jest używanie komunikacji HTTP w konwencji
  REST, gdyż zostało to zarekomendowane przez prekursorów idei rozproszonych
  mikrousług - Martina Fowlera oraz Jamesa Levisa

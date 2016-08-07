@@ -81,11 +81,52 @@ Architektura oparta o mikrousługi
 \end_layout
 
 \begin_layout Subsection
+Architektura zorientowana na usługi
+\end_layout
+
+\begin_layout Standard
+Koncept architektury mikrousług, mimo, że w ostatnich kilkunastu miesiącach
+ stał się szeroko omawianym tematem, powszechnie uważanym za innowację,
+ to rozszerza tylko podejście, które istnieje od dawna jako SOA (ang.
+ 
+\emph on
+Service-Oriented Architecture
+\emph default
+).
+ SOA to architektura łącząca wiele komponentów, których komunikacja odbywa
+ się nie w granicach procesu, ale również przez sieć komputerową.
+ Ściślej mówiąc, komunikacja powinna niejako ignorować fakt fizycznej lokalizacj
+i procesu wywołującego jak i wywoływanego.
+ System w ten sam sposób powinien zachować się zarówno uruchomiony na jednej
+ maszynie jak i na wielu maszynach mieszczących się na różnych kontynentach.
+ 
+\end_layout
+
+\begin_layout Standard
+Taka granulacja umożliwia lepsze wykorzystanie zasobów, poprzez dedykowanie
+ ich konkretnym komponentom w zależności od nakładu pracy, który jest wykonywany.
+ Stosuje się podejście tworzenia wielu drobnych (
+\emph on
+ang.
+ fine-grained
+\emph default
+) aplikacji przeznaczonych do jednego zadania.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "TankovicBogunovicGrbacEtAl2015"
+
+\end_inset
+
+ Pozwala to na skalowanie tylko obciążonej części przetwarzania, aby udrożnić
+ wąskie gardło systemu.
+\end_layout
+
+\begin_layout Subsection
 Domain Driven Design jako źródło mikrousług
 \end_layout
 
 \begin_layout Standard
-Procesem rozwoju oprogramowania rządzi szereg podstawowucj zasad, które
+Procesem rozwoju oprogramowania rządzi szereg podstawowych zasad, które
  umożliwiają skuteczne pisanie, a przede wszystkich utrzymywanie istniejącego
  kodu.
  Jedną z najważniejszch w ocenie autora reguł jest zasada pojedynczej odpowiedzi
@@ -112,7 +153,11 @@ key "Evans2004"
 \end_layout
 
 \begin_layout Standard
-Według tego podejścia proces projektowania 
+Według tego podejścia, cały proces wytwarzania oprogramowania, począwszy
+ od zbieranie wymagań, przez analizę, projektowanie, implementację, aż po
+ testowanie i wdrożenie powinno być oparte o wiedzę na temat wycinka rzeczywisto
+ści, który mapowany jest na oprogramowanie w celu ułatwienia lub przyspieszenia
+ rozwiązywania problemów z nim związanych.
 \end_layout
 
 \begin_layout Subsection
@@ -121,7 +166,7 @@ Zasada autonomiczności jako źródło problemów
 
 \begin_layout Standard
 Tworzenie mikrousług zgodnie z zaleceniami twórców tego konceptu wymaga
- również zmian w strukturach organizacji, która wytwarza ten system.
+ również zmian w strukturach organizacji, która wytwarza system.
  Zmiana taka powinna polegać na zorganizowaniu całych zespołów wokół każdej
  usługi.
  Oczywiście każdy zespół może realizować prace związane z wieloma usługami,
@@ -134,13 +179,54 @@ Tworzenie mikrousług zgodnie z zaleceniami twórców tego konceptu wymaga
 \end_layout
 
 \begin_layout Standard
-Problem pojawia się w momencie kiedy nowa wersja usługi wprowadza zmiany
- w interfejsie API.
+Problem pojawia się w momencie, kiedy niezależny zespół wprowadza zmiany,
+ które wymagają zmian również po stronie konsumentów.
+ Są to tzw.
  
+\emph on
+zmiany przełomowe
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Newman2015"
+
+\end_inset
+
+.
+ 
+\emph default
+Podczas projektowania interfejsów należy statrać się jak najrzadziej wykonywać
+ takie zmiany.
+ Wymaga to przede wszytkim bardzo dokładnej analizy dziedziny problemu,
+ jaki rozwiązuje dana usługa, aby uwzględnić kierunki, w których może się
+ ona rozwijać.
+ Unikanie zmian nie zawsze będzie możliwe, ale nie każda z nich jest zmianą
+ przełomową.
+ Np.
+ dodanie pola do zwracanego obiektu nie powinno zmienić zachowania konsumanta.
+ W tym miejscu należy też wspomnieć o tym, aby konsumentów implementować
+ w sposób 
+\begin_inset Quotes pld
+\end_inset
+
+odporny
+\begin_inset Quotes prd
+\end_inset
+
+ na zmiany, które nie są przełomowe.
+\end_layout
+
+\begin_layout Standard
+Niezależnie rozwijane komponenty mimo niezaprzeczalnych korzyści jakie niosą,
+ mają też wady i z pewnością jest to dbanie o kompatybilność z oprogramowaniem
+ z nich korzystającym.
 \end_layout
 
 \begin_layout Section
-Komunikacja REST
+Komunikacja między usługami
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Standard
@@ -154,6 +240,24 @@ Język RAML
 
 \begin_layout Section
 Testowanie jednostkowe
+\end_layout
+
+\begin_layout Standard
+[Samo przepisywanie kodu na mikrousługi jest wystarczająco trudny więc warto
+ zaoszczędzić czas na testeowaniu] [S.
+ G.
+ Saez, V.
+ Andrikopoulos, F.
+ Wessling, and C.
+ C.
+ Marquezan, “Cloud Adaptation and Application (Re-)Distribution: Bridging
+ the Two Perspectives,” in 2014 IEEE 18th International Enterprise Distributed
+ Object Computing Conference Workshops and Demonstrations.
+ IEEE, Sep.
+ 2014, pp.
+ 163–172.
+ [Online].
+ Available: http://ieeexplore.ieee.org/articleDetails.jsp?arnumber=6975357]
 \end_layout
 
 \end_body
