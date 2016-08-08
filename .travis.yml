@@ -27,7 +27,7 @@ script:
  - mkdir out
  - lyx -batch --export-to pdflatex ./out/MasterThesis.pdf ./Docs/Thesis/src/RestTestingFramework.lyx 
  - ls -la ./out
- - xbuild .\Soft\MasterThesis\MasterThesis.sln
+ - xbuild ./Soft/MasterThesis/MasterThesis.sln
 after_success:
  - zip -r -j $OUT_NAME out/*
  - ls -la
