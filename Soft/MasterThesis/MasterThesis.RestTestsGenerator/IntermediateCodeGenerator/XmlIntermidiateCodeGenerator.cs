@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Xml;
 using Flurl;
@@ -70,6 +68,7 @@ namespace MasterThesis.RestTestsGenerator.IntermediateCodeGenerator
                 sb.Append('}');
                 relativeUri = relativeUri.Replace(sb.ToString(), uriParameter.Value.Default ?? "0");
             }
+
             return relativeUri;
         }
 
@@ -132,10 +131,6 @@ namespace MasterThesis.RestTestsGenerator.IntermediateCodeGenerator
                 WriteAttributeString("value", response.Value.Example);
                 WriteEndElement();
             }
-        }
-
-        public void WriteMethodRequest(HttpMethod method, string url, AssertionConditions condition)
-        {
         }
 
         public void WriteDocumentEnd()
