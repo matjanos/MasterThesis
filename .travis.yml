@@ -19,10 +19,6 @@ before_install:
  - cp ./Docs/Thesis/src/dcsbook.cls ~/.lyx/layouts/dcsbook.cls
  - cp ./Docs/Thesis/src/dcslib.sty ~/.lyx/layouts/dcslib.sty
  - cp ./Docs/Thesis/src/dcsbook.layout ~/.lyx/layouts/dcsbook.layout
-install:
- - curl -sSL https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.sh | DNX_BRANCH=dev sh && source ~/.dnx/dnvm/dnvm.sh
- - dnvm upgrade -u
- - dnu restore -s https://myget.org/f/dotnet-core
 script:
  - mkdir out
  - lyx -batch --export-to pdflatex ./out/MasterThesis.pdf ./Docs/Thesis/src/RestTestingFramework.lyx 
