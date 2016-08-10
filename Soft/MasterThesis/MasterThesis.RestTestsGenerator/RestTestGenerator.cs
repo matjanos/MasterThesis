@@ -45,7 +45,7 @@ namespace MasterThesis.RestTestsGenerator
             }
         }
 
-        public void GenerateTest(IUnitTestWriter unitTestWriter, IIntermidiateCodeGenerator intermidiateCodeGenerator, IUseCaseGenerator useCaseGenerator)
+        public void GenerateTest(IUnitTestWriter unitTestWriter, IIntermidiateCodeGenerator intermidiateCodeGenerator, IUseCaseBuilder useCaseBuilder)
         {
             intermidiateCodeGenerator.WriteDocumentStart();
 
@@ -54,7 +54,7 @@ namespace MasterThesis.RestTestsGenerator
                 intermidiateCodeGenerator.WriteResourceUseCases(resource,
                     ramlDocument.Schemas.SingleOrDefault(x => x.ContainsKey(resource.DisplayName)), 
                     ramlDocument.BaseUri,
-                    useCaseGenerator);
+                    useCaseBuilder);
             }
 
             intermidiateCodeGenerator.WriteDocumentEnd();

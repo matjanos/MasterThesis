@@ -8,7 +8,7 @@ namespace MasterThesis.RestTestsGenerator.IntermediateCodeGenerator
     {
         void WriteDocumentStart();
 
-        void WriteResourceUseCases(Resource resource, IDictionary<string, string> schema, string currentUri, IUseCaseGenerator useCaseGenerator);
+        void WriteResourceUseCases(Resource resource, IDictionary<string, string> schema, string currentUri, IUseCaseBuilder useCaseBuilder);
 
         void WriteDocumentEnd();
     }

@@ -36,7 +36,7 @@ namespace MasterThesis.RestTestsGenerator.IntermediateCodeGenerator
             WriteEndElement();
         }
 
-        public void WriteResourceUseCases(Resource resource, IDictionary<string, string> schema, string currentUri, IUseCaseGenerator useCaseGenerator)
+        public void WriteResourceUseCases(Resource resource, IDictionary<string, string> schema, string currentUri, IUseCaseBuilder useCaseBuilder)
         {
             Log.Info("Writing data for {0} resource..", resource.DisplayName);
 
@@ -52,7 +52,7 @@ namespace MasterThesis.RestTestsGenerator.IntermediateCodeGenerator
             WriteAttributeString("link", resourceUri);
 
 
-            var useCases = useCaseGenerator.GetUseCases(resource);
+            var useCases = useCaseBuilder.GetUseCases(resource);
             foreach (var useCase in useCases)
             {
                 PrintUseCase(resourceUri, useCase);
@@ -62,7 +62,7 @@ namespace MasterThesis.RestTestsGenerator.IntermediateCodeGenerator
 
             foreach (var innerResource in resource.Resources)
             {
-                WriteResourceUseCases(innerResource, schema, resourceUri, useCaseGenerator);
+                WriteResourceUseCases(innerResource, schema, resourceUri, useCaseBuilder);
             }
         }
 

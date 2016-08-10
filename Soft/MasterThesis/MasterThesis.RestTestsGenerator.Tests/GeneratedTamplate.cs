@@ -31,7 +31,10 @@ namespace MasterThesis.RestTestsGenerator.Tests
             await generator.LoadFile();
             using (var gen = new XmlIntermidiateCodeGenerator(intermediateFilePath))
             {
-                generator.GenerateTest(new XUnitTestWriter(), gen,new CheckMethodCodeUseCaseGenerator());
+                var useCaseBuilder = new CompositeUseCaseBuilder();
+                useCaseBuilder.AddUseCaseBuilder(new CheckMethodCodeUseCaseBuilder());
+
+                generator.GenerateTest(new XUnitTestWriter(), gen, useCaseBuilder);
             }
 
             var expected = new StreamReader(intermediateExpected);

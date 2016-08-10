@@ -9,7 +9,7 @@ using Raml.Parser.Expressions;
 
 namespace MasterThesis.RestTestsGenerator.UseCaseGenerators
 {
-    public class CheckMethodCodeUseCaseGenerator : IUseCaseGenerator
+    public class CheckMethodCodeUseCaseBuilder : IUseCaseBuilder
     {
         public readonly ILogger Log = LogManager.GetCurrentClassLogger();
 
