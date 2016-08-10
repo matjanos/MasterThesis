@@ -33,6 +33,7 @@ namespace MasterThesis.RestTestsGenerator.Tests
             {
                 var useCaseBuilder = new CompositeUseCaseBuilder();
                 useCaseBuilder.AddUseCaseBuilder(new CheckMethodCodeUseCaseBuilder());
+                useCaseBuilder.AddUseCaseBuilder(new HeaderCheckUseCaseBuilder());
 
                 generator.GenerateTest(new XUnitTestWriter(), gen, useCaseBuilder);
             }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using MasterThesis.Common.Helpers;
+using MasterThesis.RestTestsGenerator.Helpers;
 using MasterThesis.RestTestsGenerator.UseCases;
 using NLog;
 using Raml.Parser.Expressions;
@@ -29,9 +30,9 @@ namespace MasterThesis.RestTestsGenerator.UseCaseGenerators
 
         private UseCase ConstructUseCase(Resource resource, Method method)
         {
-            HttpMethod currentMethod;
+            var currentMethod = method.GetMethodEnum();
 
-            if (!EnumHelper.TryGetEnumValueFromDescription(method.Verb.ToUpper(), out currentMethod))
+            if (currentMethod==null)
             {
                 Log.Warn($"Unknown method {method.Verb} for {resource.DisplayName} resource. Skipping...");
                 return null;
@@ -45,7 +46,7 @@ namespace MasterThesis.RestTestsGenerator.UseCaseGenerators
 
             var uc = new UseCase
             {
-                Method = currentMethod,
+                Method = currentMethod.Value,
                 Headers = method.Headers.Select(x => new KeyValuePair<string, string>(x.Key, x.Value.Default)),
                 AssertRestrictionType = AssertRestrictionType.StatusCode,
                 ExpectedResponse = new UseCaseResponse((HttpStatusCode)Convert.ToInt32(responseToAssert.Code), string.Empty)
