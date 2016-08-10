@@ -3,7 +3,6 @@ using System.Text;
 using System.Xml;
 using Flurl;
 using MasterThesis.Common.Helpers;
-using MasterThesis.RestTestsGenerator.Assertions;
 using NLog;
 using Raml.Parser.Expressions;
 
@@ -74,6 +73,9 @@ namespace MasterThesis.RestTestsGenerator.IntermediateCodeGenerator
 
         private void WriteMethods(Resource resource)
         {
+
+
+
             foreach (var method in resource.Methods)
             {
                 HttpMethod currentMethod;

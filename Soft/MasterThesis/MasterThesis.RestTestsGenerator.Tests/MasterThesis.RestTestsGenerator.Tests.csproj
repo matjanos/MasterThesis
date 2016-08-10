@@ -72,21 +72,37 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="TestFiles\test.raml" />
-    <None Include="TestFiles\twitter.raml" />
-    <None Include="TestFiles\XKCD\api.raml" />
-    <None Include="TestFiles\XKCD\docs\headline.md" />
-    <None Include="TestFiles\XKCD\examples\comic-example.json" />
-    <None Include="TestFiles\XKCD\schemas\comic-schema.json" />
+    <None Include="TestFiles\test.raml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFiles\twitter.raml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFiles\XKCD\api.raml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFiles\XKCD\docs\headline.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFiles\XKCD\examples\comic-example.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFiles\XKCD\schemas\comic-schema.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="AssertOutFiles\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\MasterThesis.RestTestsGenerator\MasterThesis.RestTestsGenerator.csproj">
       <Project>{122d877c-8a45-42f4-99ef-94a754ddf0a8}</Project>
       <Name>MasterThesis.RestTestsGenerator</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AssertOutFiles\test1.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

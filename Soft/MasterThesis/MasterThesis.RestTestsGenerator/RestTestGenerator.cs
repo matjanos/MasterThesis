@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Security.Policy;
 using System.Threading.Tasks;
-using MasterThesis.Common.Helpers;
 using MasterThesis.RestTestsGenerator.IntermediateCodeGenerator;
 using NLog;
 using Raml.Parser;
