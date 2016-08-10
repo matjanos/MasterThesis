@@ -11,7 +11,7 @@ namespace MasterThesis.RestTestsGenerator.Tests
             using (var writer = new XmlIntermidiateCodeGenerator("./test.xml"))
             {
                 writer.WriteDocumentStart();
-                //writer.WriteResource("files");
+                //writer.WriteResourceUseCases("files");
                 writer.WriteDocumentEnd();
             }
         }

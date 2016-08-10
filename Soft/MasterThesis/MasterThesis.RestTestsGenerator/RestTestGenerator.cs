@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using MasterThesis.RestTestsGenerator.IntermediateCodeGenerator;
+using MasterThesis.RestTestsGenerator.UseCaseGenerators;
 using NLog;
 using Raml.Parser;
 using Raml.Parser.Expressions;
@@ -11,7 +12,6 @@ namespace MasterThesis.RestTestsGenerator
 {
     public class RestTestGenerator
     {
-        private const int MillisecondsTimeout = 1000;
         private RamlDocument ramlDocument;
         private readonly RamlParser ramlParser;
         private readonly string filePath;
@@ -19,11 +19,11 @@ namespace MasterThesis.RestTestsGenerator
 
         public RestTestGenerator(string inputFile)
         {
-            filePath = inputFile;
+            filePath = Path.GetFullPath(inputFile);
             ramlParser = new RamlParser();
-            if (!File.Exists(inputFile))
+            if (!File.Exists(filePath))
             {
-                Log.Error("Loading RAML file error. File {0} doesn't exist", inputFile);
+                Log.Error("Loading RAML file error. File {0} doesn't exist", filePath);
                 throw new ArgumentException("File doesn't exist");
             }
             Log.Error("Generator initialized");
@@ -45,13 +45,16 @@ namespace MasterThesis.RestTestsGenerator
             }
         }
 
-        public void GenerateTest(IUnitTestWriter unitTestWriter, IIntermidiateCodeGenerator intermidiateCodeGenerator)
+        public void GenerateTest(IUnitTestWriter unitTestWriter, IIntermidiateCodeGenerator intermidiateCodeGenerator, IUseCaseGenerator useCaseGenerator)
         {
             intermidiateCodeGenerator.WriteDocumentStart();
 
             foreach (var resource in ramlDocument.Resources)
             {
-                intermidiateCodeGenerator.WriteResource(resource, ramlDocument.Schemas.SingleOrDefault(x => x.ContainsKey(resource.DisplayName)), ramlDocument.BaseUri);
+                intermidiateCodeGenerator.WriteResourceUseCases(resource,
+                    ramlDocument.Schemas.SingleOrDefault(x => x.ContainsKey(resource.DisplayName)), 
+                    ramlDocument.BaseUri,
+                    useCaseGenerator);
             }
 
             intermidiateCodeGenerator.WriteDocumentEnd();

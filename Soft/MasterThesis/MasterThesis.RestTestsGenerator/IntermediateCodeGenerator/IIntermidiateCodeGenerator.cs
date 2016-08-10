@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using MasterThesis.RestTestsGenerator.UseCaseGenerators;
 using Raml.Parser.Expressions;
 
 namespace MasterThesis.RestTestsGenerator.IntermediateCodeGenerator
@@ -7,7 +8,7 @@ namespace MasterThesis.RestTestsGenerator.IntermediateCodeGenerator
     {
         void WriteDocumentStart();
 
-        void WriteResource(Resource resource, IDictionary<string, string> schema, string currentUri);
+        void WriteResourceUseCases(Resource resource, IDictionary<string, string> schema, string currentUri, IUseCaseGenerator useCaseGenerator);
 
         void WriteDocumentEnd();
     }

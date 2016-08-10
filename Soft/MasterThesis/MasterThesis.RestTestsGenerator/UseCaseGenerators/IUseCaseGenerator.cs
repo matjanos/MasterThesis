@@ -4,7 +4,7 @@ using Raml.Parser.Expressions;
 
 namespace MasterThesis.RestTestsGenerator.UseCaseGenerators
 {
-    interface IUseCaseGenerator
+    public interface IUseCaseGenerator
     {
         IEnumerable<UseCase> GetUseCases(Resource resource);
     }

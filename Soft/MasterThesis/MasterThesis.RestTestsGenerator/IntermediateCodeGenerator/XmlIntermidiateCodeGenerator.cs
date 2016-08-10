@@ -3,6 +3,8 @@ using System.Text;
 using System.Xml;
 using Flurl;
 using MasterThesis.Common.Helpers;
+using MasterThesis.RestTestsGenerator.UseCaseGenerators;
+using MasterThesis.RestTestsGenerator.UseCases;
 using NLog;
 using Raml.Parser.Expressions;
 
@@ -11,7 +13,6 @@ namespace MasterThesis.RestTestsGenerator.IntermediateCodeGenerator
     public class XmlIntermidiateCodeGenerator : XmlTextWriter, IIntermidiateCodeGenerator
     {
         private readonly ILogger Log = LogManager.GetCurrentClassLogger();
-        private const int TimeOut = 200;
 
         public XmlIntermidiateCodeGenerator(string intermediateFilePath) : base(intermediateFilePath, Encoding.UTF8)
         {
@@ -35,8 +36,10 @@ namespace MasterThesis.RestTestsGenerator.IntermediateCodeGenerator
             WriteEndElement();
         }
 
-        public void WriteResource(Resource resource, IDictionary<string, string> schema, string currentUri)
+        public void WriteResourceUseCases(Resource resource, IDictionary<string, string> schema, string currentUri, IUseCaseGenerator useCaseGenerator)
         {
+            Log.Info("Writing data for {0} resource..", resource.DisplayName);
+
             WriteStartElement("resource");
             if (schema != null)
             {
@@ -47,13 +50,36 @@ namespace MasterThesis.RestTestsGenerator.IntermediateCodeGenerator
 
             WriteAttributeString("name", resource.DisplayName);
             WriteAttributeString("link", resourceUri);
-            WriteMethods(resource);
+
+
+            var useCases = useCaseGenerator.GetUseCases(resource);
+            foreach (var useCase in useCases)
+            {
+                PrintUseCase(resourceUri, useCase);
+            }
+
             WriteEndElement();
 
             foreach (var innerResource in resource.Resources)
             {
-                WriteResource(innerResource, schema, resourceUri);
+                WriteResourceUseCases(innerResource, schema, resourceUri, useCaseGenerator);
             }
+        }
+
+        private void PrintUseCase(string resourceUri, UseCase useCase)
+        {
+            WriteStartElement("useCase");
+            WriteAttributeString("link", resourceUri);
+            WriteAttributeString("method", useCase.Method.GetEnumDescription().ToUpper());
+            WriteAttributeString("assert", useCase.AssertRestrictionType.ToString());
+            WriteHeaders(useCase.Headers);
+
+            WriteStartElement("response");
+            WriteAttributeString("code", ((int)useCase.ExpectedResponse.Code).ToString());
+            WriteString(useCase.ExpectedResponse.Body);
+            WriteEndElement();
+
+            WriteEndElement();
         }
 
         private static string ReplacePlaceholderWithDefaultParameter(Resource resource)
@@ -71,66 +97,13 @@ namespace MasterThesis.RestTestsGenerator.IntermediateCodeGenerator
             return relativeUri;
         }
 
-        private void WriteMethods(Resource resource)
+        private void WriteHeaders(IEnumerable<KeyValuePair<string, string>> headers)
         {
-
-
-
-            foreach (var method in resource.Methods)
-            {
-                HttpMethod currentMethod;
-
-                if (!EnumHelper.TryGetEnumValueFromDescription(method.Verb.ToUpper(), out currentMethod))
-                {
-                    Log.Warn($"Unknown method {method.Verb} for {resource.DisplayName} resource. Skipping...");
-                    continue;
-                }
-
-                WriteStartElement("method");
-                WriteAttributeString("value", method.Verb);
-                WriteAttributeString("timeout", TimeOut.ToString());
-                WriteCase(method);
-                WriteEndElement();
-
-                Log.Info($"Creating for {method.Verb}: {method.Description}");
-            }
-        }
-
-        private void WriteCase(Method method)
-        {
-            WriteStartElement("case");
-
-            foreach (var response in method.Responses)
-            {
-                foreach (var responseBody in response.Body)
-                {
-
-                    WriteHeaders(method, responseBody);
-
-                    WriteStartElement("result");
-
-                    WriteAttributeString("code", response.Code);
-                    WriteString(responseBody.Value.Example);
-
-                    WriteEndElement();
-                }
-            }
-
-            WriteEndElement();
-        }
-
-        private void WriteHeaders(Method method, KeyValuePair<string, MimeType> response)
-        {
-            WriteStartElement("header");
-            WriteAttributeString("key", "Content-Type");
-            WriteAttributeString("value", response.Key);
-            WriteEndElement();
-
-            foreach (var parameter in method.Headers)
+            foreach (var header in headers)
             {
                 WriteStartElement("header");
-                WriteAttributeString("key", parameter.Key);
-                WriteAttributeString("value", response.Value.Example);
+                WriteAttributeString("key", header.Key);
+                WriteAttributeString("value", header.Value);
                 WriteEndElement();
             }
         }

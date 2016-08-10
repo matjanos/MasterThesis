@@ -1,12 +1,7 @@
-namespace MasterThesis.RestTestsGenerator.UseCases
+namespace MasterThesis.Common.Enums
 {
     public enum AssertRestrictionType
     {
-        /// <summary>
-        /// HTTP response came
-        /// </summary>
-        AnyResponse = 0,
-
         /// <summary>
         /// Status code is the same
         /// </summary>

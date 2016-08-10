@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\AssertRestrictionType.cs" />
+    <Compile Include="Enums\HttpMethod.cs" />
     <Compile Include="Helpers\EnumHelper.cs" />
     <Compile Include="HttpMethod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

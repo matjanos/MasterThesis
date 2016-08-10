@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Net;
 using MasterThesis.RestTestsGenerator.IntermediateCodeGenerator;
+using MasterThesis.RestTestsGenerator.UseCaseGenerators;
 using Xunit;
 
 namespace MasterThesis.RestTestsGenerator.Tests
@@ -23,14 +24,14 @@ namespace MasterThesis.RestTestsGenerator.Tests
         [Fact]
         public async void GenerateTest()
         {
-            var generator = new RestTestGenerator("../../TestFiles/test.raml");
-            var intermediateExpected = "../../AssertOutFiles/test1.xml";
+            var generator = new RestTestGenerator("TestFiles/test.raml");
+            var intermediateExpected = "AssertOutFiles/test1.xml";
             var intermediateFilePath = intermediateExpected;//Path.Combine(Path.GetTempPath(), "test1.xml");
 
             await generator.LoadFile();
             using (var gen = new XmlIntermidiateCodeGenerator(intermediateFilePath))
             {
-                generator.GenerateTest(new XUnitTestWriter(), gen);
+                generator.GenerateTest(new XUnitTestWriter(), gen,new CheckMethodCodeUseCaseGenerator());
             }
 
             var expected = new StreamReader(intermediateExpected);
