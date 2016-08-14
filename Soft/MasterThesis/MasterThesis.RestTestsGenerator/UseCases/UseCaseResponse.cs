@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.Collections.Generic;
+using System.Net;
 
 namespace MasterThesis.RestTestsGenerator.UseCases
 {
@@ -8,9 +9,13 @@ namespace MasterThesis.RestTestsGenerator.UseCases
         {
             Code = code;
             Body = body;
+            Headers = new Dictionary<string, string>();
+
         }
 
         public HttpStatusCode Code { get; private set; }
+
+        public IDictionary<string, string> Headers { get; set; }
 
         //TODO: maybe stream?
         public string Body { get; private set; }

@@ -11,7 +11,7 @@ namespace MasterThesis.RestTestsGenerator.UseCases
 
         public UseCaseResponse ExpectedResponse { get; set; }
 
-        public AssertRestrictionType AssertRestrictionType { get; set; }
+        public AssertRestrictionLevel AssertRestrictionLevel { get; set; }
 
         public int Timeout { get; set; }
     }

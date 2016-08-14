@@ -1,4 +1,4 @@
-﻿namespace MasterThesis.RestTestsGenerator
+﻿namespace MasterThesis.RestTestsGenerator.UnitTestWriters
 {
     public interface IUnitTestWriter
     {

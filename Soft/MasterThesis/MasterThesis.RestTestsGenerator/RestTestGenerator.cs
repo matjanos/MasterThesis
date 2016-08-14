@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using MasterThesis.RestTestsGenerator.IntermediateCodeGenerator;
+using MasterThesis.RestTestsGenerator.UnitTestWriters;
 using MasterThesis.RestTestsGenerator.UseCaseGenerators;
 using NLog;
 using Raml.Parser;

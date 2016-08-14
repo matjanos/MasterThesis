@@ -71,7 +71,7 @@ namespace MasterThesis.RestTestsGenerator.IntermediateCodeGenerator
             WriteStartElement("useCase");
             WriteAttributeString("link", resourceUri);
             WriteAttributeString("method", useCase.Method.GetEnumDescription().ToUpper());
-            WriteAttributeString("assert", useCase.AssertRestrictionType.ToString());
+            WriteAttributeString("assert-level", useCase.AssertRestrictionLevel.ToString());
             WriteHeaders(useCase.Headers);
 
             WriteStartElement("response");
@@ -82,9 +82,11 @@ namespace MasterThesis.RestTestsGenerator.IntermediateCodeGenerator
             WriteEndElement();
         }
 
-        private static string ReplacePlaceholderWithDefaultParameter(Resource resource)
+        private static string ReplacePlaceholderWithDefaultParameter(Resource resource)//TODO: placeholder
         {
             string relativeUri = resource.RelativeUri;
+            
+            // with default parameters
             foreach (var uriParameter in resource.UriParameters)
             {
                 StringBuilder sb = new StringBuilder(uriParameter.Key.Length + 2);
@@ -92,6 +94,11 @@ namespace MasterThesis.RestTestsGenerator.IntermediateCodeGenerator
                 sb.Append($"{uriParameter.Key}");
                 sb.Append('}');
                 relativeUri = relativeUri.Replace(sb.ToString(), uriParameter.Value.Default ?? "0");
+            }
+
+            foreach (var VARIABLE in resource.)
+            {
+                
             }
 
             return relativeUri;

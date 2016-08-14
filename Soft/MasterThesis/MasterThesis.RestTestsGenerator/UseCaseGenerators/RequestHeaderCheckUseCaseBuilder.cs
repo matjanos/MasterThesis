@@ -6,7 +6,7 @@ using Raml.Parser.Expressions;
 
 namespace MasterThesis.RestTestsGenerator.UseCaseGenerators
 {
-    public class HeaderCheckUseCaseBuilder : IUseCaseBuilder
+    public class RequestHeaderCheckUseCaseBuilder : IUseCaseBuilder
     {
         public IEnumerable<UseCase> GetUseCases(Resource resource)
         {
@@ -18,7 +18,7 @@ namespace MasterThesis.RestTestsGenerator.UseCaseGenerators
                 {
                     var uc = new UseCase
                     {
-                        AssertRestrictionType = AssertRestrictionType.ResultFormat,
+                        AssertRestrictionLevel = AssertRestrictionLevel.ResultFormat,
                         Method = method.GetMethodEnum().Value,
                         Headers = new[] {new KeyValuePair<string, string>("Content-Type", mimeType.Key),},
                         ExpectedResponse = new UseCaseResponse(HttpStatusCode.OK, mimeType.Value.Example)
