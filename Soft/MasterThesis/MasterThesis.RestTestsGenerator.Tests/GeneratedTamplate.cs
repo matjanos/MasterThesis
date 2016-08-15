@@ -22,6 +22,14 @@ namespace MasterThesis.RestTestsGenerator.Tests
             Assert.NotEmpty(result);
         }
 
+
+        [Fact]
+        public void GetTestFromTemplate()
+        {
+            XUnitTestWriter writer = new XUnitTestWriter();
+            writer.GenerateUnitTest("", null);
+        }
+
         [Fact]
         public async void GenerateTest()
         {

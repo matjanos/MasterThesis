@@ -51,7 +51,6 @@ namespace MasterThesis.RestTestsGenerator.IntermediateCodeGenerator
             WriteAttributeString("name", resource.DisplayName);
             WriteAttributeString("link", resourceUri);
 
-
             var useCases = useCaseBuilder.GetUseCases(resource);
             foreach (var useCase in useCases)
             {
@@ -94,11 +93,6 @@ namespace MasterThesis.RestTestsGenerator.IntermediateCodeGenerator
                 sb.Append($"{uriParameter.Key}");
                 sb.Append('}');
                 relativeUri = relativeUri.Replace(sb.ToString(), uriParameter.Value.Default ?? "0");
-            }
-
-            foreach (var VARIABLE in resource.)
-            {
-                
             }
 
             return relativeUri;

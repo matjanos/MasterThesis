@@ -49,7 +49,7 @@ namespace MasterThesis.RestTestsGenerator
         public void GenerateTest(IUnitTestWriter unitTestWriter, IIntermidiateCodeGenerator intermidiateCodeGenerator, IUseCaseBuilder useCaseBuilder)
         {
             intermidiateCodeGenerator.WriteDocumentStart();
-
+            ramlDocument.BaseUri = GetBaseUri();
             foreach (var resource in ramlDocument.Resources)
             {
                 intermidiateCodeGenerator.WriteResourceUseCases(resource,
@@ -59,6 +59,19 @@ namespace MasterThesis.RestTestsGenerator
             }
 
             intermidiateCodeGenerator.WriteDocumentEnd();
+        }
+
+        private string GetBaseUri()
+        {
+            var baseUri = ramlDocument.BaseUri;
+
+            foreach (var baseUriParameter in ramlDocument.BaseUriParameters)
+            {
+                var placeholder = "{" + baseUriParameter.Key + "}";
+                baseUri = baseUri.Replace(placeholder, baseUriParameter.Value.Enum.FirstOrDefault());
+            }
+
+            return baseUri;
         }
     }
 }
