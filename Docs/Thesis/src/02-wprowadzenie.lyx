@@ -225,13 +225,238 @@ Niezależnie rozwijane komponenty mimo niezaprzeczalnych korzyści jakie niosą,
 Komunikacja między usługami
 \end_layout
 
+\begin_layout Subsection
+Podział monolitu
+\end_layout
+
 \begin_layout Standard
+Krytyczną decyzją podczas projektowania architektury opartej o mikrousługi
+ jest wybór punktów podziału systemu.
+ 
+\end_layout
+
+\begin_layout Subsection
+Projektowanie interfejsów REST
+\end_layout
+
+\begin_layout Subsection
+Wersjonowanie interfejsów
+\end_layout
+
+\begin_layout Subsection
+Połączenia między usługami
+\end_layout
+
+\begin_layout Standard
+Wizja ogromnego systemu złożonego z wielu komponentów, realizującego skomplikowa
+ne zadania nasuwa na myśl skomplikowane połączenia między komórkami systemu.
+ Istnieje wiele systemów, w których istnieją dodatkowe komponenty odpowiadające
+ tylko i wyłącznie za realizację komunikacji.
+ Komponenty takie zaimplementowane mają często skomplikowane reguły przekazywani
+a wiadomości w zależności od logiki biznesowej.
+ Przykładem są produkty typu ESB (
+\emph on
+ang.
+ Enterprise Service Bus
+\emph default
+), które zawierają skomplikowane funkcje trasowania wiadomości, kapsułkowania
+ lub transformacji danych.
+ Kompnenty takie, jako że są wspólne dla całego systemu, są trudnos skalowalne,
+ więc generują duże ryzyko wystąpienia wąskiego gardła.
+ Mechanizm komunikacji powinien być prostą częścią systemu spełniając zasadę
+ 
+\begin_inset Quotes pld
+\end_inset
+
+inteligentne punkty końcowe i naiwne kanały komunikacji
+\begin_inset Quotes prd
+\end_inset
+
+ (
+\emph on
+ang.
+ smart endpoints and dumb pipes
+\emph default
+)
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Fowler2014"
+
+\end_inset
+
+.
+ Społeczność skupiona na rozwijaniu konceptu mikrousług proponuje proste
+ wywołania HTTP w celu wymiany danych między usługami.
+ Niższe warstwy sieciowego modelu OSI zrealizują więc komunikację, a zadaniem
+ 
+\begin_inset Quotes pld
+\end_inset
+
+inteligentnych punktów końcowych
+\begin_inset Quotes prd
+\end_inset
+
+ jest analiza żądań i generowanie odpowiedzi.
+ 
+\end_layout
+
+\begin_layout Standard
+Wykorzystywanie prostych protokołów komunikacyjnych zrzuca niejako z programistó
+w, ciężar projektowania i implementowania mechanizmów komunikacji oraz dostarcza
+ całą gamę gotowych i sprawdzonych rozwiązań, które nie obciążają niepotrzebnie
+ systemu.
+ 
+\end_layout
+
+\begin_layout Standard
+Proste protokoły sieciowe, mimo niezaprzeczalnych zalet w sensie wydajnościowym,
+ mogą być niewystarczające dla niektórych zastosowań.
+ Protokół HTTP nie jest niezawodny, więc dla krytycznych punktów systemu
+ wprowadzić można kolejki komunikatów, które nie realizują logiki biznesowej,
+ a tylko zapewniają niezawodność komunikacji asynchronicznej niewielkim
+ kosztem wydajności
+\begin_inset CommandInset citation
+LatexCommand cite
+key "S0167739X1300148920140101"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Praktyka pokazuje jednak, że istnieją przypadki, kiedy konieczne jest wyposażeni
+e warstwy komunikacyjnej w komponent wspomagający, tzw.
+ bramę interfejsów (
+\emph on
+ang.
+ API gateway
+\emph default
+).
+ Brama taka ma za zadanie agregować żądania, możliwie mała ich ilość była
+ wymieniana między aplikacją kliencką, a usługami
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Newman2015"
+
+\end_inset
+
+.
+ Podejście to stosowane jest często w przypadku aplikacji mobilnych, gdzie
+ użytkownicy końcowi dysponują limitowaną ilością przesyłanych danych w
+ ramach ich pakietu internetowego.
+ Ta koncepcja może być zastosowana w dwóch wariantach.
+ Pierwszym jest jedma, monolityczna brama interfejsów, która używana jest
+ kiedy mamy niewiele (najczęściej jedną) aplikację z niej korzystającą.
+ Wariant drugi to odseparowane bramy dla wielu aplikacji końcowych (
+\emph on
+ang.
+ backends for frontends
+\emph default
+).
+ Oba podejścia zaprezentowane są na rysunkach 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Ryc21"
+
+\end_inset
+
+ oraz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Ryc22"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/Api-Gateway-monolithic.PNG
+	scale 70
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Ryc21"
+
+\end_inset
+
+ Monolityczna brama interfejsów.
+ Źródło: 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Newman2015"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
 \begin_layout Standard
-NOTE: Aby ta komunikacja była uporządkowana, warto zastosować konwencję,
- która definiowała będzie sposób odwoływania się do zasobów 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/Api-Gateway-frontend-for-backend.PNG
+	scale 70
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Ryc22"
+
+\end_inset
+
+ Wiele bram dla aplikacji końcowych.
+ Źródło: 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Newman2015"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section

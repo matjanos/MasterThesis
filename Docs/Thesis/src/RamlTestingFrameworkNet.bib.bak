@@ -329,7 +329,7 @@ year = {2009}
   keywords  = {business data processing;cloud computing;optimisation;capacity planning controller;cloud business service;infrastructure cost reduction;pay-as-you-go concept;production business service;software distribution optimization;Business;Cloud computing;Computational modeling;Forecasting;Predictive models;Time series analysis},
 }
 
-@Article{7030212,
+@Article{Thoenes2015,
   author   = {J. Thönes},
   title    = {Microservices},
   journal  = {IEEE Software},
