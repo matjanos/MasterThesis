@@ -250,8 +250,8 @@ key "Evans2004,Fowler2014"
 \begin_layout Standard
 Według Sama Newmana, rozróżnia się dwie techniki dekompozycji systemu monolitycz
 nego.
- Pierwszym są pakiety udostępniane w postaci bibliotek współdzielonch, a
- drugim moduły, które mogą mieć wydzielony stos technologiczny.
+ Pierwszym są pakiety udostępniane w postaci bibliotek współdzielonych,
+ a drugim moduły, które mogą mieć wydzielony stos technologiczny.
  Każde z tych rozwiązań ma zarówno szereg zalet jak i wad, co sprawia, że
  powinny być zastosowane do różnych celów.
 \end_layout
@@ -269,8 +269,8 @@ Biblioteki współdzielone mogą zostać wykorzystane w znakomitej większości
  Najważniejszą z nich jest oczywiście heterogeniczność - biblioteki zazwyczaj
  mogą być uruchomione tylko przez aplikację skompilowaną dla tej samej platformy
  i w tym samym języku.
- Oprócz tego, aktualizacja takiej biblioteki wymaga rekompilacji i ponownej
- instalacji wszystkich aplikacji z niej korzystających.
+ Oprócz tego, aktualizacja takiej biblioteki wymaga ponownej kompilacji
+ i instalacji wszystkich aplikacji z niej korzystających.
  Skalowanie takich pojedynczych komponentów również nie jest możliwe, bez
  duplikacji całych korzystających z niej aplikacji.
  Najlepszym zastosowaniem dla tego typu komponentów są współdzielone elementy
@@ -310,7 +310,7 @@ key "Evans2004"
  Związany kontekst jest raczej zbiorem modułów, istniejących w tym samym
  celu w sensie domeny.
  Dobrą praktyką jest więc tworzenie kilku warst aplikacji w osobnych modułach
- zawierającech się w tej samej przestrzeni nazw, więc wydzielonym kontekście
+ zawierających się w tej samej przestrzeni nazw, więc wydzielonym kontekście
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Evans2004"
@@ -331,11 +331,226 @@ Projektowanie interfejsów REST
 \end_layout
 
 \begin_layout Standard
+REST (
+\emph on
+ang.
+ Representational State Transfer
+\emph default
+) to styl architektoniczny przeznaczony dla rozproszonych systemów opartych
+ o hipermedia.
+ Ma on na celu ułatwienie dostępu do zasobów (
+\emph on
+ang.
+ resources
+\emph default
+) dla systemów w modelu typu klient-serwer, ze znaczną liczbą aktywnych
+ aplikacji klienckich.
+ W tym celu, autor konceptu REST określił pięć wymagań, które umożliwiają
+ bezpieczny dostęp do zasobów zachowując spójny stan systemu.
+ Dodatkowo opisano dodatkowe wymaganie, które jest opcjonalne.
+ Opcjonalne wymaganie wydaje się być oksymoronem, ale w dalszej części tej
+ sekcji zostanie ono jasno scharakteryzowane.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Fielding:2000:ASD:932295"
+
+\end_inset
+
 
 \end_layout
 
-\begin_layout Subsection
-Wersjonowanie interfejsów
+\begin_layout Standard
+Niezmienniki wyspecyfikowane w opisie REST to:
+\end_layout
+
+\begin_layout Enumerate
+Architektura klient-serwer - zastosowanie tej zasady pozwala rozróżnić pojęcia
+ interfejsu użytkownika oraz źródła danych, a także umożliwia skalowanie
+ i przenośność poszczególnych komponentów niezależnie, w zależności od potrzeb.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Fielding:2000:ASD:932295"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Bezstanowość - niniejsza zasada wprowadza wymóg przekazywania wszystkich
+ informacji potrzebnych do realizacji zadania przez serwer w ramach jednego
+ żądania; nie jest możliwe przechowywanie stanu po stronie serwera.
+ Zasada ta znacząco poprawia niezawodność systemu, gdyż w razie jakichkolwiek
+ awarii, nie ma potrzeby odtwarzania stanu przetwarzania aby zrealizować
+ poprawnie żądanie.
+ Oprócz tego realizacja żądania jest przejrzysta, gdyż nie ma potrzeby analizowa
+nia jego zawartości, aby określić naturę wywołania.
+ Poprawiona jest w końcu możliwość skalownia systemu, gdyż nie trzeba skalować
+ magazynu przechowującego stany aplikacji wszystkich klientów.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Fielding:2000:ASD:932295"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Możliwość przechowywanie w pamięci o krótkim czasie dostępu (
+\emph on
+ang.
+ cachability
+\emph default
+) - jest to zasada wykorzystująca idempotentność operacji, aby zaoszczędzić
+ zasoby obliczeniowe serwera, a tym zwiększyć wydajność współpracy aplikacji
+ klienckiej i serwerowej.
+ Pamiętać należy jednak, że wprowadza to do systemu ewentualną zgodność
+ danych odczytanych przez użytkownika i rzeczywistych danych na serwerze.
+ Projektując więc interfejsy REST, należy poświęcić dużo uwagi na określenie
+ polityki częstotliwości wymuszania odświeżania danych, aby dostosować czas
+ uzyskania pełnej zgodności danych do wymagań biznesowych.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Fielding:2000:ASD:932295"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Ukrycie warstwowej architektury serwera - jest to zasada polegająca na ukrywaniu
+ przed aplikacją kliencką faktu, że aplikacja kliencka jest w rzeczywistości
+ zagregowaniem wielu mniejszych aplikacji serwerowych.
+ Daje to wiele korzyści, takich jak chociażby umożliwienie skalowania systemów,
+ poprzez dodanie komponentu równoważącego obciążenie (
+\emph on
+ang.
+ load balancer
+\emph default
+ ).
+ Jest on wtedy równocześnie serwerem proxy, który w kolejnych warstwach
+ może odwoływać się do różnych instancji tej samej aplikacji.
+ Możliwe jest również mapowanie zasobów na różne aplikacje serwerowe, bez
+ informowania o tym użytkownika lub dokonywanie zmian w aplikacji serwerowej
+ bez zmiany implementacji aplikacji klienckich.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Fielding:2000:ASD:932295"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Ujednolicony interfejs - ta zasada umożliwia podążanie za konwencją korzystając
+ z usług aplikacji serwerowej
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Costa2016"
+
+\end_inset
+
+.
+ W tej zasadzie ujawnia się największa zaleta systemów opartych o REST,
+ gdyż zapewnia uniwersalność aplikacji serwerowej i proste zasady, które
+ spełniać powinna aplikacja kliencka, aby komunikować się z serwerem.
+ Według najlepszej wiedzy autora, właśnie to zadecydowało o tak dużej popularnoś
+ci interfejsów typu REST.
+ Wadą jednolitego interfejsu jest to, że każda aplikacja uzyskuje pełną
+ informację o zasobie, bez względu na to jaki ich podzbiór jest przez nią
+ wymagany.
+ W ramach tego niezmiennika wyróżnia się cztery punkty, opisujące dokładniej
+ zasadę ujednoliconego interfejsu
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Athanasopoulos2015,Fielding:2000:ASD:932295"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Identyfikacja zasobów - używanie stałych identyfikatorów zasobu (np.
+ URI w interfejsach REST opartych o sieć WWW).
+\end_layout
+
+\begin_layout Enumerate
+Manipulacja zasobami przez ich reprezentację - zasada mówiąca o tym, że
+ aplikacja kliencka może manipulować zasobami tylko w zakresie informacji
+ uzyskanych przez odczyt.
+\end_layout
+
+\begin_layout Enumerate
+Samoopisujące się wiadomości - każda wiadomość powinna zawierać wystarczjącą
+ informację opisującą jak przetworzyć żądanie.
+ Przykładem może być identyfikator MIME w nagłówku `Content-type` w przypadku
+ protokołu HTTP
+\end_layout
+
+\begin_layout Enumerate
+Hipermedium jako silnik stanu aplikacji (
+\emph on
+ang.
+ Hypermedia as the engine of application state
+\emph default
+) (HATEOAS) - zasada umożliwiająca zrozumienie zasobu i ich zależności dzięki
+ rozróżnianiu ich przez stałe identyfikatory oraz reprezentowanie zależności
+ przez przekazywanie tych identyfikatorów
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Costa2016"
+
+\end_inset
+
+.
+ Niezaprzeczalną wadą tego rozwiązania, jest potrzeba wykonania większej
+ ilości zapytań, aby uzyskać pełen obraz bardziej złożonego zasobu.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Udostępnianie kodu na żądanie* - jest to zasada opcjonalna, która polega
+ na umożliwieniu aplikacji klienckiej uzyskiwanie kodu, który można wykonać
+ po stronie klienta.
+ Przykładem przychodzącym na myśl w pierwszej kolejności jest pobieranie
+ kodu JavaScript przez przeglądarki internetowe
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Fielding:2000:ASD:932295"
+
+\end_inset
+
+.
+ Pozorna sprzeczność pojęcia opcjonalnego wymagania, może zostać wyjaśniona
+ przez podkreślenie, że system implementujący REST powinien dać sposobność
+ wykonania kodu do wykonania, ale wykorzystywanie też możliwości należy
+ ograniczyć to szczególnych przypadków przy sprawdzonych warunkach
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Fielding:2000:ASD:932295"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Specyfika interfejsu typu REST uwydatnia, kwestie które powinny zostać rozważone
+ podczas weryfikacji oprogramowania opartego o ten styl architektoniczny.
+ Przetestować można wówczas nie tylko funkcjonalne właściwości serwisu,
+ ale również zgodność z założeniami stylu w którym jest on realizowany
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Costa2016"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -356,7 +571,7 @@ ang.
 \emph default
 ), które zawierają skomplikowane funkcje trasowania wiadomości, kapsułkowania
  lub transformacji danych.
- Kompnenty takie, jako że są wspólne dla całego systemu, są trudnos skalowalne,
+ Komponenty takie, jako że są wspólne dla całego systemu, są trudnos skalowalne,
  więc generują duże ryzyko wystąpienia wąskiego gardła.
  Mechanizm komunikacji powinien być prostą częścią systemu spełniając zasadę
  
@@ -441,7 +656,7 @@ key "Newman2015"
  użytkownicy końcowi dysponują limitowaną ilością przesyłanych danych w
  ramach ich pakietu internetowego.
  Ta koncepcja może być zastosowana w dwóch wariantach.
- Pierwszym jest jedma, monolityczna brama interfejsów, która używana jest
+ Pierwszym jest jedna, monolityczna brama interfejsów, która używana jest
  kiedy mamy niewiele (najczęściej jedną) aplikację z niej korzystającą.
  Wariant drugi to odseparowane bramy dla wielu aplikacji końcowych (
 \emph on

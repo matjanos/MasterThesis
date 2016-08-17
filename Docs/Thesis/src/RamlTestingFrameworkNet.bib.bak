@@ -369,4 +369,13 @@ year = {2009}
   url          = {http://martinfowler.com/articles/microservices.html},
 }
 
+@PhdThesis{Fielding:2000:ASD:932295,
+  author    = {Fielding, Roy Thomas},
+  title     = {Architectural Styles and the Design of Network-based Software Architectures},
+  year      = {2000},
+  note      = {AAI9980887},
+  isbn      = {0-599-87118-0},
+  publisher = {University of California, Irvine},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
