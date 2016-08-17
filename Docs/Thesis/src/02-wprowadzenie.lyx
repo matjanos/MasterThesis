@@ -231,7 +231,7 @@ Podział monolitu
 
 \begin_layout Standard
 Krytyczną decyzją podczas projektowania architektury opartej o mikrousługi
- jest wybór punktów podziału systemu na wydzielone konteksty (
+ jest wybór punktów podziału systemu na związane konteksty (
 \emph on
 ang.
  bounded context
@@ -299,7 +299,7 @@ key "Newman2015"
 \end_inset
 
 .
- Ważne jest, aby nie unifikować pojęcia wydzielonego kontekstu z modułem
+ Ważne jest, aby nie unifikować pojęcia związanego kontekstu z modułem
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Evans2004"
@@ -307,7 +307,7 @@ key "Evans2004"
 \end_inset
 
 .
- Wydzielony kontekst jest raczej zbiorem modułów, istniejących w tym samym
+ Związany kontekst jest raczej zbiorem modułów, istniejących w tym samym
  celu w sensie domeny.
  Dobrą praktyką jest więc tworzenie kilku warst aplikacji w osobnych modułach
  zawierającech się w tej samej przestrzeni nazw, więc wydzielonym kontekście
@@ -328,6 +328,10 @@ ch mapowanych na oprogramowanie, więc to taki podział tworzy podwaliny pod
 
 \begin_layout Subsection
 Projektowanie interfejsów REST
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Subsection
