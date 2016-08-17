@@ -344,4 +344,29 @@ year = {2009}
   keywords = {Interviews;Service oriented architecture;Software architecture;Software engineering;SE Radio;architecture;enterprise service bus;http;microservice;service-oriented architecture;software engineering},
 }
 
+@Article{DBLP:journals/fgcs/ZounmevoA14,
+  author    = {Judicael A. Zounmevo and Ahmad Afsahi},
+  title     = {A fast and resource-conscious {MPI} message queue mechanism for large-scale jobs},
+  journal   = {Future Generation Comp. Syst.},
+  year      = {2014},
+  volume    = {30},
+  pages     = {265--290},
+  bibsource = {dblp computer science bibliography, http://dblp.org},
+  biburl    = {http://dblp.uni-trier.de/rec/bib/journals/fgcs/ZounmevoA14},
+  doi       = {10.1016/j.future.2013.07.003},
+  timestamp = {Fri, 11 Jul 2014 15:30:49 +0200},
+  url       = {http://dx.doi.org/10.1016/j.future.2013.07.003},
+}
+
+@Misc{Fow2014,
+  author       = {M. Fowler},
+  title        = {Bounded Context},
+  howpublished = {http://martinfowler.com/bliki/BoundedContext.html},
+  month        = {jan},
+  year         = {2014},
+  note         = {Accessed: 2016-04-26},
+  abstract     = {The term "Microservice Architecture" has sprung up over the last few years to describe a particular way of designing software applications as suites of independently deployable services. While there is no precise definition of this architectural style, there are certain common characteristics around organization around business capability, automated deployment, intelligence in the endpoints, and decentralized control of languages and data.},
+  url          = {http://martinfowler.com/articles/microservices.html},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}

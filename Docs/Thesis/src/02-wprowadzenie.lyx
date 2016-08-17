@@ -231,8 +231,99 @@ Podział monolitu
 
 \begin_layout Standard
 Krytyczną decyzją podczas projektowania architektury opartej o mikrousługi
- jest wybór punktów podziału systemu.
+ jest wybór punktów podziału systemu na wydzielone konteksty (
+\emph on
+ang.
+ bounded context
+\emph default
+)
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Evans2004,Fowler2014"
+
+\end_inset
+
+ oraz sposobu współdzielenia tych jednostek.
  
+\end_layout
+
+\begin_layout Standard
+Według Sama Newmana, rozróżnia się dwie techniki dekompozycji systemu monolitycz
+nego.
+ Pierwszym są pakiety udostępniane w postaci bibliotek współdzielonch, a
+ drugim moduły, które mogą mieć wydzielony stos technologiczny.
+ Każde z tych rozwiązań ma zarówno szereg zalet jak i wad, co sprawia, że
+ powinny być zastosowane do różnych celów.
+\end_layout
+
+\begin_layout Standard
+Biblioteki współdzielone mogą zostać wykorzystane w znakomitej większości
+ języków i technologii, np.
+ C#, Java, lub PHP.
+ Dzielą one kod w logiczne jednostki, które mogą być importowane do wielu
+ projektów.
+ Takie biblioteki mogą być dostarczane zarówno przez zewnętrzne instytucje
+ jak i udostępniane wewnątrz firmy.
+ Mimo łatwości w używaniu takich bibliotek, należy wziąć pod uwagę zalety
+ z których rezygnujemy.
+ Najważniejszą z nich jest oczywiście heterogeniczność - biblioteki zazwyczaj
+ mogą być uruchomione tylko przez aplikację skompilowaną dla tej samej platformy
+ i w tym samym języku.
+ Oprócz tego, aktualizacja takiej biblioteki wymaga rekompilacji i ponownej
+ instalacji wszystkich aplikacji z niej korzystających.
+ Skalowanie takich pojedynczych komponentów również nie jest możliwe, bez
+ duplikacji całych korzystających z niej aplikacji.
+ Najlepszym zastosowaniem dla tego typu komponentów są współdzielone elementy
+ systemu, które nie są kluczowe z punktu widzenia domeny, np.
+ zbiory funkcji matematycznych lub klasy pomocnicze dla refleksji.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Newman2015"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Drugim wariantem jest wyekstrahowanie modułów.
+ Moduł jest fragmentem kodu, który realizować powininen proces określony
+ w wymaganiach biznesowych systemu.
+ Jest to wydzielona część domeny, która realizuje określone przez nią zadania.
+ W szczególnym przypadku powinny posiadać własną warstwę dostępu do danych
+ lub warstwę prezentacji
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Newman2015"
+
+\end_inset
+
+.
+ Ważne jest, aby nie unifikować pojęcia wydzielonego kontekstu z modułem
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Evans2004"
+
+\end_inset
+
+.
+ Wydzielony kontekst jest raczej zbiorem modułów, istniejących w tym samym
+ celu w sensie domeny.
+ Dobrą praktyką jest więc tworzenie kilku warst aplikacji w osobnych modułach
+ zawierającech się w tej samej przestrzeni nazw, więc wydzielonym kontekście
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Evans2004"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Drugie z tych podejść jest bardziej uwarunkowane różnicami w procesach biznesowy
+ch mapowanych na oprogramowanie, więc to taki podział tworzy podwaliny pod
+ wydzielenie pełnoprawnych mikrousług.
 \end_layout
 
 \begin_layout Subsection
@@ -317,7 +408,7 @@ Proste protokoły sieciowe, mimo niezaprzeczalnych zalet w sensie wydajnościowy
  kosztem wydajności
 \begin_inset CommandInset citation
 LatexCommand cite
-key "S0167739X1300148920140101"
+key "DBLP:journals/fgcs/ZounmevoA14"
 
 \end_inset
 
