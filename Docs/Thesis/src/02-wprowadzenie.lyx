@@ -82,6 +82,13 @@ Architektura oparta o mikrousługi
 
 \begin_layout Subsection
 Architektura zorientowana na usługi
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Architektura-zorientowana-na"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -328,6 +335,13 @@ ch mapowanych na oprogramowanie, więc to taki podział tworzy podwaliny pod
 
 \begin_layout Subsection
 Projektowanie interfejsów REST
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Projektowanie-interfejsów-REST"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -345,8 +359,25 @@ ang.
 \emph default
 ) dla systemów w modelu typu klient-serwer, ze znaczną liczbą aktywnych
  aplikacji klienckich.
- W tym celu, autor konceptu REST określił pięć wymagań, które umożliwiają
- bezpieczny dostęp do zasobów zachowując spójny stan systemu.
+ Jak wspomniano w rozdziale
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Architektura-zorientowana-na"
+
+\end_inset
+
+, do komunikacji między mikrousługami powinno stosować się lekkich i szybkich
+ rozwiązań, więc podejście REST, które jest sześciokrotnie szybsze niż starsze
+ protokoły SOAP
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Trachtenberg2003"
+
+\end_inset
+
+, nadają się idealnie do tego celu.
+ Autor konceptu REST określił pięć wymagań, które umożliwiają bezpieczny
+ dostęp do zasobów zachowując spójny stan systemu.
  Dodatkowo opisano dodatkowe wymaganie, które jest opcjonalne.
  Opcjonalne wymaganie wydaje się być oksymoronem, ale w dalszej części tej
  sekcji zostanie ono jasno scharakteryzowane.
@@ -457,8 +488,14 @@ key "Costa2016"
  W tej zasadzie ujawnia się największa zaleta systemów opartych o REST,
  gdyż zapewnia uniwersalność aplikacji serwerowej i proste zasady, które
  spełniać powinna aplikacja kliencka, aby komunikować się z serwerem.
- Według najlepszej wiedzy autora, właśnie to zadecydowało o tak dużej popularnoś
-ci interfejsów typu REST.
+ Właśnie to zadecydowało o tak dużej popularności interfejsów typu REST
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DBLP:conf/icws/FokaefsS15"
+
+\end_inset
+
+.
  Wadą jednolitego interfejsu jest to, że każda aplikacja uzyskuje pełną
  informację o zasobie, bez względu na to jaki ich podzbiór jest przez nią
  wymagany.
@@ -486,7 +523,7 @@ Manipulacja zasobami przez ich reprezentację - zasada mówiąca o tym, że
 \end_layout
 
 \begin_layout Enumerate
-Samoopisujące się wiadomości - każda wiadomość powinna zawierać wystarczjącą
+Samoopisujące się wiadomości - każda wiadomość powinna zawierać wystarczającą
  informację opisującą jak przetworzyć żądanie.
  Przykładem może być identyfikator MIME w nagłówku `Content-type` w przypadku
  protokołu HTTP
@@ -704,15 +741,14 @@ name "Ryc21"
 
 \end_inset
 
- Monolityczna brama interfejsów.
- Źródło: 
+ Monolityczna brama interfejsów
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Newman2015"
 
 \end_inset
 
-
+.
 \end_layout
 
 \end_inset
@@ -748,15 +784,14 @@ name "Ryc22"
 
 \end_inset
 
- Wiele bram dla aplikacji końcowych.
- Źródło: 
+ Wiele bram dla aplikacji końcowych
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Newman2015"
 
 \end_inset
 
-
+.
 \end_layout
 
 \end_inset
@@ -770,7 +805,373 @@ key "Newman2015"
 \end_layout
 
 \begin_layout Section
-Język RAML
+Dokumentacja oprogramowania
+\end_layout
+
+\begin_layout Standard
+Dokumentacja jest nieodłączną częścią procesu wytwarzania oprogramowania
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DBLP:conf/acm/ViscontiC93,DBLP:conf/ecbs/BayerM06"
+
+\end_inset
+
+.
+ Prowadzenie dokumentacji ma oczywiście wiele zalet, jednak jest również
+ źródłem dyskusji na temat opłacalności pod względem biznesowym
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DBLP:journals/jss/ZhiGSGSR15"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+Definicja terminu oraz rola dokumentacji
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Definicja-terminu-oraz"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dokumentacja to artefakt, którego celem jest komunikowanie innym informacji
+ o systemie, którego dotyczy
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Forward2002"
+
+\end_inset
+
+.
+ Dokumentacja może również odnosić się do dokumentów stworzonych przez programis
+tów dla użytkowników nietechnicznych, znanego wtedy instrukcją
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DBLP:journals/jss/ZhiGSGSR15"
+
+\end_inset
+
+.
+ Wyróżnić można też specyfikację, która jest technicznym opisem oprogramowania,
+ przeznaczonym dla użytkowników, którymi są inni programiści.
+ Korzystają oni więc tylko z interfejsów udostępnionych przez usługi, ale
+ rzadko uczestniczą w ich rozwoju
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Newman2015"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+W przypadku zbioru usług, często wykorzystywane są centralne dynamiczne
+ rejesty usług, które udostępniają informację o tym jakie, usługi są dostępne
+ i w jaki sposób nawiązać z nimi łączność.
+ Zazwyczaj nie udostępniają jednak informacji o tym jakie funkcje są przez
+ te usługi oferowane.
+ Funkcję tę może pełnić techniczna dokumentacja, którą można pobrać wykonując
+ ustalone żądanie
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Newman2015"
+
+\end_inset
+
+.
+ Taki typ żądania jest oferowany przez protokół 
+\emph on
+HTTP
+\emph default
+ - chodzi o metodą 
+\emph on
+OPTIONS
+\emph default
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "http-rfc"
+
+\end_inset
+
+.
+ Po wywołaniu takiej metody serwer może zwrócić plik dokumentacji.
+\end_layout
+
+\begin_layout Subsection
+Formalna specyfikacja usług sieciowych
+\end_layout
+
+\begin_layout Standard
+Zauważyć należy, że dokumentacja techniczna nie musi być dokumentem pisanym
+ w języku naturalnym, a jedynie precyzyjną informacją dla inżynierów pracujących
+ nad systemem lub chcących uzyskać do niego dostęp
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DBLP:journals/jss/ZhiGSGSR15"
+
+\end_inset
+
+.
+ W sekcji 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Definicja-terminu-oraz"
+
+\end_inset
+
+ opisano możliwość udostępniania dokumentacji technicznej poprzez wywołanie
+ odpowiedniego żądania.
+ Pobrna dokumentacja może potem zostać wczytana automatycznie przez parser,
+ który jest w stanie zinterpretować jej treść.
+ Trudno byloby analizować dokumentację pisaną w języku naturalnym, więc
+ powstało kilka technologii, które opisują interfersy w zrozumiały dla maszyny
+ sposób i pozwalają na wykorzystanie tej wiedzy przez program komputerowy.
+ Przykładadami takich rozwiązań są 
+\emph on
+Swagger
+\emph default
+, 
+\emph on
+HAL
+\emph default
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Newman2015"
+
+\end_inset
+
+ lub 
+\emph on
+RAML
+\emph default
+.
+\end_layout
+
+\begin_layout Subsection
+Koszty rozwoju i utrzymania
+\end_layout
+
+\begin_layout Standard
+Koszty wytworzenia dokumentacji szacunkowo wynoszą 11%
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DBLP:conf/iwsm/Sanchez-RosadoRMCMG09"
+
+\end_inset
+
+.
+ Jest to oczywiście znaczący koszt, który z biznesowego punktu widzenia
+ powinien być minimalizowany, zachowując jakość, a ściśle mówiąc wartość
+ informacji, która zawarta jest w dokumentacji.
+ Wraz z wzrostem popularności zwinnych metodologii 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "PMI2012"
+
+\end_inset
+
+ zespoły deweloperskie coraz częściej stawiają działające oprogramowanie
+ i samoopisujący się kod ponad dokumentają
+\begin_inset CommandInset citation
+LatexCommand cite
+key "beck2001agile"
+
+\end_inset
+
+.
+ Siłą rzeczy, pisanie dokumentacji jest pomijane lub zaniedbywane, a często
+ istniejąca dokumentacja nie jest uaktualniana, więc staje się coraz bardziej
+ rozbieżna z oprogramowaniem.
+\end_layout
+
+\begin_layout Subsection
+RAML
+\end_layout
+
+\begin_layout Standard
+RAML (
+\emph on
+RESTful API Modeling Language
+\emph default
+) to język służący do dokumentowania interfejsów usług sieciowych zbudowanych
+ w zgodzie z opisanym w sekcji 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Projektowanie-interfejsów-REST"
+
+\end_inset
+
+, stylem architekonicznym 
+\emph on
+REST
+\emph default
+ w oparciu o protokół 
+\emph on
+HTTP
+\emph default
+.
+ Jest on oparty na składni 
+\emph on
+YAML 
+\emph default
+i pozwala na intuicyjne odwzorowanie hierarchicznego modelu zasobów w 
+\emph on
+REST
+\emph default
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "raml2016"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Specyfikacja 
+\emph on
+RAML 
+\emph default
+podzielona jest na dwie główne części: pierwsza to zbiór metadanych na temat
+ całego serwisu, a drugi to zbiór zasobów oferowanych przez daną usługę
+ wraz z ich szczegółową specyfikacją.
+ Na część pierwszą składają się np.
+ tytuł, wersję, bazowy adres internetowy, schemat struktury danych, informacje
+ na temat uzyskiwania autoryzacji lub typy danych.
+ Szczegółowa specyfikacja zawarta w części drugiej dokumentacji podzielona
+ jest głównie na hierarchicznie uporządkowane segmenty, z których każdy
+ opisuje jakiś zasób.
+ Na opis zasobu może składać się z następujących właściwości:
+\end_layout
+
+\begin_layout Itemize
+displayName - nazwa zasobu,
+\end_layout
+
+\begin_layout Itemize
+description - szczegółowy opis zasobu,
+\end_layout
+
+\begin_layout Itemize
+metoda dostępu do danych (get, patch, put, post, delete, options, head),
+\end_layout
+
+\begin_layout Itemize
+type - typ zasobu; realizuje niejako dziedziczenie kopiując wszystkie własności
+ z wybranego typu,
+\end_layout
+
+\begin_layout Itemize
+is - cecha zasobu; realizuje dziedziczenie w węższym zakresie niż typ, a
+ mianowicie odnosi się do specyfikacji metod,
+\end_layout
+
+\begin_layout Itemize
+securedBy - definiuje schemat autoryzacji dostępu do zasobu,
+\end_layout
+
+\begin_layout Itemize
+uriParameters - lista możliwych parametrów przekazywanych w adresie URI,
+\end_layout
+
+\begin_layout Itemize
+/<relativeUri> - podrzędny zasób, który opisany może zostać w ten sam sposób,
+\end_layout
+
+\begin_layout Itemize
+<annotationName> - dodatkowe adnotacje, pozwalające na zawarcie dodatkowych
+ informacji na temat zasobu.
+\end_layout
+
+\begin_layout Standard
+Każda metoda na liście, również opisana jest wieloma własnościami:
+\end_layout
+
+\begin_layout Itemize
+displayName - alternatywna nazwa metody, odnosząca się do rzeczywistej operacji
+ przez nią dokonywanej w kontekście wiedzy domenowej,
+\end_layout
+
+\begin_layout Itemize
+description - dłuższy opis metody,
+\end_layout
+
+\begin_layout Itemize
+(<annotationName>) -dodatkowe adnotacje, pozwalające na zawarcie dodatkowych
+ informacji na temat zasobu,
+\end_layout
+
+\begin_layout Itemize
+queryParameters - szczegółowe informacje o parametrach zapytania używanych
+ w ramach metody; wzajemnie wykluczające się z własnością 
+\emph on
+queryString,
+\end_layout
+
+\begin_layout Itemize
+headers - szczegółowe informacje na temat nagłówków zapytania 
+\emph on
+HTTP
+\emph default
+,
+\end_layout
+
+\begin_layout Itemize
+queryString - zagregowany ciąg znaków zawierający parametry; wzajemnie wykluczaj
+ące się z własnością queryParameters,
+\end_layout
+
+\begin_layout Itemize
+responses - informacja o możliwych odpowiedziach z serwera identyfikowane
+ kodem odpowiedzi,
+\end_layout
+
+\begin_layout Itemize
+body - informacja o strukturze, zawartości, możliwych wartościach oraz formacie
+ zawartości sekcji 
+\emph on
+body 
+\emph default
+zapytania,
+\end_layout
+
+\begin_layout Itemize
+protocols - lista protokołów używanych do wywałania metody; ta własność
+ nadpisuje jakiekolwiek wartości protokołów definiowane wyżej w hierarchi,
+\end_layout
+
+\begin_layout Itemize
+is - lista cech, które opisują szczegóły metody,
+\end_layout
+
+\begin_layout Itemize
+securedBy - definiuje schemat autoryzacji dostępu do zasobu.
+\end_layout
+
+\begin_layout Standard
+Składnia RAML jest oczywiście dużo szersza i umożliwia jeszcze bardziej
+ dokładne i szczegółowe definiowanie interfejsów REST.
+ Z punktu widzenia tej pracy, są one jednak nieistotne a opisane wyżej elementy
+ szczegółowo omówione będą w rozdziale 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Proponowane-rozwiązanie"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -793,6 +1194,14 @@ Testowanie jednostkowe
  163–172.
  [Online].
  Available: http://ieeexplore.ieee.org/articleDetails.jsp?arnumber=6975357]
+\end_layout
+
+\begin_layout Subsection
+Ciągła integracja
+\end_layout
+
+\begin_layout Standard
+Zapewnia aktualność dokumentacji
 \end_layout
 
 \end_body

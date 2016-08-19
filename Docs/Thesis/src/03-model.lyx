@@ -76,6 +76,16 @@ dcs
 Proponowane rozwiązanie
 \end_layout
 
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Proponowane-rozwiązanie"
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Model rozwiązania
 \end_layout
