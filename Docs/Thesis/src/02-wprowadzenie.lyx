@@ -1175,25 +1175,235 @@ reference "chap:Proponowane-rozwiązanie"
 \end_layout
 
 \begin_layout Section
-Testowanie jednostkowe
+Testowanie
 \end_layout
 
 \begin_layout Standard
-[Samo przepisywanie kodu na mikrousługi jest wystarczająco trudny więc warto
- zaoszczędzić czas na testeowaniu] [S.
- G.
- Saez, V.
- Andrikopoulos, F.
- Wessling, and C.
- C.
- Marquezan, “Cloud Adaptation and Application (Re-)Distribution: Bridging
- the Two Perspectives,” in 2014 IEEE 18th International Enterprise Distributed
- Object Computing Conference Workshops and Demonstrations.
- IEEE, Sep.
- 2014, pp.
- 163–172.
- [Online].
- Available: http://ieeexplore.ieee.org/articleDetails.jsp?arnumber=6975357]
+Implementacja mikrousług a tym bardziej przepisywanie istniejącego monolityczneg
+o systemu na architekturę mikroserwisową jest bardzo trudne i czasochłonne
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DBLP:conf/edoc/SaezAWM14"
+
+\end_inset
+
+, więc aby zredukować koszty zespołu deweloperskiego należy oszczędzać czas
+ programistów, między innymi rezygnując z pisania części testów.
+ Oczywiście, nie można pozwolić sobie na obniżenie jakości oprogramowania,
+ więc testy pominięte przez programistów można generować automatycznie.
+ Idealnym źródłem danych wydaje się być dokumentacja techniczna interfejsów
+ usług.
+\end_layout
+
+\begin_layout Standard
+W ostatnich latach odchodzi się od testowania ręcznego na rzecz pełnej automatyz
+acji testów
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Newman2015"
+
+\end_inset
+
+.
+ Kolejnym krokiem może być również automatyzacja generowania takich testów,
+ a następnie automatyczne ich uruchomienie i weryfikacja.
+\end_layout
+
+\begin_layout Subsection
+Testowanie funkcjonalne
+\end_layout
+
+\begin_layout Standard
+Wśród wielu rodzajów i technik testowania oprogramowania, na uwagę w kontekście
+ tej pracy zasługuje testowanie funkcjonalne.
+ Polega ono na takim wyborze przypadków testowych, aby pokryć wymagania
+ funkcjonalne, które ma spełniać oprogramowanie
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Arsie2014222"
+
+\end_inset
+
+.
+ Testowanie funkcjonalne znane jest również jako stesowanie czarnoskrzynkowe
+ lub testowanie oparte o specyfikację
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DBLP:books/daglib/0017273"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Wyodrębnić można wiele różnych podziałów technik testowania, takich jak
+ podział ze względu na zakres, ze względu na przedmiot testów albo ze względu
+ na sposób ich wykonywania
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DBLP:books/daglib/0017273"
+
+\end_inset
+
+.
+ Testy można również podzielić na systematyczne lub losowe
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DBLP:books/daglib/0017273"
+
+\end_inset
+
+.
+ Przypadki testowe w kontekście testownia funkcjonalnego powinny być testami
+ systematycznymi, czyli wartości argumentów oraz spodziewany wynik powinien
+ zostać jasno określony podczas definiowania testu
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DBLP:books/daglib/0017273"
+
+\end_inset
+
+.
+ Źródłem takich informacji są 
+\emph on
+wyrocznie 
+\emph default
+czyli byty (dokumenty, artefakty, wiedza ekspercka)
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DBLP:journals/tse/StocksC96"
+
+\end_inset
+
+, więc skoro testy te są oparte na specyfikacji, ona powinna służyć jako
+ wyrocznia.
+ Powinna ona w takim razie definiować nie tylko sposób operowania na danych,
+ ale również przykładowe dane wejściowe oraz oczekiwane wyniki.
+\end_layout
+
+\begin_layout Standard
+Rysunek 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Proces-tworzenia-testów"
+
+\end_inset
+
+ pokazuje proces powstawania przypadku testowego zaproponnowanego przez
+ Prezze i Younga.
+ Pierwszym krokiem jest zidentyfikowanie niezależnej funkcjonalności lub
+ cechy systemu informatycznego.
+ Będzie ona przedmiotem testu.
+ Następnie należy wybrać wartości wejściowe oraz przeanalizować zasady zachowani
+a funkcjonalności, w celu określenia oczekiwanego wyniku.
+ Analiza w celu określenia rezultatu jest opcjonalna.
+ Wynik można określi również przy pomocy wyroczni, więc zgodnie z zasadami
+ testowania czarnoskrzynkowego, można stworzyć specyfikację przypadku testowego
+ bez wiedzy eksperckiej.
+ Ostatnim krokiem jest wygenerownie przypadku testowego na podstawie jego
+ specyfikacji.
+ Wynikiem, może być na przykład dokument definiujący testy lub kod źródłowy
+ tesów.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/Systematic-functional-testing.PNG
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Proces-tworzenia-testów"
+
+\end_inset
+
+Proces tworzenia testów funkcjonalnych
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Przedmiot testowania w przypadku interfejsów REST
+\end_layout
+
+\begin_layout Standard
+Rozwijanie aplikacji z interfejsami programistycznmi polega tak naprawdę
+ na dodaniu dodatkowej warstwy oprogramowania.
+ Jest to więc dodatkowa warstwa, którą należy objąć testami
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DBLP:conf/erlang/SeijasLT13"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Testy interfejsów REST posiadają specyfikę wymagającą podejścia do testów
+ w taki sposób, aby pokryć przypadki wynikające z założeń stylu architektoniczne
+go REST
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DBLP:conf/erlang/SeijasLT13"
+
+\end_inset
+
+.
+ Takimi aspektami są:
+\end_layout
+
+\begin_layout Itemize
+Zgodność interfejsu z zasadami REST,
+\end_layout
+
+\begin_layout Itemize
+Zgodność formatu zserializowanych obiektów z zadanym,
+\end_layout
+
+\begin_layout Itemize
+Testy scenariuszy (najpierw dodawanie, potem usuwanie, weryfikacja czy usunięcie
+ się powiodło),
+\end_layout
+
+\begin_layout Itemize
+Testy bezpieczeństwa,
+\end_layout
+
+\begin_layout Itemize
+Testy wydajności komunikacji.
+\end_layout
+
+\begin_layout Standard
+O ile pierwsze trzy punkty realizują założenia testów funkcjonalnych, to
+ kolejnych dwóch nie można za takie uznać.
+ W ramach tej pracy, skupimy się więc na pierwszych trzech aspektach testowania.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -1201,7 +1411,39 @@ Ciągła integracja
 \end_layout
 
 \begin_layout Standard
-Zapewnia aktualność dokumentacji
+W kontekście testowania funkcjonalnego, proces ciągłej integracji jest ważnym
+ elementem weryfikacji oprogramowania poprzez testy regresyjne.
+ Każda zmiana w kodzie źródłowym programu, skutkuje rozpoczęciem iteracji
+ procesu budowania oprogramowania, a następnie wykonania testów zdefiniowanych
+ wcześniej
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DBLP:conf/ro-man/AblettSMDS07"
+
+\end_inset
+
+.
+ Jest to niejako mechanizm samoobrony procesu rozwoju oprogramownia
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DBLP:conf/icsea/DownsHP10"
+
+\end_inset
+
+.
+ Skoro oprogramowanie jest cały czas testowane możemy być pewni, że kod
+ jest spójny ze specyfikacją.
+ Częstym bowiem problemem jest fakt, że kod ewoluuje, a jego specyfikacja
+ zostaje zaniedbana.
+ Powoduje to powstawanie rozbieżności i niespójności pomiędzy dokumentacją,
+ specyfikacją, a rzeczywiście używanym oprogramowaniem
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DBLP:books/daglib/0028697"
+
+\end_inset
+
+.
 \end_layout
 
 \end_body
