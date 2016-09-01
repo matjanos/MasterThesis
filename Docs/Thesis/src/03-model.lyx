@@ -86,16 +86,775 @@ name "chap:Proponowane-rozwiązanie"
 
 \end_layout
 
+\begin_layout Standard
+Rozdział drugi powinien uswiadomic czytelnika, ze obecny kierunek rozwoju
+ inzynierii oprogramowania wymaga nowych narzedzi, które odciaza zespoły
+ programistyczne od powtarzalnych czynnosci, które mimo, ze przynosza korzysci,
+ sa czesto zaniedbywane, wprowadzajac dodatkowy koszt, nie przekładajacy
+ sie na wymierny zysk.
+ 
+\end_layout
+
+\begin_layout Standard
+Rozwiazaniem jest narzedzie automatyzujące proces analizy dokumentacji w
+ celu generowania testów.
+ W opini autora, przyniesie ono zysk w postaci weryfikacji dwóch artefaktów
+ naraz: kodu zródłowego interfejsów oraz dokumentacji technicznej tych interfejs
+ów.
+\end_layout
+
 \begin_layout Section
 Model rozwiązania
 \end_layout
 
+\begin_layout Standard
+Rozwiazanie nalezało zaprojektowac na tyle uniwersalnie aby spełnic dwa
+ załozenia.
+\end_layout
+
+\begin_layout Enumerate
+Skoro jednym z podstawowych filarów architektury miroserwisowej jest niezaleznos
+c od technologii, rozwiazanie musi wspierac renerowanie kodu testów niezaleznie
+ od jezyka.
+\end_layout
+
+\begin_layout Enumerate
+Specyfikacja RAML jest tylko jednym z kilku jezyków technicznego dokumentowania
+ interfejsów, wiec rozwiazanie powinno byc na tyle elastyczne, aby wpierac
+ alternatywy.
+\end_layout
+
+\begin_layout Standard
+Wychodzac z tych dwóch zasad, zaprojektowano rozwiazanie, które bazujac
+ na zasadzie abstrakcji programowania obiektowego.
+ W prosty sposób mozna zatem wymienic fragmenty kodu, aby umozliwic generowanie
+ kodu testów w róznych technologiach i dla wielu róznych jezyków specyfikacji
+ technicznej.
+\end_layout
+
+\begin_layout Standard
+Program opierajac sie na dokumentacji interfejsów programistycznych generuje
+ kod testów, które pokrywaja odwołania do zasobów zgodne z zaimportowanym
+ plikiem.
+ Aby jednak rozwiazanie było elastyczne i otwarte na zmiany, generacja nie
+ moze byc bezposrednia.
+ Na podstawie dokumentacji generowany jest zestaw przypadków testowych,
+ który w sposób zserializowany zostaje zapisany do pliku w formacie XML.
+ Ten plik jest w dalszej czesci wczytywany przez kolejna jednostke przetwarzajac
+a, która generuje kod testów, specyficzny dla wybranej technologii.
+ Narzedzie wykonuje zatem swoje zadanie w nastepujacych krokach:
+\end_layout
+
+\begin_layout Enumerate
+Wczytanie pliku specyfikacji i parsowanie go.
+\end_layout
+
+\begin_layout Enumerate
+Analiza zawartosci i generacja uniwersalnego opisu przypadków testowych.
+\end_layout
+
+\begin_layout Enumerate
+Zapis przypadków testowych do tymczasowego pliku XML.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Odczyt i analiza przypadków testowych.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Generacja specyficznego dla technologii kodu testów.
+\end_layout
+
 \begin_layout Section
-Opis architektury
+Opis działania aplikacji
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/data_flow.PNG
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Przepływ-danych"
+
+\end_inset
+
+Przepływ danych
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Aplikacja zbudowana jest z dwóch głównych komponenetów: generatora przypadków
+ testowych i translatora przypadków testowych z XML do testów w wybranym
+ jezyku.
+ Przepływ danych przedstawiony jest na rysunku 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Przepływ-danych"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Główne zadanie jest oczywiscie realizowane przez pierwszy komponent, wiec
+ nad nim warto się chwilę pochylić.
+\end_layout
+
+\begin_layout Standard
+Na 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Proces-tworzenia-testów"
+
+\end_inset
+
+ przedstawiono proces generowania przypadku testowego.
+ Na nim oparty jest główny algorytm generowania przypadków testowych, który
+ po sparsowaniu dokumentacji wykonuje nastepujace kroki:
+\end_layout
+
+\begin_layout Enumerate
+Identyfikacja testowanej funkcjonalnosci (ang.
+ identify independently testable feature) - aplikacja implementuje kilka
+ klas budujacych przypadki testowe (IUseCaseBuilder), z których kazda odpowiada
+ innej cesze opisanej w ramach specyfikacji RAML; np.
+ sprawdzanie czy odpowiedz na zapytanie o danej wartosci nagłówka „Content-Type”
+ zwraca odpowiedz o oczekiwanym formacie odpowiedzi.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Identyfikacja reprezentatywnych wartosci wejsciowych i wyjsciowych (ang.
+ identify representative values) - implementacje interfejsu IUseCaseBuilder
+ w swoich ramach rozpoznaja dane wejsciowe dla testowanej funkcjonalnosci.
+ Wartosci wejsciowe w wielu przypadkach moga zostac zidentyfikowane wprost
+ ze specyfikacji (np.
+ nagłówki zapytania), z kolei w innych nalezy podac je jawnie uzywajac opcjonaln
+ych pól „Annotations”.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Analiza w celu okreslenia wyniku operacji* (ang.
+ derive model) - jak napisano w podsekcji 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Testowanie-funkcjonalne"
+
+\end_inset
+
+, ten elemenet procesu jest opcjonalny.
+ Moze byc bowiem zastapiony danymi uzyskanymi przez wyrocznie, a scislej
+ mówiac, zawartych w specyfikacji jako wartosci pola „Annotations” lub wynikajac
+ych wprost ze specyfikacji.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Specyfikacja przypadku testowego (ang.
+ derive test case specifications) - na podstawie powyzszych kroków, mozna
+ wydedukowac specyfikacje przypadku testowego, która aplikacja zapisuje
+ w jednoznacznej formie jako wezeł dokumentu XML.
+\end_layout
+
+\begin_layout Standard
+W ramach drugiego komponentu realizowany jest ostatni krok procesu zaproponowane
+go przez Prezze i Younga
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DBLP:books/daglib/0017273"
+
+\end_inset
+
+: 
+\end_layout
+
+\begin_layout Enumerate
+Generacja implmentacji przypadka testowego (ang.
+ generate test case) - translacja przypadków testowych na kod źródłowy testów.
+ 
+\end_layout
+
+\begin_layout Standard
+Pamietac nalezy, ze testy aplikacji sieciowych takich jak mikrousługi, wymagaja
+ wykonania zawarcia w nich dodatkowego kodu, pozwalajacego na zestawienie
+ połaczenia HTTP, wysłanie zapytania oraz obsługe odpowiedzi.
+ Ten fragment musi byc jednak w pełni realizowany w procesie translacji,
+ gdyz zupełnie inaczej moze wygladac dla róznych technologii.
 \end_layout
 
 \begin_layout Section
 Szczegóły implementacyjne
+\end_layout
+
+\begin_layout Standard
+Proponowane rozwiazanie zostało zaimplementowane w jezyku C# dla platformy
+ .NET, niemniej jednak jak wspomniano juz wczesniej, moze on generowac testy
+ dla wielu innych jezyków i platform.
+ Przykład zaprezentowany w ramach tego rozwiazania generuje testy równiez
+ w jezyku C#, dla biblioteki wspomagajacej testowanie nUnit.net
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://www.nunit.org
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Diagram klas zaimplementowanego roziwązania widoczny jest na rysunku 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Diagram-klas-zaprezentowanego"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide true
+sideways true
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/class_diagram.png
+	lyxscale 50
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Diagram-klas-zaprezentowanego"
+
+\end_inset
+
+Diagram klas zaprezentowanego rozwiązania
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Generacja kodu pośredniego
+\end_layout
+
+\begin_layout Standard
+Do implementacji wykorzystano parser do jezyka RAML
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://github.com/raml-org/raml-dotnet-parser
+\end_layout
+
+\end_inset
+
+ udostepniony na licencji Apache 2.0.
+ Aplikacja wczytuje z dysku twardego specyfikacje RAML, parsuje ja, a nastepnie
+ wygenerowaną strukturę przetwarza klasa 
+\emph on
+XmlIntermediateCodeGenerator
+\emph default
+.
+ Klasa ta operuje w petli, działając dla każdego zasobu pierwszego rzedu
+ zgodnie z kodem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:Przetwarzanie-zasobu-zdefiniowan"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\emph on
+Wejście: 
+\end_layout
+
+\begin_layout Plain Layout
+
+\emph on
+resource- zasoby 
+\end_layout
+
+\begin_layout Plain Layout
+
+\emph on
+useCaseBuilder- kompozyt agregujacy wybranych budowniczych przypadków testowych
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+\emph on
+Wyjscie: 
+\end_layout
+
+\begin_layout Plain Layout
+
+\emph on
+plik XML zawierajacy definicje testów dla danego zasobu
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+public void WriteResourceUseCases(Resource resource, IUseCaseBuilder useCaseBuil
+der)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+	var useCases = useCaseBuilder.GetUseCases(resource);
+\end_layout
+
+\begin_layout Plain Layout
+
+	foreach (var useCase in useCases)
+\end_layout
+
+\begin_layout Plain Layout
+
+	{
+\end_layout
+
+\begin_layout Plain Layout
+
+		PrintUseCase(resourceUri, useCase);
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	foreach (var innerResource in resource.Resources)
+\end_layout
+
+\begin_layout Plain Layout
+
+	{
+\end_layout
+
+\begin_layout Plain Layout
+
+		WriteResourceUseCases(innerResource, schema, resourceUri, useCaseBuilder);
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:Przetwarzanie-zasobu-zdefiniowan"
+
+\end_inset
+
+Przetwarzanie zasobu zdefiniowanego w RAML
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lista przypadków testowych useCases generowana jest na podstawie zdefiniowanych
+ wczesniej klas budowniczych implementujacych wspólny interfejs 
+\emph on
+IUseCaseBuilder
+\emph default
+.
+ W ramach przedstawionych przykładów, dla kazdego zasobu analizowane sa
+ nastepujace testy:
+\end_layout
+
+\begin_layout Enumerate
+Dla kazdej metody zapytania kody odpowiedzi zdefiniowane w sekcji Annotations
+ zgadzaja sie z parami (parametr, kod odpowiedzi)
+\end_layout
+
+\begin_layout Enumerate
+Dla kazdego zapytania zwracana jest odpowiedz o strukturze zgodnej z wartoscia
+ w sekcji Example: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Wszystkie wymagane pola istnieja
+\end_layout
+
+\begin_layout Enumerate
+Wszystkie istniejace w odpowiedzi pola sa zadeklarowane w schemacie 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Dla kazdego ze zdefiniowanych typów odpowiedzi (wartosc nagłówka Content-
+ Type) wynik odpowiada formatowi zdefiniowanemu w zapytaniu.
+\end_layout
+
+\begin_layout Enumerate
+Wszystkie nagłówki HTTP odpowiedzi sa zgodne ze specyfikacja: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+wystepujace nagłówki sa zgodne z wzrorcem
+\end_layout
+
+\begin_layout Enumerate
+nagłówki wymagane istnieja
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Jesli jakakolwiek przypadek testowy (nawet jesli jego asercja nie polega
+ na weryfikacji kodu odpowiedzi) zwróci kod błedu z klasy 500 (bład serwera),
+ rezultatem testu bedzie bład.
+\end_layout
+
+\begin_layout Subsection
+Generacja kodu testów
+\end_layout
+
+\begin_layout Standard
+Kazdy jezyk, technologia i biblioteka przy pomocy których realizowane sa
+ testy, wymaga kompletnie innego kodu zródłowego.
+ Cały czas jednak bazuje on na modelu przypadku testowego, który jest wspólny
+ dla wszystkich technologii.
+ 
+\end_layout
+
+\begin_layout Standard
+Aby efektywnie zrealizowac generacje dokumentów tego typu, uzyto techniki
+ firmy Microsoft znanej jako szablony tekstowe T4 (
+\emph on
+ang.
+ T4 Text Templates
+\emph default
+).
+ Szablon taki wczytac mozna do pamieci podczas działania aplikacji, a nastepnie
+ wygenerowac kod na podstawie przekazanego modelu.
+ Duza zaleta takiego podejscia jest łatwosc wymiany uzywanego szablonu,
+ co pozwala na wygenerowanie kodu w praktycznie kazdym jezyku.
+\end_layout
+
+\begin_layout Standard
+Model pojedynczego przypadku testowego przedstawiono w kodzie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:Model-pojedynczego-przypadku"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+public class UnitTestModel
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+	public string Name { get; set; }
+\end_layout
+
+\begin_layout Plain Layout
+
+	public string Link { get; set; }
+\end_layout
+
+\begin_layout Plain Layout
+
+	public HttpMethod Method { set; get; }
+\end_layout
+
+\begin_layout Plain Layout
+
+	public AssertRestrictionLevel AssertRestrictionLevel { get; set;}
+\end_layout
+
+\begin_layout Plain Layout
+
+	public HttpStatusCode ResponseCode { get; set; }
+\end_layout
+
+\begin_layout Plain Layout
+
+	public IDictionary<string,string> Headers { get; set; }
+\end_layout
+
+\begin_layout Plain Layout
+
+	public IDictionary<string,string> ResponseHeaders { get; set; }
+\end_layout
+
+\begin_layout Plain Layout
+
+	public string Body { get; set; }
+\end_layout
+
+\begin_layout Plain Layout
+
+	public string ResponseBody { get; set; }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:Model-pojedynczego-przypadku"
+
+\end_inset
+
+Model pojedynczego przypadku testowego
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Zawiera on następujące pola:
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Name
+\emph default
+ - tekst nazywajacy zwiezle przypadek testowy 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Link 
+\emph default
+- adres URL do wywołania 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Method -
+\emph default
+ metoda zapytania HTTP 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+AssertRestrictionLevel
+\emph default
+ - poziom werfikacji odpowiedzi 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+0 - jakakolwiek odpowiedz z kodem innym niz z klasy 500
+\end_layout
+
+\begin_layout Itemize
+1 - kod odpowiedzi zgodny z oczekiwanym 
+\end_layout
+
+\begin_layout Itemize
+2 - nagłówki odpowiedzi sa zgodne z wzorcem o ile istnieje, oraz sprawdzenie
+ ich istnienia jesli oznaczone jako obowiazkowe 
+\end_layout
+
+\begin_layout Itemize
+3 - format odpowiedzi jest zgodny z zadana wartoscia nagłówka
+\emph on
+ Content- Type
+\end_layout
+
+\begin_layout Itemize
+4 - Struktura odpowiedzi jest zgodna ze zdefinowanym schematem
+\end_layout
+
+\begin_layout Itemize
+5 - tresc odpowiedzi jest w pełni zgodna z oczekiwana
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+ResponseCode 
+\emph default
+- oczekiwany kod odpowiedzi 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Headers 
+\emph default
+- lista nagłówków HTTP zapytania
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+ResponseHeaders
+\emph default
+ - lista oczekiwanych wartosci naglówków odpowiedzi HTTP (z ewentualnymi
+ wzorcami)
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Body
+\emph default
+ - zawartosc zapytaina HTTP 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+ResponseBody
+\emph default
+ - zawartosc odpowiedzi HTTP
 \end_layout
 
 \begin_layout Section

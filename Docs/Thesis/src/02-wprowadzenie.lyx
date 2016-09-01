@@ -1210,6 +1210,12 @@ key "Newman2015"
 \end_layout
 
 \begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Testowanie-funkcjonalne"
+
+\end_inset
+
 Testowanie funkcjonalne
 \end_layout
 
