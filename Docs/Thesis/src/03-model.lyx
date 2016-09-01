@@ -361,6 +361,7 @@ status open
 \begin_inset Graphics
 	filename img/class_diagram.png
 	lyxscale 50
+	width 100theight%
 
 \end_inset
 
