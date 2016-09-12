@@ -2,6 +2,7 @@
 using System.CodeDom.Compiler;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
 using System.Text;
 using System.Threading.Tasks;
 using MasterThesis.RestTestsGenerator;
@@ -9,11 +10,14 @@ using MasterThesis.RestTestsGenerator.IntermediateCodeGenerator;
 using MasterThesis.RestTestsGenerator.UnitTestWriters;
 using MasterThesis.RestTestsGenerator.UseCaseGenerators;
 using Microsoft.CSharp;
+using MasterThesis.Common.Helpers;
 
 namespace MasterThesis.DemoRunner
 {
     static class Program
     {
+        private const string TempDir = @"D:\kmatj_000\Desktop\tests\";
+
         static void Main(string[] args)
         {
             string path;
@@ -38,22 +42,26 @@ namespace MasterThesis.DemoRunner
 
             var fileName = Path.GetTempFileName();
 
-            generator.GenerateTest(new XUnitTestWriter(), new XmlIntermidiateCodeGenerator(fileName), GetUseCaseBuilder(), @"D:\kmatj_000\Desktop\tests");
+            generator.GenerateTest(new XUnitTestWriter(), new XmlIntermidiateCodeGenerator(fileName), GetUseCaseBuilder(), TempDir);
 
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Finished generation.");
             Console.WriteLine("Compiling.");
-            var dllka = CompileTests(@"D:\kmatj_000\Desktop\tests\test.cs");
+            var dllka = CompileTests(TempDir+ "test.cs");
 
             Console.WriteLine("Finished generation. " + dllka);
+
+
+            Console.WriteLine("Copy tools...");
+            UnzipTools(@".\UnitTestTemplates\tools.zip", TempDir);
+
+
             var testingProcess =RunTestsInProcess(dllka);
 
             testingProcess.WaitForExit();
-
-            Console.WriteLine("Finished testing. Code: " + testingProcess.ExitCode);
             
-            Console.ReadKey();
+            Console.WriteLine("Finished testing. Code: " + testingProcess.ExitCode);
         }
 
         private static Process RunTestsInProcess(string dllka)
@@ -106,5 +114,10 @@ namespace MasterThesis.DemoRunner
             return parameters.OutputAssembly;
         }
 
+        private static void UnzipTools(string zipFile, string destinationDir)
+        {
+            var archive = ZipFile.Open(zipFile, ZipArchiveMode.Read);
+            archive.ExtractToDirectory(destinationDir,true);
+        }
     }
 }
