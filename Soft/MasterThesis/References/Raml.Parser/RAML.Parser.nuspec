@@ -8,9 +8,9 @@
         <owners>$author$</owners>
         <requireLicenseAcceptance>true</requireLicenseAcceptance>
         <description>$description$</description>
-        <releaseNotes>RAML Parser 2 for .NET</releaseNotes>
+        <releaseNotes>RAML Parser for .NET</releaseNotes>
         <copyright>$copyright$</copyright>
-	    <projectUrl>https://github.com/raml-org/raml-dotnet-parser</projectUrl>
+	    <projectUrl>https://github.com/raml-org/raml-dotnet-parser-2</projectUrl>
 		<licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
 		<iconUrl>http://raml.org/images/logo.png</iconUrl>
         <tags>RAML REST API SCHEMA MARKUP</tags>

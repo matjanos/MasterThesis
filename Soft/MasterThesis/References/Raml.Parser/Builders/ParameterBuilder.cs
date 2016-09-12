@@ -16,23 +16,35 @@ namespace Raml.Parser.Builders
 
 	    public static void SetProperties(IDictionary<string, object> dynamicRaml, Parameter parameter)
 	    {
-            parameter.Type = TypeExtractor.GetType(dynamicRaml);
-	        parameter.Required = dynamicRaml.ContainsKey("required") && Convert.ToBoolean(dynamicRaml["required"]);
-	        parameter.DisplayName = dynamicRaml.ContainsKey("displayName") ? (string) dynamicRaml["displayName"] : null;
-	        parameter.Description = dynamicRaml.ContainsKey("description") ? (string) dynamicRaml["description"] : null;
-	        parameter.Enum = GetEnum(dynamicRaml);
-	        parameter.Repeat = dynamicRaml.ContainsKey("repeat") && Convert.ToBoolean(dynamicRaml["repeat"]);
-	        parameter.Example = dynamicRaml.ContainsKey("example") ? dynamicRaml["example"].ToString() : null;
-	        parameter.Default = dynamicRaml.ContainsKey("default")
-	            ? (dynamicRaml["default"] != null ? dynamicRaml["default"].ToString() : null)
-	            : null;
-	        parameter.Pattern = dynamicRaml.ContainsKey("pattern") ? (string) dynamicRaml["pattern"] : null;
-	        parameter.MinLength = dynamicRaml.ContainsKey("minLength") ? Convert.ToInt32(dynamicRaml["minLength"]) : (int?) null;
-	        parameter.MaxLength = dynamicRaml.ContainsKey("maxLength") ? Convert.ToInt32(dynamicRaml["maxLength"]) : (int?) null;
-	        parameter.Minimum = dynamicRaml.ContainsKey("minimum") ? Convert.ToDecimal(dynamicRaml["minimum"]) : (decimal?) null;
-	        parameter.Maximum = dynamicRaml.ContainsKey("maximum") ? Convert.ToDecimal(dynamicRaml["maximum"]) : (decimal?) null;
-	        parameter.Annotations = AnnotationsBuilder.GetAnnotations(dynamicRaml);
-	    }
+	        try
+	        {
+	            parameter.Type = TypeExtractor.GetType(dynamicRaml);
+	            parameter.Required = dynamicRaml.ContainsKey("required") && Convert.ToBoolean(dynamicRaml["required"]);
+	            parameter.DisplayName = dynamicRaml.ContainsKey("displayName") ? (string) dynamicRaml["displayName"] : null;
+	            parameter.Description = dynamicRaml.ContainsKey("description") ? (string) dynamicRaml["description"] : null;
+	            parameter.Enum = GetEnum(dynamicRaml);
+	            parameter.Repeat = dynamicRaml.ContainsKey("repeat") && Convert.ToBoolean(dynamicRaml["repeat"]);
+	            parameter.Example = dynamicRaml.ContainsKey("example") ? dynamicRaml["example"]?.ToString() : null;
+	            parameter.Default = dynamicRaml.ContainsKey("default") ? dynamicRaml["default"]?.ToString() : null;
+	            parameter.Pattern = dynamicRaml.ContainsKey("pattern") ? (string) dynamicRaml["pattern"] : null;
+	            parameter.MinLength = dynamicRaml.ContainsKey("minLength")
+	                ? Convert.ToInt32(dynamicRaml["minLength"])
+	                : (int?) null;
+	            parameter.MaxLength = dynamicRaml.ContainsKey("maxLength")
+	                ? Convert.ToInt32(dynamicRaml["maxLength"])
+	                : (int?) null;
+	            parameter.Minimum = dynamicRaml.ContainsKey("minimum")
+	                ? Convert.ToDecimal(dynamicRaml["minimum"])
+	                : (decimal?) null;
+	            parameter.Maximum = dynamicRaml.ContainsKey("maximum")
+	                ? Convert.ToDecimal(dynamicRaml["maximum"])
+	                : (decimal?) null;
+	            parameter.Annotations = AnnotationsBuilder.GetAnnotations(dynamicRaml);
+	        }
+	        catch(Exception e)
+	        {
+	            throw e;
+	        } }
 
         private static IEnumerable<string> GetEnum(IDictionary<string, object> dynamicRaml)
 		{

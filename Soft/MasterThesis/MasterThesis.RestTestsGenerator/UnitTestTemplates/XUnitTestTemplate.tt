@@ -1,5 +1,9 @@
 ﻿<#@ template language="C#" #>
-<#@ parameter type="MasterThesis.RestTestsGenerator.UnitTestWriters.UnitTestModel" name="Model" #>
+<#@ parameter type="System.Collections.Generic.IEnumerable<MasterThesis.RestTestsGenerator.UnitTestWriters.UnitTestModel>" name="Models" #>
+using System;
+using System.Net;
+using System.Net.Http;
+using Xunit;
 
 namespace MasterThesis.RestTestsGenerator.Tests
 {
@@ -15,20 +19,25 @@ namespace MasterThesis.RestTestsGenerator.Tests
             //
         }
 
+        <#
+       foreach (var Model in Models)
+       {
+        #>
+
         [Fact]
         public async void <#=Model.Name#>()
         {
             // Arrange
             HttpStatusCode expectedStatusCode;
-            Enum.TryParse("200", out expectedStatusCode);
+            Enum.TryParse("<#=Model.ResponseCode#>", out expectedStatusCode);
 
             var method = GetMethodFromString("<#=Model.Method#>");
-            HttpRequestMessage message = new HttpRequestMessage(method, @"<#=Model.Link#>");
+            HttpRequestMessage message = new HttpRequestMessage(method, @"<#=Model.Link#>?access_token=287676068.f22a470.ff57149353f24c859f234a6b0c945049");
 			<#
 			foreach(var header in Model.Headers)
 			{
 			#>
-           // message.Headers.Add("<#=header.Key#>", "<#=header.Value#>");
+            message.Headers.Add("<#=header.Key#>", "<#=header.Value#>");
 		   <#
 		   }
 		   #>
@@ -55,6 +64,9 @@ namespace MasterThesis.RestTestsGenerator.Tests
             // Assert
             Assert.Equal(expectedStatusCode, acctualStatusCode);
         }
+        <#
+       }
+        #>
 
         private System.Net.Http.HttpMethod GetMethodFromString(string methodString)
         {

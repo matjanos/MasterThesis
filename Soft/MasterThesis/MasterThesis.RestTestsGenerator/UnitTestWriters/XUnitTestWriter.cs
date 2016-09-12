@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
+using System.Xml;
 using MasterThesis.RestTestsGenerator.UseCases;
 using OMS.Ice.T4Generator;
 
@@ -14,6 +17,7 @@ namespace MasterThesis.RestTestsGenerator.UnitTestWriters
 
             unitTestsGenerator.Settings.ReferenceAssemblies.Add(typeof(UnitTestModel).Assembly.ToString());
             unitTestsGenerator.Settings.ReferenceAssemblies.Add(typeof(Xunit.Assert).Assembly.ToString());
+            unitTestsGenerator.Settings.ReferenceAssemblies.Add(typeof(IEnumerable<>).Assembly.ToString());
             unitTestsGenerator.Settings.EndOfLine = EndOfLine.CRLF;
         }
 
@@ -30,27 +34,68 @@ namespace MasterThesis.RestTestsGenerator.UnitTestWriters
             var writer = new StreamWriter(testFile);
 
             var useCaseObj = GetUnitTestModel(intermediateCodePath);
-            unitTestsGenerator.Generate(@"D:\kmatj_000\Documents\Studia\MasterThesis"+
-                @"\Soft\MasterThesis\MasterThesis.RestTestsGenerator\UnitTestTemplates\XUnitTestTemplate.tt", writer,useCaseObj);
+
+            var templateFile = @"D:\kmatj_000\Documents\Studia\MasterThesis" +
+                               @"\Soft\MasterThesis\MasterThesis.RestTestsGenerator\UnitTestTemplates\XUnitTestTemplate.tt";
+
+            if(!File.Exists(templateFile))
+                throw new FileNotFoundException("Nie znaleziono szablonu");
+
+
+            unitTestsGenerator.Generate(templateFile, writer,useCaseObj);
+
+            writer.Close();
 
             return outputStreams;
         }
 
-        private static  IEnumerable<UnitTestModel> GetUnitTestModel(string intemediateFiles)
+        private static  IEnumerable<UnitTestModel> GetUnitTestModel(string intemediateFile)
         {
             IList<UnitTestModel> list = new List<UnitTestModel>();
-            
-            //TODO: load UnitTestModels from XML
-            list.Add(new UnitTestModel
+
+            XmlTextReader reader = new XmlTextReader(File.Open(intemediateFile, FileMode.Open));
+
+            while (reader.Read())
             {
-                Method = HttpMethod.Get,
-                Body = "::",
-                Headers = new Dictionary<string, string>(),
-                Link = "google.pl",
-                Name = "UnitTestName",
-                AssertRestrictionLevel = AssertRestrictionLevel.Headers,
-                ResponseCode = HttpStatusCode.OK
-            });
+                if (reader.NodeType == XmlNodeType.Element && reader.Name == "useCase")
+                {
+                    HttpMethod method;
+                    Enum.TryParse(reader.GetAttribute("method"), out method);
+
+
+                    AssertRestrictionLevel assertionLevel;
+                    Enum.TryParse(reader.GetAttribute("assert-level"), out assertionLevel);
+
+                    string url = reader.GetAttribute("link");
+                    HttpStatusCode responseCode=HttpStatusCode.OK;
+                    var useCaseReader  = reader.ReadSubtree();
+                    var headers = new Dictionary<string, string>();
+
+                    while (useCaseReader.Read())
+                    {
+                        if (useCaseReader.Name == "response")
+                        {
+                            Enum.TryParse(useCaseReader.GetAttribute("code"), out responseCode);
+                        }
+                        if (useCaseReader.Name == "header" && useCaseReader.GetAttribute("key") !=null)
+                        {
+                            headers.Add(useCaseReader.GetAttribute("key"), useCaseReader.GetAttribute("value"));
+                        }
+                    }
+                    list.Add(new UnitTestModel
+                    {
+                        Method = method,
+                        Body = "::",
+                        Headers = headers,
+                        Link = url,
+                        Name = $"Test_{Guid.NewGuid().ToString().Replace("-", "")}",
+                        AssertRestrictionLevel = assertionLevel,
+                        ResponseCode = responseCode
+                    });
+                }
+            }
+            
+            
 
             return list;
         }

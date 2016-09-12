@@ -20,21 +20,20 @@ namespace MasterThesis.RestTestsGenerator.UseCaseGenerators
                     var useCaseResponse = new UseCaseResponse(HttpStatusCode.OK, mimeType.Value.Example);
                     foreach (var response in method.Responses)
                     {
-                        useCaseResponse.Headers = response.Headers.ToDictionary(h => h.Key, v=>v.Value.Pattern);
+                        useCaseResponse.Headers = response.Headers.ToDictionary(h => h.Key, v => v.Value.Pattern);
                     }
 
                     var uc = new UseCase
                     {
                         AssertRestrictionLevel = AssertRestrictionLevel.Headers,
                         Method = method.GetMethodEnum().Value,
-                        Headers = new[] { new KeyValuePair<string, string>("Content-Type", mimeType.Key), },
+                        Headers = new[] { new KeyValuePair<string, string>("Accept", mimeType.Key), },
                         ExpectedResponse = useCaseResponse
                     };
 
                     useCases.Add(uc);
                 }
             }
-
             return useCases;
         }
     }

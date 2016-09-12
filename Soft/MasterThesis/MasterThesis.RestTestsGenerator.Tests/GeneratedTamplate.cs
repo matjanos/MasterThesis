@@ -33,7 +33,7 @@ namespace MasterThesis.RestTestsGenerator.Tests
         [Fact]
         public async void GenerateTest()
         {
-            var generator = new RestTestGenerator("TestFiles/twitter.raml");
+            var generator = new RestTestGenerator("TestFiles/Instagram1.0/api.raml");
             var intermediateExpected = "AssertOutFiles/test1.xml";
             var intermediateFilePath = intermediateExpected;//Path.Combine(Path.GetTempPath(), "test1.xml");
 
@@ -49,6 +49,8 @@ namespace MasterThesis.RestTestsGenerator.Tests
             var actual = new StreamReader(intermediateFilePath);
             var expectedContent = expected.ReadToEnd();
             var actualContent = actual.ReadToEnd();
+
+
 
             Assert.Equal(expectedContent, actualContent);
         }

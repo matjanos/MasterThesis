@@ -38,32 +38,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Flurl, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Flurl.2.2.0\lib\portable40-net40+sl5+win8+wp8+wpa81\Flurl.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Flurl.Http, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Flurl.Http.1.0.1\lib\net45\Flurl.Http.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
-      <HintPath>..\packages\xunit.abstractions.2.0.1\lib\net35\xunit.abstractions.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="xunit.assert, Version=2.2.0.3300, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\xunit.assert.2.2.0-beta2-build3300\lib\netstandard1.0\xunit.assert.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="xunit.core, Version=2.2.0.3300, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\xunit.extensibility.core.2.2.0-beta2-build3300\lib\net45\xunit.core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="xunit.execution.desktop, Version=2.2.0.3300, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
-      <HintPath>..\packages\xunit.extensibility.execution.2.2.0-beta2-build3300\lib\net45\xunit.execution.desktop.dll</HintPath>
-      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <Choose>
@@ -78,11 +62,71 @@
     <Compile Include="GeneratedTamplate.cs" />
     <Compile Include="LoadingTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TemplateTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="TestFiles\Instagram1.0\api.raml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFiles\Instagram1.0\docs\authentication.md" />
+    <None Include="TestFiles\Instagram1.0\docs\headline.md" />
+    <None Include="TestFiles\Instagram1.0\examples\empty-response-example.json" />
+    <None Include="TestFiles\Instagram1.0\examples\feed-example.json" />
+    <None Include="TestFiles\Instagram1.0\examples\location-example.json" />
+    <None Include="TestFiles\Instagram1.0\examples\locations-example.json" />
+    <None Include="TestFiles\Instagram1.0\examples\media-comment-example.json" />
+    <None Include="TestFiles\Instagram1.0\examples\media-example.json" />
+    <None Include="TestFiles\Instagram1.0\examples\media-likes-example.json" />
+    <None Include="TestFiles\Instagram1.0\examples\media-search-example.json" />
+    <None Include="TestFiles\Instagram1.0\examples\oembed-example.json" />
+    <None Include="TestFiles\Instagram1.0\examples\ok-status-example.json" />
+    <None Include="TestFiles\Instagram1.0\examples\relationship-example.json" />
+    <None Include="TestFiles\Instagram1.0\examples\relationship-post-example.json" />
+    <None Include="TestFiles\Instagram1.0\examples\relationshipsPost-example.json" />
+    <None Include="TestFiles\Instagram1.0\examples\requested-by-example.json" />
+    <None Include="TestFiles\Instagram1.0\examples\subscriptionPost-example.json" />
+    <None Include="TestFiles\Instagram1.0\examples\subscriptionsDelete-example.json" />
+    <None Include="TestFiles\Instagram1.0\examples\subscriptionsGet-example.json" />
+    <None Include="TestFiles\Instagram1.0\examples\tag-example.json" />
+    <None Include="TestFiles\Instagram1.0\examples\tags-recent-media-example.json" />
+    <None Include="TestFiles\Instagram1.0\examples\tags-search-example.json" />
+    <None Include="TestFiles\Instagram1.0\examples\user-example.json" />
+    <None Include="TestFiles\Instagram1.0\examples\users-example.json" />
+    <None Include="TestFiles\Instagram1.0\resourceTypes\base.raml" />
+    <None Include="TestFiles\Instagram1.0\resourceTypes\feedsListing.raml" />
+    <None Include="TestFiles\Instagram1.0\resourceTypes\mediaSearch.raml" />
+    <None Include="TestFiles\Instagram1.0\resourceTypes\secured.raml" />
+    <None Include="TestFiles\Instagram1.0\resourceTypes\usersListing.raml" />
+    <None Include="TestFiles\Instagram1.0\schemas\location-schema.json" />
+    <None Include="TestFiles\Instagram1.0\schemas\locations-schema.json" />
+    <None Include="TestFiles\Instagram1.0\schemas\media-comment-schema.json" />
+    <None Include="TestFiles\Instagram1.0\schemas\media-likes-schema.json" />
+    <None Include="TestFiles\Instagram1.0\schemas\media-schema.json" />
+    <None Include="TestFiles\Instagram1.0\schemas\media-search-schema.json" />
+    <None Include="TestFiles\Instagram1.0\schemas\oembed-schema.json" />
+    <None Include="TestFiles\Instagram1.0\schemas\ok-status-schema.json" />
+    <None Include="TestFiles\Instagram1.0\schemas\relationships-post-schema.json" />
+    <None Include="TestFiles\Instagram1.0\schemas\relationships-schema.json" />
+    <None Include="TestFiles\Instagram1.0\schemas\requested-by-schema.json" />
+    <None Include="TestFiles\Instagram1.0\schemas\subscriptionPost-schema.json" />
+    <None Include="TestFiles\Instagram1.0\schemas\subscriptionsDelete-schema.json" />
+    <None Include="TestFiles\Instagram1.0\schemas\subscriptionsGet-schema.json" />
+    <None Include="TestFiles\Instagram1.0\schemas\tag-schema.json" />
+    <None Include="TestFiles\Instagram1.0\schemas\tags-recent-media-schema.json" />
+    <None Include="TestFiles\Instagram1.0\schemas\tags-search-schema.json" />
+    <None Include="TestFiles\Instagram1.0\schemas\user-schema.json" />
+    <None Include="TestFiles\Instagram1.0\schemas\users-schema.json" />
+    <None Include="TestFiles\Instagram1.0\securitySchemes\clientId.raml" />
+    <None Include="TestFiles\Instagram1.0\securitySchemes\oauth_2_0.raml" />
+    <None Include="TestFiles\Instagram1.0\traits\acceptCallback.raml" />
+    <None Include="TestFiles\Instagram1.0\traits\limitable.raml" />
+    <None Include="TestFiles\Instagram1.0\traits\limitableByGeoPoint.raml" />
+    <None Include="TestFiles\Instagram1.0\traits\limitableById.raml" />
+    <None Include="TestFiles\Instagram1.0\traits\limitableByTime.raml" />
+    <None Include="TestFiles\Instagram1.0\types.raml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="TestFiles\test.raml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

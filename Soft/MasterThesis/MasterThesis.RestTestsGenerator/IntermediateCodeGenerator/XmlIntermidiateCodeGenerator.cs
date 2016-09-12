@@ -19,6 +19,7 @@ namespace MasterThesis.RestTestsGenerator.IntermediateCodeGenerator
             Formatting = Formatting.Indented;
             IndentChar = '\t';
             Indentation = 1;
+            OutputFile = intermediateFilePath;
         }
 
         public void WriteDocumentStart()
@@ -38,7 +39,7 @@ namespace MasterThesis.RestTestsGenerator.IntermediateCodeGenerator
 
         public void WriteResourceUseCases(Resource resource, IDictionary<string, string> schema, string currentUri, IUseCaseBuilder useCaseBuilder)
         {
-            Log.Info("Writing data for {0} resource..", resource.DisplayName);
+            Log.Debug("Writing data for {0} resource..", resource.DisplayName);
 
             WriteStartElement("resource");
             if (schema != null)
@@ -81,10 +82,10 @@ namespace MasterThesis.RestTestsGenerator.IntermediateCodeGenerator
             WriteEndElement();
         }
 
-        private static string ReplacePlaceholderWithDefaultParameter(Resource resource)//TODO: placeholder
+        private string ReplacePlaceholderWithDefaultParameter(Resource resource)//TODO: placeholder
         {
             string relativeUri = resource.RelativeUri;
-            
+
             // with default parameters
             foreach (var uriParameter in resource.UriParameters)
             {
@@ -92,7 +93,18 @@ namespace MasterThesis.RestTestsGenerator.IntermediateCodeGenerator
                 sb.Append('{');
                 sb.Append($"{uriParameter.Key}");
                 sb.Append('}');
-                relativeUri = relativeUri.Replace(sb.ToString(), uriParameter.Value.Default ?? "0");
+                if (uriParameter.Value.Default != null ||
+                    (resource.Annotations != null && resource.Annotations.ContainsKey(uriParameter.Key)))
+                {
+                    relativeUri = relativeUri.Replace(sb.ToString(), uriParameter.Value.Default ??
+                                                                     resource.Annotations?[uriParameter.Key]?.ToString() ??
+                                                                     sb.ToString());
+                }
+                else
+                {
+                    relativeUri = relativeUri.Replace(sb.ToString(), "xxxxxxx");
+                    Log.Warn($"There is no placeholder defined for {uriParameter.Key}");
+                }
             }
 
             return relativeUri;
@@ -113,6 +125,9 @@ namespace MasterThesis.RestTestsGenerator.IntermediateCodeGenerator
         {
             WriteEndElement();
             WriteEndDocument();
+            Close();
         }
+
+        public string OutputFile { get; private set; }
     }
 }

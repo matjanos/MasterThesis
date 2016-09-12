@@ -42,7 +42,7 @@ namespace MasterThesis.RestTestsGenerator.UseCaseGenerators
                         {
                             AssertRestrictionLevel = AssertRestrictionLevel.Headers,
                             Method = method.GetMethodEnum().Value,
-                            Headers = new[] { new KeyValuePair<string, string>("Content-Type", mimeType.Key), },
+                            Headers = new[] { new KeyValuePair<string, string>("Accept", mimeType.Key), },
                             ExpectedResponse = useCaseResponse
                         };
 

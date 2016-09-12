@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using MasterThesis.Common.Helpers;
 using MasterThesis.RestTestsGenerator.Helpers;
 using MasterThesis.RestTestsGenerator.UseCases;
 using NLog;
@@ -44,7 +42,7 @@ namespace MasterThesis.RestTestsGenerator.UseCaseGenerators
                         {
                             AssertRestrictionLevel = AssertRestrictionLevel.Headers,
                             Method = method.GetMethodEnum().Value,
-                            Headers = new[] { new KeyValuePair<string, string>("Content-Type", mimeType.Key), },
+                            Headers = new[] { new KeyValuePair<string, string>("Accept", mimeType.Key), },
                             ExpectedResponse = useCaseResponse
                         };
 

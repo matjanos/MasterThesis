@@ -11,5 +11,7 @@ namespace MasterThesis.RestTestsGenerator.IntermediateCodeGenerator
         void WriteResourceUseCases(Resource resource, IDictionary<string, string> schema, string currentUri, IUseCaseBuilder useCaseBuilder);
 
         void WriteDocumentEnd();
+
+        string OutputFile { get; }
     }
 }

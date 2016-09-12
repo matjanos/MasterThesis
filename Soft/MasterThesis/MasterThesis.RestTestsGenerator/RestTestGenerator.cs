@@ -27,7 +27,7 @@ namespace MasterThesis.RestTestsGenerator
                 Log.Error("Loading RAML file error. File {0} doesn't exist", filePath);
                 throw new ArgumentException("File doesn't exist");
             }
-            Log.Error("Generator initialized");
+            Log.Debug("Generator initialized");
         }
 
         public async Task<bool> LoadFile()
@@ -46,19 +46,22 @@ namespace MasterThesis.RestTestsGenerator
             }
         }
 
-        public void GenerateTest(IUnitTestWriter unitTestWriter, IIntermidiateCodeGenerator intermidiateCodeGenerator, IUseCaseBuilder useCaseBuilder)
+        public void GenerateTest(IUnitTestWriter unitTestWriter, IIntermidiateCodeGenerator intermidiateCodeGenerator,
+            IUseCaseBuilder useCaseBuilder, string testCodeFilePath = "D:\\kmatj_000\\Desktop\\")
         {
             intermidiateCodeGenerator.WriteDocumentStart();
             ramlDocument.BaseUri = GetBaseUri();
             foreach (var resource in ramlDocument.Resources)
             {
                 intermidiateCodeGenerator.WriteResourceUseCases(resource,
-                    ramlDocument.Schemas.SingleOrDefault(x => x.ContainsKey(resource.DisplayName)), 
+                    ramlDocument.Schemas.SingleOrDefault(x => x.ContainsKey(resource.DisplayName)),
                     ramlDocument.BaseUri,
                     useCaseBuilder);
             }
 
             intermidiateCodeGenerator.WriteDocumentEnd();
+
+            unitTestWriter.GenerateUnitTest(intermidiateCodeGenerator.OutputFile, testCodeFilePath);
         }
 
         private string GetBaseUri()
