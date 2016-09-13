@@ -76,8 +76,144 @@ dcs
 Weryfikacja i przeprowadzone testy
 \end_layout
 
+\begin_layout Standard
+W celu wykazania przydatności i poprawności działania zaproponowanego rozwiązani
+a przeprowadzono testy.
+ Prototyp narzędzia został przetestowany w rzeczywistym środowisku infrastruktur
+y sieci Internet.
+ Pozyskano powszechnie dostępną specyfikację RAML istniejącego systemu,
+ a następnie uruchomiono program podając ją jako plik wejściowy.
+\end_layout
+
 \begin_layout Section
 Testowany system
+\end_layout
+
+\begin_layout Standard
+6 listopada 2010 roku w sieci Internet pojawił się serwis Instagram założony
+ przez Kevina Systroma and Mike`a Kriegera
+\begin_inset CommandInset citation
+LatexCommand cite
+key "InstaPress"
+
+\end_inset
+
+.
+ Stał się on na tyle popularny, że w grudniu 2014 roku był użytkowany przez
+ 300 mln użytkowników
+\begin_inset CommandInset citation
+LatexCommand cite
+key "InstaUsers"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Aplikacja Instagram umożliwia umieszczanie na zdalnych serwerach fotografii,
+ na które można nakładać różne filtry fotograficzne, nadające zdjęciom przyjemny
+ dla oka wygląd.
+ Każde zdjęcie lub film (
+\emph on
+ang.
+ media
+\emph default
+) jest może zostać przypisane tylko do jednego użytkownika systemu, przy
+ czym każdy użytkownik może posiadać wiele takich mediów.
+ Każde medium może posiadać zdefiniowane przez autora słowa kluczowe (
+\emph on
+ang.
+ hash tags
+\emph default
+) opisujące opublikowany przez niego zasób.
+ Oprócz tego, na każdy z tych zasobów mogą reagować inni użytkownicy serwisu.
+ Na Instagram zaimplementowano dwa rodzaje takich reakcji: polubienia (
+\emph on
+ang.
+ likes
+\emph default
+) oraz komentarze (
+\emph on
+ang.
+ comments
+\emph default
+).
+ Każdy zasób może zostać również przypisany do jakiejś rzeczywistej lokalizacji
+ (
+\emph on
+ang.
+ location
+\emph default
+) .
+ Co więcej można uzyskać również informacje o powiązaniach pomiędzy użytkownikam
+i (
+\emph on
+ang.
+ relationships
+\emph default
+).
+ Powiązanie jest zdefiniowanie za pomocą pary uporządkowanej dwóch użytkowników
+ oraz typu relacji.
+ Instagram zdefiniował następujące relacje
+\begin_inset CommandInset citation
+LatexCommand cite
+key "InstaDocs"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Itemize
+brak (ang.
+ none) - brak powiązania lub relacja między dwoma tymi samymi użytkownikami
+\end_layout
+
+\begin_layout Itemize
+śledzenie (ang.
+ follows) - relacja śledzenia, czyli możliwości wyświetlania w przypadku
+ użytkownika prywatnego, lub uzyskiwania powiadomień o aktywności użytkownika
+ w przypadku kiedy użytkownik jest publiczny
+\end_layout
+
+\begin_layout Itemize
+bycie śledzonym (ang.
+ followed-by) - relacja odwrotna do relacji śledzenia, tj.
+ użytkownik będący drugim argumentem relacji ma możliwość śledzenia aktywności
+ użytkownika będącego pierwszym argumentem relacji
+\end_layout
+
+\begin_layout Itemize
+wysłano prośbę (ang.
+ requested-by) - relacja mówiąca o tym, że użytkownik wysłał prośbę o umożliwien
+ie śledzenia do innego użytkownika
+\end_layout
+
+\begin_layout Standard
+O wszystkich tych zasobach można uzyskać na dwa sposoby.
+ Pierwszym jest uzyskanie dostępu do strony internetowej za pomocą panelu
+ logowania, drugim natomiast jest wykonywanie zapytań do serwisu znajdującego
+ się pod adresem 
+\emph on
+https://api.instagram.com 
+\emph default
+w celu uzyskania w odpowiedzi samych danych (bez całości strony HTML).
+\end_layout
+
+\begin_layout Standard
+Sposób pierwszy jest polecany dla użytkowników korzystających z przeglądarek
+ internetowych, które interpretują wizualnie zawartość plików HTML.
+ Sposób drugi jest natomiast polecany dla programistów, którzy projektują
+ aplikacje użytkowe korzystające z tych danych
+\begin_inset CommandInset citation
+LatexCommand cite
+key "InstaDocs"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section

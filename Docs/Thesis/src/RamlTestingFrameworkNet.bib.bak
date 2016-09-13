@@ -636,4 +636,26 @@ year = {2009}
   url       = {http://vig.pearsoned.com/store/product/1,1207,store-12521_isbn-0132350882,00.html},
 }
 
+@Misc{InstaPress,
+  title        = {Instagram Press},
+  howpublished = {\url{https://www.instagram.com/press}},
+  note         = {Accessed: 2016-09-01},
+}
+
+@Misc{InstaUsers,
+  author       = {Seth Fiegerman},
+  title        = {Instagram tops 300 million active users, likely bigger than Twitter},
+  howpublished = {Online},
+  month        = {dec},
+  year         = {2014},
+  url          = {http://mashable.com/2014/12/10/instagram-300-million-users/#qMnwEd5gKPqZ},
+}
+
+@Misc{InstaDocs,
+  author       = {Instagram Inc.},
+  title        = {Instagram Developer Documentation},
+  howpublished = {Online},
+  accesed      = {2016-09-14},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
