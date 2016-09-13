@@ -25,7 +25,7 @@ namespace MasterThesis.DemoRunner
             if (args.Length == 1)
             {
                 path = args[0];
-                Console.WriteLine(path);
+                Console.WriteLine("Loaded file: "+path);
             }
             else
             {
@@ -53,17 +53,24 @@ namespace MasterThesis.DemoRunner
             Console.WriteLine("Copy tools...");
             UnzipTools(@".\UnitTestTemplates\tools.zip", TempDir);
 
-
-            var testingProcess =RunTestsInProcess(dllka);
-
+            Console.WriteLine("Executing tests...");
+            var testingProcess = GetTestingProcess(dllka);
+            testingProcess.Start();
             testingProcess.WaitForExit();
-            
+
             Console.WriteLine("Finished testing. Code: " + testingProcess.ExitCode);
+            Console.WriteLine(testingProcess.StandardOutput.ReadToEnd());
         }
 
-        private static Process RunTestsInProcess(string dllka)
+        private static Process GetTestingProcess(string dllka)
         {
-           return Process.Start(Path.Combine(Path.GetDirectoryName(dllka), @"tools\xunit.console.exe"), dllka);
+            var p = new Process();
+            p.StartInfo.FileName = Path.Combine(Path.GetDirectoryName(dllka), @"tools\xunit.console.exe");
+            p.StartInfo.Arguments = dllka;
+            p.StartInfo.RedirectStandardOutput = true;
+            p.StartInfo.UseShellExecute = false;
+
+            return p;
         }
 
 

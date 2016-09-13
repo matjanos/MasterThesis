@@ -167,28 +167,44 @@ key "InstaDocs"
 \end_layout
 
 \begin_layout Itemize
-brak (ang.
- none) - brak powiązania lub relacja między dwoma tymi samymi użytkownikami
+brak (
+\emph on
+ang.
+ none
+\emph default
+) - brak powiązania lub relacja między dwoma tymi samymi użytkownikami
 \end_layout
 
 \begin_layout Itemize
-śledzenie (ang.
- follows) - relacja śledzenia, czyli możliwości wyświetlania w przypadku
- użytkownika prywatnego, lub uzyskiwania powiadomień o aktywności użytkownika
- w przypadku kiedy użytkownik jest publiczny
+śledzenie (
+\emph on
+ang.
+ follows
+\emph default
+) - relacja śledzenia, czyli możliwości wyświetlania w przypadku użytkownika
+ prywatnego, lub uzyskiwania powiadomień o aktywności użytkownika w przypadku
+ kiedy użytkownik jest publiczny
 \end_layout
 
 \begin_layout Itemize
-bycie śledzonym (ang.
- followed-by) - relacja odwrotna do relacji śledzenia, tj.
+bycie śledzonym (
+\emph on
+ang.
+ followed-by
+\emph default
+) - relacja odwrotna do relacji śledzenia, tj.
  użytkownik będący drugim argumentem relacji ma możliwość śledzenia aktywności
  użytkownika będącego pierwszym argumentem relacji
 \end_layout
 
 \begin_layout Itemize
-wysłano prośbę (ang.
- requested-by) - relacja mówiąca o tym, że użytkownik wysłał prośbę o umożliwien
-ie śledzenia do innego użytkownika
+wysłano prośbę (
+\emph on
+ang.
+ requested-by
+\emph default
+) - relacja mówiąca o tym, że użytkownik wysłał prośbę o umożliwienie śledzenia
+ do innego użytkownika
 \end_layout
 
 \begin_layout Standard
@@ -218,6 +234,339 @@ key "InstaDocs"
 
 \begin_layout Section
 Metodologia przeprowadzonych testów
+\end_layout
+
+\begin_layout Subsection
+Przygotowanie do wykonania testów
+\end_layout
+
+\begin_layout Subsubsection
+Instagram
+\end_layout
+
+\begin_layout Standard
+Serwis Instagram istotnie umożliwia połączenia zdalne z udostępnionym interfejse
+m programistycznym, niemniej jednak wprowadzono tam procedurę w celu uzyskania
+ dostępu do 
+\emph on
+api.instagram.com.
+ 
+\end_layout
+
+\begin_layout Standard
+W pierwszej kolejności należało stworzyć klienta (
+\emph on
+ang.
+ client
+\emph default
+), w celu uzyskania identyfikatora aplikacji oraz tajnego klucza (
+\emph on
+ang.
+ Client Secret
+\emph default
+).
+ Dane te są konieczne, aby uzyskać żeton autoryzacyjny (
+\emph on
+ang.
+ token
+\emph default
+).
+ Ten wykorzystany będzie przy okazji każdego zapytania w celu potwierdzenia
+ tożsamości.
+ Mechanizm autoryzacyjny wykorzystany w systemie Instagram to OAuth 2.0
+\begin_inset CommandInset citation
+LatexCommand cite
+key "rfc6749,InstaDocs"
+
+\end_inset
+
+.
+ Kwestia autoryzacji nie mieści się w zakresie tej pracy, więc założono
+ stałość tokenu autoryzacyjnego i użyto go jako zmiennej całego procesu,
+ przekazywanej jako parametr.
+\end_layout
+
+\begin_layout Standard
+Konfiguracja klienta przeznaczona dla celów testowych determinuje użycie
+ go w trybie 
+\begin_inset Quotes pld
+\end_inset
+
+piaskownicy
+\begin_inset Quotes prd
+\end_inset
+
+ (
+\emph on
+ang.
+ sandbox
+\emph default
+ 
+\emph on
+mode
+\emph default
+).
+ Tryb ten minimalizuje ryzyko wykonania niepożądanych akcji, ograniczając
+ widoczne informacje jedynie do zbioru użytkowników, którzy dołączyli do
+ danego klienta.
+ Wymagało to więc wykorzystania istniejących kont Instagram, których właściciele
+ zgodzili się udostępnić dane swoich kont dla badawczych celów niniejszej
+ pracy.
+ Nazwa klienta, który został utworzony w celach testów to 
+\emph on
+
+\begin_inset Quotes pld
+\end_inset
+
+RestTestingFramework
+\begin_inset Quotes prd
+\end_inset
+
+
+\emph default
+, a nazwy trzech kont wykorzystanych w celach testów to 
+\emph on
+
+\begin_inset Quotes pld
+\end_inset
+
+ensorceler
+\begin_inset Quotes prd
+\end_inset
+
+
+\emph default
+, 
+\emph on
+
+\begin_inset Quotes pld
+\end_inset
+
+matjanos
+\begin_inset Quotes prd
+\end_inset
+
+
+\emph default
+ oraz 
+\emph on
+
+\begin_inset Quotes pld
+\end_inset
+
+kamil518
+\begin_inset Quotes prd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Dokumentacja techniczna
+\end_layout
+
+\begin_layout Standard
+Twórcy systemu Instagram nie udostępnił dokumentacji swoich interfejsów
+ programistycznych w formie dokumentu RAML, a jedynie stronę internetową,
+ która w języku naturalnym opisuje wszystkie udostępniane zasoby oraz sposób
+ ich udostępniania
+\begin_inset CommandInset citation
+LatexCommand cite
+key "InstaDocs"
+
+\end_inset
+
+.
+ Społeczność tworząca projekt RAML udostępnia jednak kolekcję dokumentacji
+ wielu popularnych serwisów internetowych, a na ich liście znalazł się również
+ Instagram
+\begin_inset CommandInset citation
+LatexCommand cite
+key "InstagramApiRaml"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Specyfikacja wymagala jednak istotnych modyfikacji, aby można było użyć
+ jej w testach.
+ Modyfikacje dotyczyły dwóch aspektów:
+\end_layout
+
+\begin_layout Itemize
+uspójnienie specyfikacji z aktualną wersją interfejsu opisanego przez Instagram,
+\end_layout
+
+\begin_layout Itemize
+dodanie pól typu 
+\emph on
+
+\begin_inset Quotes pld
+\end_inset
+
+Annotations
+\begin_inset Quotes prd
+\end_inset
+
+
+\emph default
+, w celu zdefiniowania wyroczni (metoda opisana w sekcji 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Opis-działania-aplikacji"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Wartości pól typu 
+\emph on
+
+\begin_inset Quotes pld
+\end_inset
+
+Annotations
+\begin_inset Quotes prd
+\end_inset
+
+ 
+\emph default
+definiowanio na podstawie faktycznego stanu aplikacji znanego autorowi.
+ Były to następujące parametry:
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+mediaId = 392839750589921094_287676068,
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+userId = 391387866,
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+commentId = 17851823476094686,
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+tagName = 
+\begin_inset Quotes pld
+\end_inset
+
+computerscience
+\begin_inset Quotes prd
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+locId = 217492538.
+\end_layout
+
+\begin_layout Standard
+Opisano tam również oczekiwane obiekty, aby móc zweryfikować ich strukturę
+ oraz wartości.
+\end_layout
+
+\begin_layout Subsection
+Przeprowadzenie testów
+\end_layout
+
+\begin_layout Standard
+Przygotowany prototyp narzędzia do automatyczego testowania został przygotowany
+ jako plik wykonywalny dla systemu Windows 7 / Windows 8/8.1 / Windows 10
+ z zainstalowanym środowiskiem .NET 4.6.
+ Narzędzia należało użyć wykonując następującą komendę:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+ ./MasterThesis.DemoRunner.exe ./TestFiles/Instagram1.0/api.raml
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Uruchamia ona aplikację, korzystając z pliku specyfikacji 
+\emph on
+api.raml
+\emph default
+ znajdującego się w podfolderze 
+\emph on
+./TestFiles/Instagram1.0.
+ 
+\emph default
+Przykładowe wyjście programu zaprezentowano na obrazie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Przykładowe-wyjście-narzędzia"
+
+\end_inset
+
+.
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/sample-output.PNG
+	scale 70
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Przykładowe-wyjście-narzędzia"
+
+\end_inset
+
+Przykładowe wyjście narzędzia
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ Oznacza ono, że podczas generowania przypadków testowych znaleziono 2 błędy
+ oraz jedno ostrzeżenie, a także aplikacja wykonała 8 testów, z których
+ 3 zakończyły się niepowodzeniem.
 \end_layout
 
 \begin_layout Section

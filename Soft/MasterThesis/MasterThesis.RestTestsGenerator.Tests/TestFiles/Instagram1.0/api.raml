@@ -8,7 +8,7 @@ annotationTypes:
   userId: string
   commentId: string
   tagName: string
-  locId: string
+  locId: number
   geoId: string
 securitySchemes:
    oauth_2_0: !include securitySchemes/oauth_2_0.raml
@@ -63,6 +63,7 @@ securedBy: [ oauth_2_0 , clientId ]
                 required: true
       /{commentId}:
         type: { secured: { scope: comments } }
+        (commentId): "17851823476094686"
         uriParameters:
           commentId:
             description: Identifier of the comment
@@ -112,6 +113,7 @@ securedBy: [ oauth_2_0 , clientId ]
 /tags:
   /{tagName}:
     type: base
+    (tagName): "computerscience"
     uriParameters:
       tagName:
         description: Name of tag.
@@ -261,6 +263,7 @@ securedBy: [ oauth_2_0 , clientId ]
 /locations:
   /{locId}:
     type: base
+    (locId): 217492538
     uriParameters:
       locId:
         type: integer
