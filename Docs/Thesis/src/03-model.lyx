@@ -931,5 +931,53 @@ ResponseBody
  - zawartość odpowiedzi HTTP
 \end_layout
 
+\begin_layout Subsection
+Uruchamianie testów
+\end_layout
+
+\begin_layout Standard
+Samo wygenerowanie kodu testów stanowi już bardzo dużą automatyzację procesu
+ weryfikacji oprogramowania.
+ Wciąż jednak testy takie muszą zostać manualnie wprowadzone do bazy kodu
+ źródłowego, skompilowane oraz uruchomione.
+ Proces ten jest jednak na tyle powtarzalny, że możliwe jest jesgo wykonanie
+ za pomocą programu komputerowego.
+ 
+\end_layout
+
+\begin_layout Standard
+W tym celu stworzono plik wykonywalny, który w celu pełnej automatyzacji
+ wykonuje następujące kroki:
+\end_layout
+
+\begin_layout Enumerate
+wczytuje ścieżkę pliku specyfikacji przekazany jako parametr wywołania aplikacji
+;
+\end_layout
+
+\begin_layout Enumerate
+uruchamia prototyp w celu generacji kodu testów jednostkowych;
+\end_layout
+
+\begin_layout Enumerate
+kompiluje kod w celu wygenerowania pliku wykonywalnego (biblioteka .dll);
+\end_layout
+
+\begin_layout Enumerate
+kopiuje z repozytorium zestaw narzędzi niezbędnych do przeprowadzenia testów;
+ w tym przypadku są to pliki biblioteki xUnit;
+\end_layout
+
+\begin_layout Enumerate
+uruchamia osobny proces wykonujący wszystkie testy zawarte w wygenerowanej
+ bibliotece
+\end_layout
+
+\begin_layout Standard
+Narzędzie posiadające wszystkie te komponenty powinno stanowić kompletny
+ aparat programistyczny pomagający weryfikować typ oprogramowania jakim
+ są usługi sieciowe.
+\end_layout
+
 \end_body
 \end_document

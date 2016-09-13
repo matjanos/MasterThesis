@@ -37,9 +37,6 @@ namespace MasterThesis.DemoRunner
             var result = generator.LoadFile();
             result.Wait();
 
-            if (!result.IsCompleted)
-                throw new TaskCanceledException("Timeout passed.");
-
             var fileName = Path.GetTempFileName();
 
             generator.GenerateTest(new XUnitTestWriter(), new XmlIntermidiateCodeGenerator(fileName), GetUseCaseBuilder(), TempDir);
