@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
-using MasterThesis.RestTestsGenerator.Helpers;
 using MasterThesis.RestTestsGenerator.UseCases;
 using NLog;
 using Raml.Parser.Expressions;
@@ -12,42 +12,36 @@ namespace MasterThesis.RestTestsGenerator.UseCaseGenerators
     {
         public readonly ILogger Log = LogManager.GetCurrentClassLogger();
 
-        public IEnumerable<UseCase> GetUseCases(Resource resource)
+        public IEnumerable<UseCase> GetUseCases(Resource resource, RamlTypesOrderedDictionary types)
         {
-            /* IList<UseCase> useCases = new List<UseCase>();
-
-             foreach (var method in resource.Methods)
-             {
-                 var uc = ConstructUseCase(resource, method);
-                 if (uc != null)
-                     useCases.Add(uc);
-             }
-
-             return useCases;*/
-
             var useCases = new List<UseCase>();
 
             foreach (var method in resource.Methods)
             {
-                foreach (var mimeType in method.Body)
+                HttpMethod methodType;
+                if(!HttpMethod.TryParse(method.Verb, true, out methodType))
+                    continue;
+                foreach (var response in method.Responses)
                 {
-                    foreach (var response in method.Responses)
+                    HttpStatusCode code;
+                    if(!Enum.TryParse(response.Code, out code))
+                        continue;
+                    try
                     {
-                        if (response.Code == null)
-                            continue;
-
-                        var useCaseResponse = new UseCaseResponse((HttpStatusCode) Convert.ToInt32(response.Code),null);
-
-                        var uc = new UseCase
+                        useCases.Add(new UseCase
                         {
-                            AssertRestrictionLevel = AssertRestrictionLevel.Headers,
-                            Method = method.GetMethodEnum().Value,
-                            Headers = new[] { new KeyValuePair<string, string>("Accept", mimeType.Key), },
-                            ExpectedResponse = useCaseResponse
-                        };
-
-                        useCases.Add(uc);
-
+                            Method = methodType,
+                            Headers =
+                                method.Headers.Select(
+                                    pair => new KeyValuePair<string, string>(pair.Key, pair.Value.Example)),
+                            AssertRestrictionLevel = AssertRestrictionLevel.StatusCode,
+                            ExpectedResponse = new UseCaseResponse(code, String.Empty),
+                            Timeout = 5000
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Error(ex);
                     }
                 }
             }

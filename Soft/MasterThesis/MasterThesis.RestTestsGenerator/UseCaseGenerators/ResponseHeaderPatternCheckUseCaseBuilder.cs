@@ -9,7 +9,7 @@ namespace MasterThesis.RestTestsGenerator.UseCaseGenerators
 {
     public class ResponseHeaderPatternCheckUseCaseBuilder : IUseCaseBuilder
     {
-        public IEnumerable<UseCase> GetUseCases(Resource resource)
+        public IEnumerable<UseCase> GetUseCases(Resource resource, RamlTypesOrderedDictionary types)
         {
             var useCases = new List<UseCase>();
 

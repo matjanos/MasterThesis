@@ -14,13 +14,13 @@ namespace MasterThesis.RestTestsGenerator.UseCaseGenerators
 
         private readonly ICollection<IUseCaseBuilder> useCaseGenerators;
 
-        public IEnumerable<UseCase> GetUseCases(Resource resource)
+        public IEnumerable<UseCase> GetUseCases(Resource resource, RamlTypesOrderedDictionary types)
         {
             var useCases = new List<UseCase>();
 
             foreach (var useCaseGenerator in useCaseGenerators)
             {
-                var ucs = useCaseGenerator.GetUseCases(resource);
+                var ucs = useCaseGenerator.GetUseCases(resource, types);
                 if (ucs.IsNullOrEmpty())
                     continue;
 

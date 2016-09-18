@@ -56,7 +56,7 @@ namespace MasterThesis.RestTestsGenerator
                 intermidiateCodeGenerator.WriteResourceUseCases(resource,
                     ramlDocument.Schemas.SingleOrDefault(x => x.ContainsKey(resource.DisplayName)),
                     ramlDocument.BaseUri,
-                    useCaseBuilder);
+                    useCaseBuilder, ramlDocument.Types);
             }
 
             intermidiateCodeGenerator.WriteDocumentEnd();

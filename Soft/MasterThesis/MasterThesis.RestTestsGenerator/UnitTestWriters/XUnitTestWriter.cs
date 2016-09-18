@@ -5,6 +5,9 @@ using System.Linq;
 using System.Net;
 using System.Xml;
 using MasterThesis.RestTestsGenerator.UseCases;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Schema;
+using NLog.Fluent;
 using OMS.Ice.T4Generator;
 
 namespace MasterThesis.RestTestsGenerator.UnitTestWriters
@@ -18,6 +21,8 @@ namespace MasterThesis.RestTestsGenerator.UnitTestWriters
             unitTestsGenerator.Settings.ReferenceAssemblies.Add(typeof(UnitTestModel).Assembly.ToString());
             unitTestsGenerator.Settings.ReferenceAssemblies.Add(typeof(Xunit.Assert).Assembly.ToString());
             unitTestsGenerator.Settings.ReferenceAssemblies.Add(typeof(IEnumerable<>).Assembly.ToString());
+            unitTestsGenerator.Settings.ReferenceAssemblies.Add(typeof(JSchema).Assembly.ToString());
+            unitTestsGenerator.Settings.ReferenceAssemblies.Add(typeof(JObject).Assembly.ToString());
             unitTestsGenerator.Settings.EndOfLine = EndOfLine.CRLF;
         }
 
@@ -38,18 +43,17 @@ namespace MasterThesis.RestTestsGenerator.UnitTestWriters
             var templateFile = @"D:\kmatj_000\Documents\Studia\MasterThesis" +
                                @"\Soft\MasterThesis\MasterThesis.RestTestsGenerator\UnitTestTemplates\XUnitTestTemplate.tt";
 
-            if(!File.Exists(templateFile))
+            if (!File.Exists(templateFile))
                 throw new FileNotFoundException("Nie znaleziono szablonu");
 
-
-            unitTestsGenerator.Generate(templateFile, writer,useCaseObj);
+            unitTestsGenerator.Generate(templateFile, writer, useCaseObj);
 
             writer.Close();
 
             return outputStreams;
         }
 
-        private static  IEnumerable<UnitTestModel> GetUnitTestModel(string intemediateFile)
+        private static IEnumerable<UnitTestModel> GetUnitTestModel(string intemediateFile)
         {
             IList<UnitTestModel> list = new List<UnitTestModel>();
 
@@ -67,17 +71,26 @@ namespace MasterThesis.RestTestsGenerator.UnitTestWriters
                     Enum.TryParse(reader.GetAttribute("assert-level"), out assertionLevel);
 
                     string url = reader.GetAttribute("link");
-                    HttpStatusCode responseCode=HttpStatusCode.OK;
-                    var useCaseReader  = reader.ReadSubtree();
+                    HttpStatusCode responseCode = HttpStatusCode.OK;
+                    var useCaseReader = reader.ReadSubtree();
                     var headers = new Dictionary<string, string>();
 
+                    string body = null;
                     while (useCaseReader.Read())
                     {
                         if (useCaseReader.Name == "response")
                         {
+                            if (!useCaseReader.IsStartElement())
+                                continue;
+
                             Enum.TryParse(useCaseReader.GetAttribute("code"), out responseCode);
+
+
+                            useCaseReader.Read();
+                            if (useCaseReader.NodeType == XmlNodeType.Text)
+                                body = useCaseReader.Value;
                         }
-                        if (useCaseReader.Name == "header" && useCaseReader.GetAttribute("key") !=null)
+                        if (useCaseReader.Name == "header" && useCaseReader.GetAttribute("key") != null)
                         {
                             headers.Add(useCaseReader.GetAttribute("key"), useCaseReader.GetAttribute("value"));
                         }
@@ -85,7 +98,7 @@ namespace MasterThesis.RestTestsGenerator.UnitTestWriters
                     list.Add(new UnitTestModel
                     {
                         Method = method,
-                        Body = "::",
+                        Body = body?.Replace("\"", "\"\""),
                         Headers = headers,
                         Link = url,
                         Name = $"Test_{Guid.NewGuid().ToString().Replace("-", "")}",
@@ -94,8 +107,8 @@ namespace MasterThesis.RestTestsGenerator.UnitTestWriters
                     });
                 }
             }
-            
-            
+
+
 
             return list;
         }

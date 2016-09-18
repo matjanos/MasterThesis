@@ -6,6 +6,6 @@ namespace MasterThesis.RestTestsGenerator.UseCaseGenerators
 {
     public interface IUseCaseBuilder
     {
-        IEnumerable<UseCase> GetUseCases(Resource resource);
+        IEnumerable<UseCase> GetUseCases(Resource resource, RamlTypesOrderedDictionary types);
     }
 }

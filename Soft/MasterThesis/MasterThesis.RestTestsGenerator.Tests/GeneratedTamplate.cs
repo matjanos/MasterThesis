@@ -50,7 +50,7 @@ namespace MasterThesis.RestTestsGenerator.Tests
             var expectedContent = expected.ReadToEnd();
             var actualContent = actual.ReadToEnd();
 
-
+          
 
             Assert.Equal(expectedContent, actualContent);
         }

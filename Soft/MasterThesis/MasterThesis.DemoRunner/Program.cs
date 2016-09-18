@@ -37,7 +37,8 @@ namespace MasterThesis.DemoRunner
             var result = generator.LoadFile();
             result.Wait();
 
-            var fileName = Path.GetTempFileName();
+            var fileName = @"D:\kmatj_000\Desktop\tests\tmp.xml";
+            //var fileName = Path.GetTempFileName();
 
             generator.GenerateTest(new XUnitTestWriter(), new XmlIntermidiateCodeGenerator(fileName), GetUseCaseBuilder(), TempDir);
 
@@ -56,10 +57,13 @@ namespace MasterThesis.DemoRunner
             Console.WriteLine("Executing tests...");
             var testingProcess = GetTestingProcess(dllka);
             testingProcess.Start();
-            testingProcess.WaitForExit();
+            while (!testingProcess.StandardOutput.EndOfStream)
+            {
+                Console.WriteLine(testingProcess.StandardOutput.ReadLine());
+            }
 
             Console.WriteLine("Finished testing. Code: " + testingProcess.ExitCode);
-            Console.WriteLine(testingProcess.StandardOutput.ReadToEnd());
+            Console.ReadLine();
         }
 
         private static Process GetTestingProcess(string dllka)
@@ -81,6 +85,7 @@ namespace MasterThesis.DemoRunner
             useCaseBuilder.AddUseCaseBuilder(new RequestHeaderCheckUseCaseBuilder());
             useCaseBuilder.AddUseCaseBuilder(new ContentSchemaCheckUseCaseBuilder());
             useCaseBuilder.AddUseCaseBuilder(new ResponseHeaderPatternCheckUseCaseBuilder());
+            useCaseBuilder.AddUseCaseBuilder(new ContentCheckUseCaseBuilder());
             return useCaseBuilder;
         }
 
@@ -95,6 +100,8 @@ namespace MasterThesis.DemoRunner
             parameters.ReferencedAssemblies.Add("System.Net.Http.dll");
             parameters.ReferencedAssemblies.Add("xunit.core.dll");
             parameters.ReferencedAssemblies.Add("xunit.assert.dll");
+            parameters.ReferencedAssemblies.Add("Newtonsoft.Json.dll");
+            parameters.ReferencedAssemblies.Add("Newtonsoft.Json.Schema.dll");
             // True - memory generation, false - external file generation
             parameters.GenerateInMemory = false;
             // True - exe file generation, false - dll file generation

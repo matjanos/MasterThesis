@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Xml;
 using Flurl;
@@ -37,7 +38,8 @@ namespace MasterThesis.RestTestsGenerator.IntermediateCodeGenerator
             WriteEndElement();
         }
 
-        public void WriteResourceUseCases(Resource resource, IDictionary<string, string> schema, string currentUri, IUseCaseBuilder useCaseBuilder)
+        public void WriteResourceUseCases(Resource resource, IDictionary<string, string> schema, string currentUri,
+            IUseCaseBuilder useCaseBuilder, RamlTypesOrderedDictionary types)
         {
             Log.Debug("Writing data for {0} resource..", resource.DisplayName);
 
@@ -52,7 +54,8 @@ namespace MasterThesis.RestTestsGenerator.IntermediateCodeGenerator
             WriteAttributeString("name", resource.DisplayName);
             WriteAttributeString("link", resourceUri);
 
-            var useCases = useCaseBuilder.GetUseCases(resource);
+            var useCases = useCaseBuilder.GetUseCases(resource, types);
+
             foreach (var useCase in useCases)
             {
                 PrintUseCase(resourceUri, useCase);
@@ -62,7 +65,7 @@ namespace MasterThesis.RestTestsGenerator.IntermediateCodeGenerator
 
             foreach (var innerResource in resource.Resources)
             {
-                WriteResourceUseCases(innerResource, schema, resourceUri, useCaseBuilder);
+                WriteResourceUseCases(innerResource, schema, resourceUri, useCaseBuilder, types);
             }
         }
 

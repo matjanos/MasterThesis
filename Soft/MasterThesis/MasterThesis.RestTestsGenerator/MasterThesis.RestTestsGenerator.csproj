@@ -39,6 +39,9 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json.Schema">
+      <HintPath>..\packages\Newtonsoft.Json.Schema.2.0.6\lib\net45\Newtonsoft.Json.Schema.dll</HintPath>
+    </Reference>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.4.3.7\lib\net45\NLog.dll</HintPath>
       <Private>True</Private>
@@ -84,6 +87,7 @@
     <Compile Include="UnitTestWriters\XUnitTestWriter.cs" />
     <Compile Include="UseCaseGenerators\CheckMethodCodeUseCaseBuilder.cs" />
     <Compile Include="UseCaseGenerators\CompositeUseCaseBuilder.cs" />
+    <Compile Include="UseCaseGenerators\ContentCheckUseCaseBuilder.cs" />
     <Compile Include="UseCaseGenerators\ContentSchemaCheckUseCaseBuilder.cs" />
     <Compile Include="UseCaseGenerators\RequestHeaderCheckUseCaseBuilder.cs" />
     <Compile Include="UseCaseGenerators\IUseCaseBuilder.cs" />

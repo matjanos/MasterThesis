@@ -31,7 +31,7 @@ securedBy: [ oauth_2_0 , clientId ]
 /media:
   /{mediaId}:
     type: base
-    (mediaId): "392839750589921094_287676068"
+    (mediaId): "1338612569593807801_287676068"
     get:
       description: |
         Get information about a media object. The returned type key will allow you
@@ -157,7 +157,7 @@ securedBy: [ oauth_2_0 , clientId ]
 /users:
   /{userId}:
     type: base
-    (userId): "391387866"
+    (userId): "287676068"
     get:
       description: Get basic information about a user.
       responses:
@@ -303,6 +303,7 @@ securedBy: [ oauth_2_0 , clientId ]
               type: types.Locations
 /geographies/{geoId}/media/recent:
   type: base
+  (geoId): ""
   get:
     is: [ limitable ]
     description: |
