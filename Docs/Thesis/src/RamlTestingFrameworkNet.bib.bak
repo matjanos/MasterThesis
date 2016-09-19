@@ -740,7 +740,7 @@ year = {2009}
   url       = {http://dx.doi.org/10.1016/j.csi.2016.03.004},
 }
 
-@Book{edsnuk.vtls00239051619780101,
+@Book{DeMarco1978,
   title     = {Structured analysis and system specification / by Tom DeMarco ; forew. by P. J. Plauger.},
   publisher = {Prentice-Hall},
   year      = {1978},

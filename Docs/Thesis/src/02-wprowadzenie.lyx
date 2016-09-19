@@ -449,8 +449,15 @@ key "DBLP:journals/csi/NavarroS16"
  Jest to protokół który pozwala na przekazywanie tych informacji między
  aplikacjami zaprogramowanymi w różnych technologiach poprzez odpowiednią
  serializację.
- Końcówki obsługujące komunikację SOAP, posiadają również swoją specyfikację,
- która opisuje jakie operacje można wykonywać przy użyciu danej usługi,
+ Końcówki obsługujące komunikację SOAP, posiadają również swoją specyfikację
+ w języku XML
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Specyfikacja-SOAP-XML"
+
+\end_inset
+
+, która opisuje jakie operacje można wykonywać przy użyciu danej usługi,
  jakie parametry mogą zostać do niej przekazane i jakiego typu dane wynikowe
  są zwracane.
  Okazuje się jednak, że narzut metadanych wykorzystywanych przez SOAP ma
@@ -1033,6 +1040,31 @@ key "Newman2015"
 \emph on
 RAML
 \emph default
+.
+\end_layout
+
+\begin_layout Standard
+Wpomniany wcześniej, w punkcie
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Specyfikacja-SOAP-XML"
+
+\end_inset
+
+, SOAP posiada specyfikację interfejsu sieciowego wbudowaną w sam protokół.
+ Ta formalna dokumentacja opisana jest w jezyku XML o schamacie zdefiniowanym
+ jako WSDL (
+\emph on
+ang.
+ Web Services Description Language
+\emph default
+)
+\begin_inset CommandInset citation
+LatexCommand cite
+key "citeulike:99946"
+
+\end_inset
+
 .
 \end_layout
 
