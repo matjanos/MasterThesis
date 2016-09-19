@@ -1073,7 +1073,7 @@ Koszty rozwoju i utrzymania
 \end_layout
 
 \begin_layout Standard
-Koszty wytworzenia dokumentacji szacunkowo wynoszą 11%
+Koszty wytworzenia dokumentacji szacunkowo wynoszą ok 11%
 \begin_inset CommandInset citation
 LatexCommand cite
 key "DBLP:conf/iwsm/Sanchez-RosadoRMCMG09"
@@ -1307,8 +1307,10 @@ key "DBLP:conf/edoc/SaezAWM14"
 \end_layout
 
 \begin_layout Standard
-W ostatnich latach odchodzi się od testowania ręcznego na rzecz pełnej automatyz
-acji testów
+Mikrousługi jako koncepcja, wymaga również zapewnienia w pełni zautomatyzowanego
+ dostarczania oprogramowania.
+ Oznacza to, że powinno się zrezygnować z testów ręcznych na rzecz rzetelnie
+ sporządzonych testów automatycznych
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Newman2015"
