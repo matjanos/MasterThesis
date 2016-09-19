@@ -138,7 +138,14 @@ Procesem rozwoju oprogramowania rządzi szereg podstawowych zasad, które
  kodu.
  Jedną z najważniejszch w ocenie autora reguł jest zasada pojedynczej odpowiedzi
 alności, stanowiąca o tym, że każda funkcjonalność powinna być realizowana
- przez jedną wydzieloną część kodu i tylko przez nią.
+ przez jedną wydzieloną część kodu i tylko przez nią
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DeMarco1978"
+
+\end_inset
+
+.
  Na poziomie programowania zorientowanego obiektowo jest to klasa, na poziomie
  projektu jest to pakiet, a na poziomie architektury może być to komponent.
  Koncepcja projektowania aplikacji w oparciu o tę zasadę została nazwana
