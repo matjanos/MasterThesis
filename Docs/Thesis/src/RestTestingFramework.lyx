@@ -363,8 +363,8 @@ lności, które komunikując się ze sobą w środowisku sieciowym, wspólnie re
 ia dodatkowych testów, które zweryfikują czy interfejsy wszystkich komponentów
  działają zgodnie z założeniami.
  Niniejsza praca ma na celu zamodelowanie i stworzenie narzędzia, które
- wygeneruje kod testów jednostkowych pokrywających połączenia między mikrousługa
-mi na podstawie formalnej specyfikacji.
+ wygeneruje kod testów integracyjnych pokrywających połączenia między mikrousług
+ami na podstawie formalnej specyfikacji.
 \end_layout
 
 \begin_layout --Separator--
@@ -386,8 +386,8 @@ Nowadays, when we observe increasing demand for scalable systems, there
  additional tests that verify whether interfaces of each service work under
  the dictates of initial assumptions.
  The present work has a purpose to model and create a tool, which generates
- unit tests code covering microservices boundaries, basing` on formal specificat
-ion.
+ integration tests code covering microservices boundaries, basing on formal
+ specification.
 \end_layout
 
 \begin_layout Standard

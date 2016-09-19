@@ -966,7 +966,7 @@ wczytuje ścieżkę pliku specyfikacji przekazany jako parametr wywołania aplik
 \end_layout
 
 \begin_layout Enumerate
-uruchamia prototyp w celu generacji kodu testów jednostkowych;
+uruchamia prototyp w celu generacji kodu testów;
 \end_layout
 
 \begin_layout Enumerate

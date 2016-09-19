@@ -112,7 +112,7 @@ o na architekturze mikroserwisowej, powstaje coraz więcej usług, które komuni
  punktów styku między usługami (and.
  end points) pod kątem ich poprawności i zgodności ze specyfikacją.
  Zgodnie z wiedzą autora, w systemach zgodnych z architekturą mikroserwisową,
- testy jednostkowe skupiają się na funkcjonalnościach każdej z usług, a
+ testy integracyjne skupiają się na funkcjonalnościach każdej z usług, a
  walidacja poprawności zwracania i wymiany danych jest często ignorowana.
  W środowisku pracy zorganizowanym wokół mikroserwisów krytyczna jest komunikacj
 a między zespołami pracującymi nad połączonymi mikrousługami.
@@ -130,10 +130,10 @@ Cel pracy
 
 \begin_layout Standard
 Niniejsza praca ma na celu zaprezentowanie modelu narzędzia do generowania
- testów jednostkowych połączeń między mikrousługami na podstawie ich specyfikacj
-i zapisanej w języku RAML, zaimplementowanie tego modelu w języku C#, a
- także dokonanie weryfikacji istniejącego systemu opartego o komunikację
- REST w celu oceny skuteczności zaproponowanego rozwiązania.
+ testów połączeń między mikrousługami na podstawie ich specyfikacji zapisanej
+ w języku RAML, zaimplementowanie tego modelu w języku C#, a także dokonanie
+ weryfikacji istniejącego systemu opartego o komunikację REST w celu oceny
+ skuteczności zaproponowanego rozwiązania.
 \end_layout
 
 \begin_layout Section
@@ -169,7 +169,8 @@ API
 ), korzyści z nich płynących oraz standardów.
  Ta sekcja zostanie opisana na przykładzie języka RAML w wersji 1.0.
  W końcowej części tego rozdziału zaprezentowany zostanie koncept testowania
- jednostkowego, zasady pisania takich testów oraz korzyści z nich płynące.
+ jednostkowego i integracyjnego, zasady pisania takich testów oraz korzyści
+ z nich płynące.
  
 \end_layout
 

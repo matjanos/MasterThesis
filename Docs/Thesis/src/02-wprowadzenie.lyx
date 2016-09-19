@@ -200,6 +200,13 @@ ang.
  Należy zwrócić jednak uwagę na to, że ukryte modele, mają wpływ na to czy
  książka będzie oznaczona jako możliwa do wypożyczenia, więc jak najbardziej
  mają znaczenie dla działania danego kontekstu.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Newman2015,Evans2004"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
