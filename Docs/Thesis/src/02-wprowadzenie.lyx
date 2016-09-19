@@ -129,7 +129,7 @@ key "TankovicBogunovicGrbacEtAl2015"
 \end_layout
 
 \begin_layout Subsection
-Domain Driven Design jako źródło mikrousług
+Domain Driven Design
 \end_layout
 
 \begin_layout Standard
@@ -199,14 +199,30 @@ ang.
  jest modelem prezentowanym na zewnątrz.
  Należy zwrócić jednak uwagę na to, że ukryte modele, mają wpływ na to czy
  książka będzie oznaczona jako możliwa do wypożyczenia, więc jak najbardziej
- mają znaczenie dla działania danego kontekstu.
+ mają znaczenie dla działania danego kontekstu
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Newman2015,Evans2004"
 
 \end_inset
 
+.
+\end_layout
 
+\begin_layout Standard
+Projektowanie sterowane dziedziną stało się skutecznym sposobem podzielenia
+ domeny problemu na mniejsze konteksty i jasnego określenia połączeń między
+ nimi.
+ Mimo, że ten proces proces sprawdza się zarówno w systemach monolitycznych
+ jak i opartych o mikrousługi, to naturalnie definiuje granice poszczególnych
+ usług
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Fowler2014"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
