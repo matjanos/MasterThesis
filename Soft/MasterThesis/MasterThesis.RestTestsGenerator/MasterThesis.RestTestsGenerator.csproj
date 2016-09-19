@@ -87,7 +87,6 @@
     <Compile Include="UnitTestWriters\XUnitTestWriter.cs" />
     <Compile Include="UseCaseGenerators\CheckMethodCodeUseCaseBuilder.cs" />
     <Compile Include="UseCaseGenerators\CompositeUseCaseBuilder.cs" />
-    <Compile Include="UseCaseGenerators\ContentCheckUseCaseBuilder.cs" />
     <Compile Include="UseCaseGenerators\ContentSchemaCheckUseCaseBuilder.cs" />
     <Compile Include="UseCaseGenerators\RequestHeaderCheckUseCaseBuilder.cs" />
     <Compile Include="UseCaseGenerators\IUseCaseBuilder.cs" />

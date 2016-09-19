@@ -675,7 +675,7 @@ year = {2009}
   url          = {https://rfc-editor.org/rfc/rfc6749.txt},
 }
 
-@Misc{Charles2013,
+@Misc{InstagramApiRaml,
   author       = {RAML Comunity},
   title        = {RAML APIs},
   howpublished = {\url{https://github.com/raml-apis/Instagram}},

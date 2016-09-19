@@ -89,29 +89,59 @@ namespace MasterThesis.RestTestsGenerator.IntermediateCodeGenerator
         {
             string relativeUri = resource.RelativeUri;
 
-            // with default parameters
-            foreach (var uriParameter in resource.UriParameters)
-            {
-                StringBuilder sb = new StringBuilder(uriParameter.Key.Length + 2);
-                sb.Append('{');
-                sb.Append($"{uriParameter.Key}");
-                sb.Append('}');
-                if (uriParameter.Value.Default != null ||
-                    (resource.Annotations != null && resource.Annotations.ContainsKey(uriParameter.Key)))
-                {
-                    relativeUri = relativeUri.Replace(sb.ToString(), uriParameter.Value.Default ??
-                                                                     resource.Annotations?[uriParameter.Key]?.ToString() ??
-                                                                     sb.ToString());
-                }
-                else
-                {
-                    relativeUri = relativeUri.Replace(sb.ToString(), "xxxxxxx");
-                    Log.Warn($"There is no placeholder defined for {uriParameter.Key}");
-                }
-            }
 
-            return relativeUri;
-        }
+            foreach (var method in resource.Methods)
+            {
+                if (method.QueryParameters == null)
+                    continue;
+
+                foreach (var queryParam in method.QueryParameters)
+                {
+
+                    StringBuilder sb = new StringBuilder(queryParam.Key.Length + 2);
+                    sb.Append('{');
+                    sb.Append($"{queryParam.Key}");
+                    sb.Append('}');
+                    if (queryParam.Value.Example != null)
+                    {
+                        if (!relativeUri.Contains("?"))
+                            relativeUri += "?";
+                        else
+                            relativeUri += "&";
+
+                        relativeUri += $"{queryParam.Key}={queryParam.Value.Example.Replace(',','.')}";
+                    }
+                    else
+                    {
+                        relativeUri = relativeUri.Replace(sb.ToString(), "xxxxxxx");
+                        Log.Warn($"There is no placeholder defined for {queryParam.Key}");
+                    }
+                }
+                }
+
+                // with default parameters
+                foreach (var uriParameter in resource.UriParameters)
+                {
+                    StringBuilder sb = new StringBuilder(uriParameter.Key.Length + 2);
+                    sb.Append('{');
+                    sb.Append($"{uriParameter.Key}");
+                    sb.Append('}');
+                    if (uriParameter.Value.Default != null ||
+                        (resource.Annotations != null && resource.Annotations.ContainsKey(uriParameter.Key)))
+                    {
+                        relativeUri = relativeUri.Replace(sb.ToString(), uriParameter.Value.Default ??
+                                                                         resource.Annotations?[uriParameter.Key]?.ToString() ??
+                                                                         sb.ToString());
+                    }
+                    else
+                    {
+                        relativeUri = relativeUri.Replace(sb.ToString(), "xxxxxxx");
+                        Log.Warn($"There is no placeholder defined for {uriParameter.Key}");
+                    }
+                }
+
+                return relativeUri;
+            }
 
         private void WriteHeaders(IEnumerable<KeyValuePair<string, string>> headers)
         {

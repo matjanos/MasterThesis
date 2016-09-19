@@ -85,7 +85,6 @@ namespace MasterThesis.DemoRunner
             useCaseBuilder.AddUseCaseBuilder(new RequestHeaderCheckUseCaseBuilder());
             useCaseBuilder.AddUseCaseBuilder(new ContentSchemaCheckUseCaseBuilder());
             useCaseBuilder.AddUseCaseBuilder(new ResponseHeaderPatternCheckUseCaseBuilder());
-            useCaseBuilder.AddUseCaseBuilder(new ContentCheckUseCaseBuilder());
             return useCaseBuilder;
         }
 

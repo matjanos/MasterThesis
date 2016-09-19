@@ -387,7 +387,16 @@ key "InstagramApiRaml"
 \end_inset
 
 .
- 
+ Okazało się jednak, że udostępniona specyfikacja nie jest aktualna i nie
+ do końca odpowiada obecnemu stanowi interfejsu programistycznego
+\begin_inset CommandInset citation
+LatexCommand cite
+key "InstaDocs,InstagramApiRaml"
+
+\end_inset
+
+, więc wymagane było wprowadzenie uaktualnień zgodnie z aktualną specyfikacją
+ umieszczoną na stronie internetowej.
 \end_layout
 
 \begin_layout Standard
@@ -416,7 +425,7 @@ Annotations
 , w celu zdefiniowania wyroczni (metoda opisana w sekcji 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Opis-działania-aplikacji"
+reference "sec:Opis działania aplikacji"
 
 \end_inset
 
@@ -571,6 +580,639 @@ Przykładowe wyjście narzędzia
 
 \begin_layout Section
 Otrzymane wyniki i rezultaty
+\end_layout
+
+\begin_layout Standard
+Prototyp narzędzia wygenerował 30 testów.
+ Pokrywają one 7 następujących zasobów:
+\end_layout
+
+\begin_layout Itemize
+Użytkownicy (
+\emph on
+ang.
+ Users
+\emph default
+) - 
+\end_layout
+
+\begin_layout Itemize
+Powiązania między użytkownikami (
+\emph on
+ang.
+ Relationships
+\emph default
+)
+\end_layout
+
+\begin_layout Itemize
+Zdjęcia lub filmy (
+\emph on
+ang.
+ Media
+\emph default
+)
+\end_layout
+
+\begin_layout Itemize
+Komentarze (
+\emph on
+ang.
+ Comments
+\emph default
+)
+\end_layout
+
+\begin_layout Itemize
+Polubienia (
+\emph on
+ang.
+ Likes
+\emph default
+)
+\end_layout
+
+\begin_layout Itemize
+Słowa kluczowe (
+\emph on
+ang.
+ Tags
+\emph default
+)
+\end_layout
+
+\begin_layout Itemize
+Lokalizacje (
+\emph on
+ang.
+ Locations
+\emph default
+)
+\end_layout
+
+\begin_layout Standard
+Testy objęły wykonanie wielu operacji w serwisie Instagram, na które złożyły
+ się:
+\end_layout
+
+\begin_layout Itemize
+wyświetlanie zasobów,
+\end_layout
+
+\begin_layout Itemize
+usuwanie zasobów,
+\end_layout
+
+\begin_layout Itemize
+dodawanie zasobów.
+\end_layout
+
+\begin_layout Standard
+W ramach testów zweryfikowano następujące informacje:
+\end_layout
+
+\begin_layout Itemize
+zgodność kodu HTTP odpowiedzi,
+\end_layout
+
+\begin_layout Itemize
+zgodność odpowiedzi ze schematem,
+\end_layout
+
+\begin_layout Itemize
+zgodność nagłówków odpowiedzi,
+\end_layout
+
+\begin_layout Itemize
+zgodność formatu odpowiedzi.
+\end_layout
+
+\begin_layout Standard
+Test został przeprowadzony w 6 powtórzeniach przy czym zapewniono, aby kolejność
+ wywoływania testów była losowa.
+ Wyniki zaprezentowano w tabeli 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Wyniki-przeprowadzonych-testów"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float table
+wide true
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Iteracja
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Wynik
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Wykonano: 30
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sukces: 30
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Porażka: 0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Wykonano: 30
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sukces: 29
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Porażka: 1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Wykonano: 30
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sukces: 28
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Porażka: 2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Wykonano: 30
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sukces: 28
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Porażka: 2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Wykonano: 30
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sukces: 29
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Porażka: 1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Wykonano: 30
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sukces: 28
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Porażka: 2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align right
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Wyniki-przeprowadzonych-testów"
+
+\end_inset
+
+Wyniki przeprowadzonych testów
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Niedeterministyczne testy dotyczyły dodawania, usuwania oraz wyświetlania
+ polubień, a więc następujących operacji HTTP pod wskazanym adresem (usunięto
+ parametr 
+\emph on
+access_token
+\emph default
+, który w tym przypadku nie ma znacznia):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+GET https://api.instagram.com/v1/media/1338612569593807801_287676068/likes
+\end_layout
+
+\begin_layout Plain Layout
+POST https://api.instagram.com/v1/media/1338612569593807801_287676068/likes
+\end_layout
+
+\begin_layout Plain Layout
+DELETE https://api.instagram.com/v1/media/1338612569593807801_287676068/likes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Były to jedyne testy, które manipulowały danymi.
+ Wszystkie inne zapytania w zbiorze wygenerowanych testów były wywołaniami
+ typu GET, więc nie zmieniały stanu systemu online.
+\end_layout
+
+\begin_layout Standard
+W celu wizualizacji testów uruchomiono je również w graficznym środowisku
+ programistycznym Visual Studio 2015, a ich wynik zaprezentowany jest na
+ rysunku 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Testy-uruchomione-w"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/testy-wynik.png
+	scale 61
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Testy-uruchomione-w"
+
+\end_inset
+
+Testy uruchomione w środowisku programistycznym Visual Studio 2015.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body

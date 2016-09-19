@@ -53,6 +53,25 @@ securedBy: [ oauth_2_0 , clientId ]
             body:
               application/json:
                 type: types.MediaComment
+                example: |
+                  {
+                  "meta": {
+                      "code": 200
+                  },
+                  "data": [
+                      {
+                      "created_time": "1473797841",
+                      "text": "Prawie robi wielka ró¿nice",
+                      "from": {
+                          "username": "kamil518",
+                          "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/s150x150/14359982_1784913531753031_570946720_a.jpg",
+                          "id": "192477807",
+                          "full_name": "Kamil Oœliz³o"
+                      },
+                      "id": "17851823476094686"
+                      }
+                    ]
+                  }
       post:
         description: Create a comment on a media. Please email apidevelopers[at]instagram.com for access.
         body:
@@ -61,19 +80,6 @@ securedBy: [ oauth_2_0 , clientId ]
               text:
                 description: Text to post as a comment on the media as specified in {mediaId}.
                 required: true
-      /{commentId}:
-        type: { secured: { scope: comments } }
-        (commentId): "17851823476094686"
-        uriParameters:
-          commentId:
-            description: Identifier of the comment
-            type: integer
-        delete:
-          description: |
-            Remove a comment either on the authenticated user's media or authored by the authenticated user.
-          responses:
-            200:
-              description: Comment removed.
     /likes:
       type: { secured: { scope: likes } }
       get:
@@ -85,6 +91,26 @@ securedBy: [ oauth_2_0 , clientId ]
             body:
               application/json:
                 type: types.MediaLikes
+                example: |
+                  {
+                    "meta": {
+                      "code": 200
+                    },
+                    "data": [
+                      {
+                        "username": "kamil518",
+                        "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/s150x150/14359982_1784913531753031_570946720_a.jpg",
+                        "id": "192477807",
+                        "full_name": "Kamil Oœliz³o"
+                      },
+                      {
+                        "username": "ensorceler",
+                        "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/s150x150/12976576_185964258463377_764013761_a.jpg",
+                        "id": "391387866",
+                        "full_name": "Monika Zalewska"
+                      }
+                    ]
+                  }
       post:
         description: Set a like on this media by the currently authenticated user.
         responses:
@@ -124,6 +150,16 @@ securedBy: [ oauth_2_0 , clientId ]
           body:
             application/json:
               type: types.Tag
+              example: |
+                {
+                  "meta": {
+                    "code": 200
+                  },
+                  "data": {
+                    "media_count": 81699,
+                    "name": "computerscience"
+                  }
+                }
     /media/recent:
       type: base
       get:
@@ -165,6 +201,25 @@ securedBy: [ oauth_2_0 , clientId ]
           body:
             application/json:
               type: types.UserAccount
+              example: |
+                {
+                  "meta": {
+                    "code": 200
+                  },
+                  "data": {
+                    "username": "matjanos",
+                    "bio": "",
+                    "website": "",
+                    "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/11881894_403830066488300_1587261808_a.jpg",
+                    "full_name": "Kuba",
+                    "counts": {
+                      "media": 2,
+                      "followed_by": 101,
+                      "follows": 82
+                    },
+                    "id": "287676068"
+                  }
+                }
     /follows:
       type: usersListing
       get:
@@ -189,6 +244,17 @@ securedBy: [ oauth_2_0 , clientId ]
             body:
               application/json:
                 type: types.Relationships
+                example: |
+                  {
+                    "meta": {
+                    "code": 200
+                    },
+                    "data": {
+                    "outgoing_status": "none",
+                    "target_user_is_private": true,
+                    "incoming_status": "none"
+                    }
+                  }
       post:
         description: Modify the relationship between the current user and the target user.
         body:
@@ -220,7 +286,7 @@ securedBy: [ oauth_2_0 , clientId ]
         count:
           description: Number of users to return.
           type: integer
-          example: 10
+          example: 1
   /self:
     type: { secured: { scope: basic } }
     get:
@@ -230,6 +296,25 @@ securedBy: [ oauth_2_0 , clientId ]
           body:
             application/json:
               type: types.UserAccount
+              example: |
+                {
+                  "meta": {
+                    "code": 200
+                  },
+                  "data": {
+                    "username": "matjanos",
+                    "bio": "",
+                    "website": "",
+                    "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/11881894_403830066488300_1587261808_a.jpg",
+                    "full_name": "Kuba",
+                    "counts": {
+                      "media": 2,
+                      "followed_by": 101,
+                      "follows": 82
+                    },
+                    "id": "287676068"
+                  }
+                }
     /feed:
       type: feedsListing
       get:
@@ -274,6 +359,18 @@ securedBy: [ oauth_2_0 , clientId ]
           body:
             application/json:
               type: types.Location
+              example: |
+                {
+                  "meta": {
+                    "code": 200
+                  },
+                  "data": {
+                    "latitude": 52.4,
+                    "id": "217492538",
+                    "longitude": 16.9167,
+                    "name": "Poznan, Poland"
+                  }
+                }
     /media/recent:
       type: feedsListing
       get:
@@ -287,126 +384,22 @@ securedBy: [ oauth_2_0 , clientId ]
       is: [ limitableByGeoPoint ]
       description: Search for a location by geographic coordinate.
       queryParameters:
-        foursquare_v2_id:
+        lat:
           description: |
             Returns a location mapped off of a foursquare v2 api location id. If
             used, you are not required to use lat and lng.
-        foursquare_id:
+          example: 48.858844
+        lng:
           description: |
             Returns a location mapped off of a foursquare v1 api location id. If used,
             you are not required to use lat and lng. Note that this method is deprecated;
             you should use the new foursquare IDs with V2 of their API.
+          example: 2.294351
       responses:
         200:
           body:
             application/json:
               type: types.Locations
-/geographies/{geoId}/media/recent:
-  type: base
-  (geoId): ""
-  get:
-    is: [ limitable ]
-    description: |
-      Get recent media from a geography subscription that you created.
-      Note: You can only access Geographies that were explicitly created by your
-      OAuth client. Check the Geography Subscriptions section of the real-time
-      updates page. When you create a subscription to some geography that you
-      define, you will be returned a unique geo-id that can be used in this
-      query. To backfill photos from the location covered by this geography,
-      use the media search endpoint.
-    queryParameters:
-      min_id:
-        description: Return media before this min_id.
-        type: integer
-        example: 0
-    responses:
-      200:
-/subscriptions:
-  type: base
-  get:
-    description: List subscriptions
-    queryParameters:
-      client_id:
-        description: "Application's client id"
-        required: true
-      client_secret:
-        description: "Application's client secret"
-        required: true
-    responses:
-      200:
-        body:
-          application/json:
-            type: types.SubscriptionsGet
-    securedBy: [ oauth_2_0 ]
-  post:
-    description: Create a subscription
-    body:
-      application/x-www-form-urlencoded:
-        properties:
-          client_id:
-            description: "Application's client id"
-            required: true
-          client_secret:
-            description: "Application's client secret"
-            required: true
-          object:
-            description: "The object you'd like to subscribe to."
-            enum:
-              - location
-              - user
-              - geography
-              - tag
-          object_id:
-            description: "Used for user, location and tag subscriptions only. Required. In case of user and location represents 'id' of the desired object. In case of tag represents 'name' of the desired tag."
-          aspect:
-            description: |
-              The aspect of the object you'd like to subscribe to. Note that we only support "media" at this time, but we might support other types of subscriptions in the future.
-          callback_url:
-            description: |
-              When we have new updates to send your server, we do a simple POST with a payload containing updates to a URL on your server. This callback URL must support GET and POST methods.
-
-              When you add a subscription, we will send a GET request to your callback URL to verify the existence of the URL and that want to create the subscription. When we have new data, we'll POST this data to your callback URL. We'll explain more about what this URL needs to do later on this page.
-            required: true
-          lat:
-            displayName: ""
-            description: "Geography area's center latitude. Used for geography subscription only. Required."
-            type: number
-          lng:
-            description: "Geography area's center longitude. Used for geography subscription only. Required."
-            type: number
-          radius:
-            description: "Geography area's radius.Used for geography subscription only. Required."
-            type: number
-    responses:
-      200:
-        body:
-          application/json:
-            type: types.SubscriptionPost
-  delete:
-    description: Selete a subscription
-    queryParameters:
-      client_id:
-        description: "Application's client id"
-        required: true
-      client_secret:
-        description: "Application's client secret"
-        required: true
-      id:
-        description: Id of subscription to be removed.
-      object:
-        description: "If you'd like to remove all subscriptions of a certain object type, you may include the object type. Also you can clear all your current subscriptions by setting 'object' to 'all'."
-        enum:
-          - geography
-          - location
-          - tag
-          - user
-          - all
-    responses:
-      200:
-        body:
-          application/json:
-            type: types.SubscriptionsDelete
-    securedBy: [ oauth_2_0 ]
 documentation:
   - title: Authentication
     content: !include docs/authentication.md

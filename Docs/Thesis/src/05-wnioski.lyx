@@ -80,16 +80,563 @@ Wnioski i podsumowanie
 Analiza rezultatów testów
 \end_layout
 
+\begin_layout Subsection
+Pokrycie API przez wygenerowane testy
+\end_layout
+
+\begin_layout Standard
+Testy wygenerowane przez prototyp pokryły znaczącą część informacji niesionych
+ przez specyfikację RAML.
+ Zaliczyć do nich można:
+\end_layout
+
+\begin_layout Itemize
+Weryfikacja kodu odpowiedzi zapytania HTTP,
+\end_layout
+
+\begin_layout Itemize
+Weryfikacja formatu odpowiedzi (wszystkie anazlizowane w formacie 
+\emph on
+application/json
+\emph default
+),
+\end_layout
+
+\begin_layout Itemize
+Weryfikacja struktury zwracanego obiektu z jego schematem,
+\end_layout
+
+\begin_layout Itemize
+Weryfikacja konkretnej odpowiedzi na podstawie parametrów zapytań zdefiniowanych
+ w specyfikacji RAML w postacji pól opcjonalnych 
+\emph on
+Annotations,
+\end_layout
+
+\begin_layout Itemize
+Obecność nagłówków i ich zgodność z oczekiwanymi wartościami.
+\end_layout
+
+\begin_layout Standard
+Wszystkie te testy były generowane pod warunkiem istnienia w specyfikacji
+ informacji na ich temat.
+ 
+\end_layout
+
+\begin_layout Subsection
+Niedeterminizm testów
+\end_layout
+
+\begin_layout Standard
+Podczas wykonywania testów okazało się, że są one niedeterministyczne, co
+ wymagało rzetelnej weryfikacji ich poprawności.
+ Testy, istotnie, były wygenerowane poprawnie, ale nie uwzględniały zmieniająceg
+o się stanu aplikacji testowanej podczas wykonywania testów.
+ 
+\end_layout
+
+\begin_layout Standard
+Przypadek, który został zidentyfikowany dotyczył trzech testów, które w
+ zależności od kolejności w jakiej zostały wykonane dawały różne rezultaty.
+ Testy te wykorzystywały następujące oparacje:
+\end_layout
+
+\begin_layout Itemize
+polubienie zdjęcia (+),
+\end_layout
+
+\begin_layout Itemize
+usunięcie polubienia zdjęcia (-),
+\end_layout
+
+\begin_layout Itemize
+wyświetlenie wszystkich polubień danego zdjęcia (?).
+\end_layout
+
+\begin_layout Standard
+Wspomnieć należy, że raz dodane zdjęcie, przy kolejnym dodaniu zwróci wynik
+ inny niż oczekiwany.
+ Podobne zachowanie zaobserwujemy usuwając już usunięte polubienie.
+ 
+\end_layout
+
+\begin_layout Standard
+Testy podczas sześciokrotnej próby uruchomienia ich wszystkich razem wykonywały
+ się w następujących sekwencjach:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Iteracja
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kolejność
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ilość błędów
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
++ ? - 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+? + -
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+? - +
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
++ - ?
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+- + ?
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+- ? +
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+W pierwszej iteracji dodajemy nowe polubienie, następnie weryfikujemy czy
+ ono istnieje, a potem je usuwamy.
+ W drugiej iteracji sprawdzamy, czy polubienie istnieje, ale zostało usunięte
+ w iteracji 1., więc ten test złamie asercję.
+ Następnie z sukcesem dodajemy i usuwamy polubienie.
+ W trzeciej iteracji najpierw sprzewdzano wynik zapytania o polubienie,
+ a następnie je usuwano - obie te operacje wygenerowały błąd.
+ Dodanie się powiodło.
+ Idąc tym schematem w iteracji czwartej wystąpiły dwa błędy a w piątej i
+ szóstej po jednym.
+\end_layout
+
+\begin_layout Standard
+Niedeterminizm jest spowodowany błędnym założeniem o stałym stanie systemu.
+\end_layout
+
 \begin_layout Section
 Wnioski
+\end_layout
+
+\begin_layout Standard
+Prototyp mimo swojej prostoty, był w stanie wygenerować 27 w pełni poprawnych
+ testów dla specyfikacji obejmującej jedynie 7 typów zasobów.
+ Udało się stworzyć w pełni automatyczne narzędzie, które oprócz generacji,
+ kompiluje i uruchamia testy bez jakiejkolwiek ingerencji użytkownika lub
+ programisty.
+ W znaczącym stopniu może usprawnić to proces weryfikacji i kontroli istniejącyc
+h systemów wyposażonych w interfejsy programistycze oparte o wzorzec REST.
+ Stworzony prototyp może być uruchamiany cyklicznie lub jako element procesu
+ ciągłej integracji i ciągłego dostarczania oprogramowania.
+ Wydaje się, że w znakomitej większości prototyp spełnił oczekiwania i okazał
+ się bardzo obiecującym narzędziem w codziennym procesie wytwarzania oprogramowa
+nia.
+\end_layout
+
+\begin_layout Standard
+Weryfikacja rozwiązania przy użyciu rzeczywistego systemu, obnażyło jednak
+ jeden ważny błąd koncepcyjny.
+ Zaproponowane rozwiązanie oparte było o założenie, że stan systemu jest
+ zawsze taki sam, czyli po wykonaniu testowanej operacji, wróci do stanu
+ sprzed uruchomienia testu.
+ 
+\end_layout
+
+\begin_layout Standard
+Ponadto testowanie systemu w środowisku niewyizolowanym dopuszcza ingerencję
+ osób trzecich w stan systemu.
+ W środowisku produkcyjnym, jakie zostało przetestowane, zmiany zbioru komentarz
+y lub ilości polubień są na porządku dziennym, więc cykliczna jego weryfikacjia
+ przy stałych założeniach stanu początkowego jest bezcelowe.
+ 
+\end_layout
+
+\begin_layout Standard
+Powyższe problemu nie eliminują jednak zaproponowanego rozwiązania, ale
+ wymagają pewnych modyfikacji.
+\end_layout
+
+\begin_layout Subsection
+Odpowiedzi na problemy
+\end_layout
+
+\begin_layout Subsubsection
+Zmieniający się stan aplikacji
+\end_layout
+
+\begin_layout Standard
+Jak wykazano podczas testów narzędzia, problemy są powodowane głównie przez
+ to, że operacje na tym samym zbiorze danych wykonywane są w losowej kolejności.
+ Utrzymanie stałej kolejności wykonywania tych operacji, całkowicie eleminuje
+ problem niedeterminizmu, a ponadto dostarcza dodatkowej weryfikacji stanu
+ aplikacji po wykonaniu konkretnej ścieżki.
+ Definicje takich ścieżek można opisać na dwa sposoby:
+\end_layout
+
+\begin_layout Itemize
+Wyszczególnienie kolejnych kroków wraz z opisanym oczekiwanym stanem po
+ wykonaniu każdego z kroków,
+\end_layout
+
+\begin_layout Itemize
+Dobranie par operacji komplementarnych, czyli takich które się wzajemnie
+ znoszą i wykonywanie ich zawsze w parach.
+\end_layout
+
+\begin_layout Standard
+Dodanie do narzędzia takiej funkcjonalności pomagałoby zbadzć, nie tylko
+ bezpośrednią odpowiedź serwera na konkretne żądanie, ale również zweryfikować
+ logikę biznesową aplikacji (np.
+ polubienie dodane w jednym momencie, umożliwia jego usunięcie w kolejnym
+ żądaniu).
+ W tym miejscu należy pamiętać również o częstej cesze systemów rozproszonych,
+ które są często budowane w architekturze mikrousługowej, a mianowicie o
+ spójności ewentualnej (
+\emph on
+ang.
+ eventual consistency
+\emph default
+)
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DBLP:conf/wetice/Shapiro11"
+
+\end_inset
+
+.
+ Oznacza ona, że po wykonaniu pewnej operacji na systemie, nie możemy oczekiwać,
+ że ta zmiana zostanie zapisana natychniast, a pozytywna odpowiedź z serwera
+ oznacza tylko przyjędzie zadania do realizacji.
+ Ta kwestia może zostać rozwiazana za pomocą nagłówków, a dokładniej nagłówka
+ 
+\emph on
+Cache-Control.
+
+\emph default
+ Jego wartość powinna zawierać czas w jakim system gwarantuje zapisanie
+ w systemie żądania, a wartość ta powinna wynikać bezpośrednio z umowy o
+ gwarantowanym poziomie świadczenia usług (
+\emph on
+ang.
+ Service Level Agreement
+\emph default
+).
+\end_layout
+
+\begin_layout Subsubsection
+Wpływ osób trzecich na środowisko produkcyjne.
+ Wpływ testów na stan systemu.
+\end_layout
+
+\begin_layout Standard
+Istotnie, zarówno wykonywanie testów jak i operacje użytkowników na działającym
+ systemie wprowadzają rozbieżności, między założeniami o stanie systemu
+ dla testów, a faktycznym jego stanem.
+ Oczywistym rozwiązaniem w tej sytuacji jest uruchamianie testów w środowisku
+ kontrolowanym (np.
+ testowym).
+ Eliminuje to jednak ważną wartość, jaką jest monitorowanie działającego
+ systemu produkcyjnego.
+ Aby rozwiazać ten problem, można podzielić testy na dwie grupy: inwazycjną
+ i nieinwazycją.
+\end_layout
+
+\begin_layout Standard
+Inwazyjna grupa testów rzeczywiście dokonuje zmian w systemie lub weryfikuje
+ szczegółowo stan systemu (np.
+ dokładna wartość obiektów zwracanych podczas zapytań).
+ Są to zapytania, których poprawność może zostać zweryfikowana tylko w ściśle
+ kontrolowanych systemach, gdyż wynikają z innych zapytań, które wykonano
+ wcześniej.
+ Grupa testów inwazyjnych, może zostać wykonana tylko na środowisku testowym.
+\end_layout
+
+\begin_layout Standard
+Drugą grupą, są testy nieinwazyjne.
+ Weryfikacja poprawności zapytań w tych testach nie polega na porównywaniu
+ dokładnych odpowiedzi z wartością oczekiwaną, ale na przeanalizowaniu struktury
+ odpowiedzi lub wzorców nagłówków.
+ Rzeczywisty stan systemu nie powinien mieć wpływu na wynik testów, a sprawdzane
+ są jedynie mechanizmy, z których korzysta cały system.
+ Do grupy testów nieinwazycjnych można zaliczyć również testy wydajnościowe,
+ które zweryfikują np.
+ czas odpowiedzi serwera.
+ Testy nieinwazyjne mogą zostać uruchomione podczas działania aplikacji
+ w środowisku produkcyjnym, cykliczne z nich korzystanie może pomóc wykryć
+ niepożądane rozbiezności między oczkiwaną, a rzeczywistą jakością pracy
+ serwisów.
 \end_layout
 
 \begin_layout Section
 Kierunki rozwoju
 \end_layout
 
+\begin_layout Standard
+Prototyp, mimo, że spełnił wyznaczone cele, może zostać rozwinięty.
+ Podczas opracowywania modelu rozwiązania oraz przeprowadzania testów, ujawniło
+ się wiele kwestii, które nie były przedmiotem pierwotnej analizy problemu,
+ a mogą zostać rozwiązane za pomocą niewielkich modyfikacji w narzędziu
+ stworzonym na potrzeby tej pracy.
+ Zdaniem autora, wyszczególnić można trzy główne kierunki rozwoju:
+\end_layout
+
+\begin_layout Itemize
+wsparcie dla innych typów specyfikacji formalnych (Swagger, BluePrint) oraz
+ wsparcie dla innych języków programowania (Java, Python, C++, JavaScript,
+ Go)
+\end_layout
+
+\begin_layout Itemize
+rozwinięcie sposobu przeprowadzania testów (ścieżki wywołań, dobieranie
+ par operacji komplementarnych, autoryzacja użytkowników OAuth 2.0, dodatki
+ dla narzędzi ciągłej integracji - Jenkins/TeamCity)
+\end_layout
+
+\begin_layout Itemize
+zaimplementowanie nowych kryteriów weryfikacji (czasa odpowiedzi, prędność
+ przesyłu danych, wartość danych według przedziałów)
+\end_layout
+
+\begin_layout Standard
+Dzięki temu, że rozwiązanie zostało zaprojektowanie modularnie, wszelkie
+ zmiany opisane wyżej mogą zostać wprowadzone względnie niewielkim kosztem.
+ 
+\end_layout
+
+\begin_layout Standard
+Potencjalnie pożądaną funkcjonalnością jest raportowanie przebiegu testów
+ w postaci czytelnych wykresów oraz okresowych zestawień.
+ Takie dane byłyby z pewnością wartościową informacją dla manadżerów oraz
+ dyrektorów techniczych, sprawujących pieczę nad dużymi rozproszonymi systemami.
+\end_layout
+
 \begin_layout Section
 Podsumowanie
+\end_layout
+
+\begin_layout Standard
+Niniejsza praca miała za zadanie uświadomić czytelnika, że w obliczu zmieniający
+ch się trendów w zakresie rozwoju oprogramowania, należy rzetelnie zidentyfikowa
+ć problemy związane z tą zmianą a następnie opracować rozwiązania, które
+ zminimalizują skutki tych problemów.
+ 
+\end_layout
+
+\begin_layout Standard
+Jedną z trudności z coraz bardziej popularnymi modularnymi systemami webowymi
+ (zwanymi mikrousługami) jest trudność w ich testowaniu oraz częste zmiany
+ w specyfikacji interfejsów programistycznych.
+ Opisano koncept mikrousług, wyjaśniono podstawy działania interfejsów typu
+ REST, następnie podkreślono wagę spójnej dokumentacji technicznej oprogramownia
+, a potem odniesiono się do kwesti testowania, kładąc nacisk na opis właściwego
+ przygotowywania testów interfejsów programistycznych typu REST.
+\end_layout
+
+\begin_layout Standard
+Aby ułatwić weryfikację spójności interfejsów programistycznych ze specyfikacją,
+ zaprojektowano i stworzono prototyp narzędzia, które na podstawie dokumentacji
+ interfejsów programistycznych API generuje definicje testów, a następnie
+ na ich podstawie tworzy kod źródłowy testów oprogramowania w języku C#
+ dla biblioteki xUnit.
+ 
+\end_layout
+
+\begin_layout Standard
+W końcowej części zaprezentowano rezultaty testów systemu Instagram za pomocą
+ stworzonego narzędzia.
+ Zidentyfikowano kilka nieoczekiwanych problemów tego rozwiązania, oraz
+ zaproponowano szereg usprawnień oraz rozwinięć.
+\end_layout
+
+\begin_layout Standard
+Mimo, że narzędzie nie dostarcza w obecnej formie kompleksowego rozwiązania,
+ to stanowi podwaliny pod zaawansowane oprogramowanie, które może zostać
+ uruchamiane w celu utrzymywania jak najwyżeszej jakości oprogramowania.
 \end_layout
 
 \end_body

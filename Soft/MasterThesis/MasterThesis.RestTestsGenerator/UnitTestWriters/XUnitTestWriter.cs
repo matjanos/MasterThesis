@@ -64,7 +64,10 @@ namespace MasterThesis.RestTestsGenerator.UnitTestWriters
                 if (reader.NodeType == XmlNodeType.Element && reader.Name == "useCase")
                 {
                     HttpMethod method;
-                    Enum.TryParse(reader.GetAttribute("method"), out method);
+                    if (!Enum.TryParse(ToCamel(reader.GetAttribute("method")), out method))
+                    {
+                        
+                    }
 
 
                     AssertRestrictionLevel assertionLevel;
@@ -111,6 +114,13 @@ namespace MasterThesis.RestTestsGenerator.UnitTestWriters
 
 
             return list;
+        }
+
+        private static string ToCamel(string getAttribute)
+        {
+            return getAttribute;
+            return $"{Char.ToUpper(getAttribute[0])}{getAttribute.Substring(1).ToLower()}";
+            
         }
 
         private readonly IGenerator unitTestsGenerator;

@@ -35,7 +35,7 @@ namespace MasterThesis.RestTestsGenerator.Tests
             Enum.TryParse("<#=Model.ResponseCode#>", out expectedStatusCode);
 
             var method = GetMethodFromString("<#=Model.Method#>");
-            HttpRequestMessage message = new HttpRequestMessage(method, @"<#=Model.Link#>?access_token=287676068.f22a470.ff57149353f24c859f234a6b0c945049");
+            HttpRequestMessage message = new HttpRequestMessage(method, @"<#=Model.Link#><#=Model.Link.Contains("?")?"&":"?"#>access_token=287676068.f22a470.ff57149353f24c859f234a6b0c945049");
 			<#
 			foreach(var header in Model.Headers)
 			{
@@ -44,14 +44,14 @@ namespace MasterThesis.RestTestsGenerator.Tests
 		   <#
 		   }
 		   #>
-            HttpStatusCode acctualStatusCode;
+            HttpStatusCode actualStatusCode;
             string body = null;
 
             // Act
             using (HttpClient client = new HttpClient())
             using (var response = await client.SendAsync(message))
             {
-                acctualStatusCode = response.StatusCode;
+                actualStatusCode = response.StatusCode;
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -70,19 +70,19 @@ namespace MasterThesis.RestTestsGenerator.Tests
 			if(Model.AssertRestrictionLevel==MasterThesis.RestTestsGenerator.UseCases.AssertRestrictionLevel.StatusCode)
 			{
 			#>
-            Assert.Equal(expectedStatusCode, acctualStatusCode);
+            Assert.Equal(expectedStatusCode, actualStatusCode);
             <#
             }
             if(Model.AssertRestrictionLevel==MasterThesis.RestTestsGenerator.UseCases.AssertRestrictionLevel.Headers)
             {
 			#>
-            Assert.Equal(expectedStatusCode, acctualStatusCode);
+            Assert.Equal(expectedStatusCode, actualStatusCode);
             <#
             }
             if(Model.AssertRestrictionLevel==MasterThesis.RestTestsGenerator.UseCases.AssertRestrictionLevel.ResultFormat)
             {
 			#>
-            Assert.Equal(expectedStatusCode, acctualStatusCode);
+            Assert.Equal(expectedStatusCode, actualStatusCode);
             <#
             }
             if(Model.AssertRestrictionLevel==MasterThesis.RestTestsGenerator.UseCases.AssertRestrictionLevel.Structure)
@@ -95,6 +95,15 @@ namespace MasterThesis.RestTestsGenerator.Tests
             JObject obj = JObject.Parse(body);
             // Assert
             Assert.True(obj.IsValid(s));
+            <#
+			}
+            if(Model.AssertRestrictionLevel==MasterThesis.RestTestsGenerator.UseCases.AssertRestrictionLevel.Values)
+            {
+			#>
+
+            string expected = @"<#=Model.Body#>";
+
+            Assert.Equal(expected,body);
             <#
 			}
 			#>
