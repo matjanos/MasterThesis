@@ -167,7 +167,7 @@ API
 \emph default
 ), korzyści z nich płynących oraz standardów.
  Ta sekcja zostanie opisana na przykładzie języka RAML w wersji 1.0.
- W końcowej części tego rozdziału zaprezentowany zostanie koncept testowania
+ W końcowej części tego rozdziału zaprezentowany zostanie idea testowania
  jednostkowego i integracyjnego, zasady pisania takich testów oraz korzyści
  z nich płynące.
  
