@@ -215,7 +215,7 @@ Informacje o wszystkich tych zasobach można pobrać na dwa sposoby.
 \emph on
 https://api.instagram.com 
 \emph default
-w celu uzyskania w odpowiedzi samych danych (bez całości strony HTML).
+w celu pozyskania w odpowiedzi samych danych (bez całości strony HTML).
 \end_layout
 
 \begin_layout Standard
@@ -246,15 +246,18 @@ Instagram
 
 \begin_layout Standard
 Serwis Instagram istotnie umożliwia połączenia zdalne z udostępnionym interfejse
-m programistycznym, niemniej jednak wprowadzono tam procedurę w celu uzyskania
- dostępu do 
+m programistycznym, niemniej jednak w celu uzyskania dostępu do 
 \emph on
-api.instagram.com.
+api.instagram.com
+\emph default
+ należy przejść przez specjalnie przygotowaną procedurę
+\emph on
+.
  
 \end_layout
 
 \begin_layout Standard
-W pierwszej kolejności należało stworzyć klienta (
+W pierwszej kolejności należy stworzyć klienta (
 \emph on
 ang.
  client
@@ -400,9 +403,7 @@ key "InstaDocs,InstagramApiRaml"
 \end_layout
 
 \begin_layout Standard
-Specyfikacja wymagala jednak istotnych modyfikacji, aby można było użyć
- jej w testach.
- Modyfikacje dotyczyły dwóch aspektów:
+Modyfikacje dotyczyły dwóch aspektów:
 \end_layout
 
 \begin_layout Itemize

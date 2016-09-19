@@ -125,6 +125,34 @@
   timestamp = {Tue, 04 Feb 2014 07:57:09 +0100},
   url       = {http://doi.acm.org/10.1145/2505305.2505317},
 }
+
+@InProceedings{DBLP:conf/wetice/Shapiro11,
+  author    = {Marc Shapiro},
+  title     = {A Principled Approach to Eventual Consistency},
+  booktitle = {20th {IEEE} International Workshops on Enabling Technologies: Infrastructures for Collaborative Enterprises, {WETICE} 2011, Paris, France, 27-29 June 2011, Proceedings},
+  year      = {2011},
+  pages     = {1},
+  bibsource = {dblp computer science bibliography, http://dblp.org},
+  biburl    = {http://dblp.uni-trier.de/rec/bib/conf/wetice/Shapiro11},
+  crossref  = {DBLP:conf/wetice/2011},
+  doi       = {10.1109/WETICE.2011.76},
+  timestamp = {Thu, 06 Aug 2015 09:24:10 +0200},
+  url       = {http://dx.doi.org/10.1109/WETICE.2011.76},
+}
+
+@InProceedings{DBLP:conf/sosp/BirrellN83,
+  author    = {Andrew Birrell and Bruce Jay Nelson},
+  title     = {Implementing Remote Procedure Calls (Abstract)},
+  booktitle = {Proceedings of the Ninth {ACM} Symposium on Operating System Principles, {SOSP} 1983, Bretton Woods, New Hampshire, USA, October 10-13, 1983},
+  year      = {1983},
+  pages     = {3},
+  bibsource = {dblp computer science bibliography, http://dblp.org},
+  biburl    = {http://dblp.uni-trier.de/rec/bib/conf/sosp/BirrellN83},
+  crossref  = {DBLP:conf/sosp/1983},
+  doi       = {10.1145/800217.806609},
+  timestamp = {Mon, 22 Jun 2015 17:24:50 +0200},
+  url       = {http://doi.acm.org/10.1145/800217.806609},
+}
 @article{Athanasopoulos2015,
 author = {Athanasopoulos, Michael and Kontogiannis, Kostas},
 doi = {10.1016/j.jss.2014.10.038},
@@ -682,6 +710,20 @@ year = {2009}
   year         = {2016},
   journal      = {GitHub repository},
   publisher    = {GitHub},
+}
+
+@Article{DBLP:journals/csi/NavarroS16,
+  author    = {Antonio Navarro and Anayansi da Silva},
+  title     = {A metamodel-based definition of a conversion mechanism between {SOAP} and RESTful web services},
+  journal   = {Computer Standards {\&} Interfaces},
+  year      = {2016},
+  volume    = {48},
+  pages     = {49--70},
+  bibsource = {dblp computer science bibliography, http://dblp.org},
+  biburl    = {http://dblp.uni-trier.de/rec/bib/journals/csi/NavarroS16},
+  doi       = {10.1016/j.csi.2016.03.004},
+  timestamp = {Wed, 07 Sep 2016 16:00:13 +0200},
+  url       = {http://dx.doi.org/10.1016/j.csi.2016.03.004},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}

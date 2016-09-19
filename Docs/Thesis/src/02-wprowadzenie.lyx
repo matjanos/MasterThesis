@@ -345,6 +345,49 @@ name "sub:Projektowanie-interfejsów-REST"
 \end_layout
 
 \begin_layout Standard
+Mówiąc o komunikacji między usługami nie sposób nie wspomnieć o pojęciu
+ zdalnego wywoływania procedur (
+\emph on
+ang.
+ Remote Procedure Call
+\emph default
+)
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DBLP:conf/sosp/BirrellN83"
+
+\end_inset
+
+, czyli wykonywaniu operacji, które są realizowane w lokalizacji zdalnej.
+ To pojęcie zostało wprowadzone dość dawno, bo w 1983 r.
+ ale jest na tyle ogólne, że nie specyfikuje żadnych konkretnych wymagań.
+ Z czasem powstało wiele implementacji tego konceptu, takich jak np.
+ SOAP (
+\emph on
+ang.
+ Simple Object Access Protocol
+\emph default
+)
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DBLP:journals/csi/NavarroS16"
+
+\end_inset
+
+.
+ SOAP jest protokołem umożliwiającym przekazywanie obiektów zserializowanych
+ do XML przez sieć, w celu wykorzystania ich jako parametry funkcji (od
+ klienta do serwera) lub jako wynik operacji (od serwera do klienta).
+ Jest to protokół który pozwala na przekazywanie tych informacji między
+ aplikacjami zaprogramowanymi w różnych technologiach poprzez odpowiednią
+ serializację.
+ Końcówki obsługujące komunikację SOAP, posiadają również swoją specyfikację,
+ która opisuje jakie operacje można wykonywać przy użyciu danej usługi,
+ jakie parametry mogą zostać do niej przekazane i jakiego typu dane wynikowe
+ są zwracane.
+\end_layout
+
+\begin_layout Standard
 REST (
 \emph on
 ang.
