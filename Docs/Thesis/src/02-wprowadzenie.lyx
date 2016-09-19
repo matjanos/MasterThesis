@@ -274,7 +274,8 @@ Podczas projektowania interfejsów należy statrać się jak najrzadziej wykonyw
  Unikanie zmian nie zawsze będzie możliwe, ale nie każda z nich jest zmianą
  przełomową.
  Np.
- dodanie pola do zwracanego obiektu nie powinno zmienić zachowania konsumanta.
+ dodanie pola do zwracanego obiektu nie powinno zmienić zachowania aplikacji
+ konsumującej dane.
  W tym miejscu należy też wspomnieć o tym, aby konsumentów implementować
  w sposób 
 \begin_inset Quotes pld
@@ -316,7 +317,14 @@ key "Evans2004,Fowler2014"
 
 \begin_layout Standard
 Według Sama Newmana, rozróżnia się dwie techniki dekompozycji systemu monolitycz
-nego.
+nego
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Newman2015"
+
+\end_inset
+
+.
  Pierwszym są pakiety udostępniane w postaci bibliotek współdzielonych,
  a drugim moduły, które mogą mieć wydzielony stos technologiczny.
  Każde z tych rozwiązań ma zarówno szereg zalet jak i wad, co sprawia, że
@@ -493,30 +501,23 @@ key "Trachtenberg2003"
  Dodatkowo opisano dodatkowe wymaganie, które jest opcjonalne.
  Opcjonalne wymaganie wydaje się być oksymoronem, ale w dalszej części tej
  sekcji zostanie ono jasno scharakteryzowane.
+\end_layout
+
+\begin_layout Standard
+Niezmienniki wyspecyfikowane w opisie REST to
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Fielding:2000:ASD:932295"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-Niezmienniki wyspecyfikowane w opisie REST to:
+:
 \end_layout
 
 \begin_layout Enumerate
 Architektura klient-serwer - zastosowanie tej zasady pozwala rozróżnić pojęcia
  interfejsu użytkownika oraz źródła danych, a także umożliwia skalowanie
  i przenośność poszczególnych komponentów niezależnie, w zależności od potrzeb.
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Fielding:2000:ASD:932295"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Enumerate
@@ -530,13 +531,6 @@ Bezstanowość - niniejsza zasada wprowadza wymóg przekazywania wszystkich
 nia jego zawartości, aby określić naturę wywołania.
  Poprawiona jest w końcu możliwość skalownia systemu, gdyż nie trzeba skalować
  magazynu przechowującego stany aplikacji wszystkich klientów.
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Fielding:2000:ASD:932295"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Enumerate
@@ -553,13 +547,6 @@ ang.
  Projektując więc interfejsy REST, należy poświęcić dużo uwagi na określenie
  polityki częstotliwości wymuszania odświeżania danych, aby dostosować czas
  uzyskania pełnej zgodności danych do wymagań biznesowych.
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Fielding:2000:ASD:932295"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Enumerate
@@ -578,13 +565,6 @@ ang.
  Możliwe jest również mapowanie zasobów na różne aplikacje serwerowe, bez
  informowania o tym użytkownika lub dokonywanie zmian w aplikacji serwerowej
  bez zmiany implementacji aplikacji klienckich.
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Fielding:2000:ASD:932295"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Enumerate
@@ -615,7 +595,7 @@ key "DBLP:conf/icws/FokaefsS15"
  zasadę ujednoliconego interfejsu
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Athanasopoulos2015,Fielding:2000:ASD:932295"
+key "Athanasopoulos2015"
 
 \end_inset
 
@@ -667,25 +647,11 @@ Udostępnianie kodu na żądanie* - jest to zasada opcjonalna, która polega
  na umożliwieniu aplikacji klienckiej uzyskiwanie kodu, który można wykonać
  po stronie klienta.
  Przykładem przychodzącym na myśl w pierwszej kolejności jest pobieranie
- kodu JavaScript przez przeglądarki internetowe
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Fielding:2000:ASD:932295"
-
-\end_inset
-
-.
+ kodu JavaScript przez przeglądarki internetowe.
  Pozorna sprzeczność pojęcia opcjonalnego wymagania, może zostać wyjaśniona
  przez podkreślenie, że system implementujący REST powinien dać sposobność
  wykonania kodu do wykonania, ale wykorzystywanie też możliwości należy
- ograniczyć to szczególnych przypadków przy sprawdzonych warunkach
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Fielding:2000:ASD:932295"
-
-\end_inset
-
-.
+ ograniczyć to szczególnych przypadków przy sprawdzonych warunkach.
 \end_layout
 
 \begin_layout Standard
