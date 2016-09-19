@@ -887,7 +887,8 @@ Dokumentacja oprogramowania
 \end_layout
 
 \begin_layout Standard
-Dokumentacja jest nieodłączną częścią procesu wytwarzania oprogramowania
+Opracowanie dokumentacji jest nieodłączną częścią procesu wytwarzania oprogramow
+ania
 \begin_inset CommandInset citation
 LatexCommand cite
 key "DBLP:conf/acm/ViscontiC93,DBLP:conf/ecbs/BayerM06"
