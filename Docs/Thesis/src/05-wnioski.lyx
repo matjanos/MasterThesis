@@ -156,12 +156,12 @@ wyświetlenie wszystkich polubień danego zdjęcia (?).
 \begin_layout Standard
 Wspomnieć należy, że raz dodane zdjęcie, przy kolejnym dodaniu zwróci wynik
  inny niż oczekiwany.
- Podobne zachowanie zaobserwujemy usuwając już usunięte polubienie.
+ Podobne zachowanie zaobserwujemy próbując usunąć nieistniejące polubienie.
  
 \end_layout
 
 \begin_layout Standard
-Testy podczas sześciokrotnej próby uruchomienia ich wszystkich razem wykonywały
+Testy, podczas sześciokrotnej próby uruchomienia ich wszystkich razem wykonywały
  się w następujących sekwencjach:
 \end_layout
 
