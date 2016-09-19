@@ -216,7 +216,8 @@ Automatyczne testowanie interfejsów programistycznych typu RESTful
 
 \begin_layout Standard
 \align center
-Jakub Matjanowski
+inż.
+ Jakub Matjanowski
 \end_layout
 
 \begin_layout Standard
@@ -253,6 +254,94 @@ dr inż.
 
 \size large
 Poznań, 2016 r.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+null
+\backslash
+vfill
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+raggedright{
+\backslash
+itshape%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+There are only two hard things in Computer Science: cache invalidation and
+ naming things.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+par
+\backslash
+bigskip}{-- Phil Karlton}
+\backslash
+par%}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vfill
+\backslash
+vfill 
+\backslash
+clearpage
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

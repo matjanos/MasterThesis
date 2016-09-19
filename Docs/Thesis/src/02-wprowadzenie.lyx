@@ -147,6 +147,10 @@ alności, stanowiąca o tym, że każda funkcjonalność powinna być realizowan
 \emph on
  Domain Driven Design
 \emph default
+, 
+\emph on
+DDD
+\emph default
 )
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -161,10 +165,41 @@ key "Evans2004"
 
 \begin_layout Standard
 Według tego podejścia, cały proces wytwarzania oprogramowania, począwszy
- od zbieranie wymagań, przez analizę, projektowanie, implementację, aż po
+ od zbierania wymagań, przez analizę, projektowanie, implementację, aż po
  testowanie i wdrożenie powinno być oparte o wiedzę na temat wycinka rzeczywisto
 ści, który mapowany jest na oprogramowanie w celu ułatwienia lub przyspieszenia
  rozwiązywania problemów z nim związanych.
+ Proces mapowania musi się odbywać przy ścisłej współpracy z ekspertami
+ w zakresie domeny, gdyż pozwoli projektantom i analitykom zrozumieć w pełni
+ odwzorowywane procesy, a także ułatwi przygotowanie systemu na ewentualne
+ zmiany i rozszerzenia.
+\end_layout
+
+\begin_layout Standard
+Bardzo ważnym pojęciem wprowadzonym przez Erica Evansa jest związany kontekst
+ (
+\emph on
+ang.
+ bounded context
+\emph default
+).
+ Aplikacja zbudowana zgodnie z DDD zawiera wiele takich kontektstów, wewnątrz
+ których znajdują się modele opisujace dany fragment rzeczywistości.
+ Ten fragment rzeczywistości to wydzielony fragment systemu, który może
+ zostać też logicznie wydzielony z punktu widzenia wymagań biznesowych.
+ Kontekst, mimo że może dużą liczbę modeli i ich instancji to prezentuje
+ na zewnątrz tylko te najważniejsze, które mają znaczenie z punktu widzenia
+ innych związanych kontekstów.
+ Przykładem może być biblioteka system opisujący bibliotekę: kontekst związany
+ zarządzający książkami może zawierać informacje na temat uszkodzeń książek,
+ zamówień na nowe książki, harmonogramu prac renowacyjnych, itp., ale z punktu
+ widzenia związanego kontektsu czytelników, znaczenie ma tylko to czy dana
+ książka jest obecnie dostępna i można ją wypożyczyć.
+ W tym przykładzie zaprezentowany stan wypożyczenia książki i sama książka
+ jest modelem prezentowanym na zewnątrz.
+ Należy zwrócić jednak uwagę na to, że ukryte modele, mają wpływ na to czy
+ książka będzie oznaczona jako możliwa do wypożyczenia, więc jak najbardziej
+ mają znaczenie dla działania danego kontekstu.
 \end_layout
 
 \begin_layout Subsection
@@ -238,12 +273,7 @@ Podział monolitu
 
 \begin_layout Standard
 Krytyczną decyzją podczas projektowania architektury opartej o mikrousługi
- jest wybór punktów podziału systemu na związane konteksty (
-\emph on
-ang.
- bounded context
-\emph default
-)
+ jest wybór punktów podziału systemu na związane konteksty
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Evans2004,Fowler2014"
@@ -385,6 +415,15 @@ key "DBLP:journals/csi/NavarroS16"
  która opisuje jakie operacje można wykonywać przy użyciu danej usługi,
  jakie parametry mogą zostać do niej przekazane i jakiego typu dane wynikowe
  są zwracane.
+ Okazuje się jednak, że narzut metadanych wykorzystywanych przez SOAP ma
+ negatywny wpływ na jego wydajność
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DBLP:conf/services/AihkisaloP12"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
