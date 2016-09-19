@@ -102,8 +102,8 @@ Service-Oriented Architecture
 ).
  SOA to architektura łącząca wiele komponentów, których komunikacja odbywa
  się nie w granicach procesu, ale również przez sieć komputerową.
- Ściślej mówiąc, komunikacja powinna niejako ignorować fakt fizycznej lokalizacj
-i procesu wywołującego jak i wywoływanego.
+ Ściślej mówiąc, spoób komunikacji nie powinien zależeć od fizycznej lokalizacji
+ procesu wywołującego jak i wywoływanego.
  System w ten sam sposób powinien zachować się zarówno uruchomiony na jednej
  maszynie jak i na wielu maszynach mieszczących się na różnych kontynentach.
  
