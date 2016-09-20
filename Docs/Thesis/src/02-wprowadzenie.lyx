@@ -1454,6 +1454,13 @@ name "fig:Proces-tworzenia-testów"
 \end_inset
 
 Proces tworzenia testów funkcjonalnych
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DBLP:books/daglib/0017273"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset

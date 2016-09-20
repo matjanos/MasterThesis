@@ -208,7 +208,9 @@ name "fig:Przepływ-danych"
 
 \end_inset
 
-Przepływ danych
+Przepływ danych.
+ [źródło: oprac.
+ własne]
 \end_layout
 
 \end_inset
@@ -335,18 +337,6 @@ ang.
  XML.
 \end_layout
 
-\begin_layout Standard
-W ramach drugiego komponentu realizowany jest ostatni krok procesu zaproponowane
-go przez Prezze i Younga
-\begin_inset CommandInset citation
-LatexCommand cite
-key "DBLP:books/daglib/0017273"
-
-\end_inset
-
-: 
-\end_layout
-
 \begin_layout Enumerate
 Generacja implmentacji przypadka testowego (
 \emph on
@@ -354,6 +344,11 @@ ang.
  generate test case
 \emph default
 ) - translacja przypadków testowych na kod źródłowy testów.
+\end_layout
+
+\begin_layout Standard
+Punkty 1-4 realizowane są przez komponent pierwszy - generator, natomiast
+ punkt 5 algorytmu realizuje transloator.
 \end_layout
 
 \begin_layout Standard
@@ -421,7 +416,9 @@ name "fig:Diagram-klas-zaprezentowanego"
 
 \end_inset
 
-Diagram klas zaprezentowanego rozwiązania
+Diagram klas zaprezentowanego rozwiązania.
+ [źródło: oprac.
+ własne]
 \end_layout
 
 \end_inset
