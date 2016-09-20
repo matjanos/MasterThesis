@@ -789,7 +789,8 @@ key "Newman2015"
  Ta koncepcja może być zastosowana w dwóch wariantach.
  Pierwszym, jest jedna, monolityczna brama interfejsów, która używana jest
  kiedy mamy niewiele (najczęściej jedną) aplikację z niej korzystającą.
- Wariant drugi to odseparowane bramy dla wielu aplikacji końcowych (
+ Wariant drugi to odseparowane bramy dla wielu aplikacji końcowych w tzw.
+ zaplecza (
 \emph on
 ang.
  backends for frontends
