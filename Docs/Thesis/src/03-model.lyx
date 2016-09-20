@@ -87,16 +87,16 @@ name "chap:Proponowane-rozwiązanie"
 \end_layout
 
 \begin_layout Standard
-Rozdział drugi powinien uswiadomic czytelnika, ze obecny kierunek rozwoju
- inzynierii oprogramowania wymaga nowych narzedzi, które odciaza zespoły
- programistyczne od powtarzalnych czynnosci, które mimo, ze przynosza korzysci,
- sa czesto zaniedbywane, wprowadzajac dodatkowy koszt, nie przekładajacy
+Rozdział drugi powinien uswiadomić czytelnika, że obecny kierunek rozwoju
+ inżynierii oprogramowania wymaga nowych narzędzi, które odciąża zespoły
+ programistyczne od powtarzalnych czynności, które mimo, ze przynoszą korzyści,
+ są czesto zaniedbywane, wprowadzając dodatkowy koszt, nie przekładajacy
  sie na wymierny zysk.
  
 \end_layout
 
 \begin_layout Standard
-Rozwiazaniem jest narzedzie automatyzujące proces analizy dokumentacji w
+Rozwiązaniem jest narzędzie automatyzujące proces analizy dokumentacji w
  celu generowania testów.
  W opini autora, przyniesie ono zysk w postaci weryfikacji dwóch artefaktów
  naraz: kodu zródłowego interfejsów oraz dokumentacji technicznej tych interfejs
@@ -150,7 +150,7 @@ Wczytanie pliku specyfikacji i parsowanie go.
 \end_layout
 
 \begin_layout Enumerate
-Analiza zawartości i generacja uniwersalnego opisu przypadków testowych.
+Analiza zawartości i wygenerowanie uniwersalnego opisu przypadków testowych.
 \end_layout
 
 \begin_layout Enumerate
@@ -164,7 +164,7 @@ Odczyt i analiza przypadków testowych.
 \end_layout
 
 \begin_layout Enumerate
-Generacja specyficznego dla technologii kodu testów.
+Wygenerowanie specyficznego dla technologii kodu testów.
 \end_layout
 
 \begin_layout Section
@@ -248,7 +248,7 @@ Główne zadanie jest realizowane przez pierwszy komponent, więc nad nim warto
 \end_layout
 
 \begin_layout Standard
-Na 
+Na rysunku 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Proces-tworzenia-testów"
@@ -289,7 +289,7 @@ ang.
 IUseCaseBuilder
 \emph default
  w swoich ramach rozpoznają dane wejściowe dla testowanej funkcjonalności.
- Wartości wejsciowe w wielu przypadkach moga zostac zidentyfikowane wprost
+ Wartości wejściowe w wielu przypadkach mogą zostać zidentyfikowane wprost
  ze specyfikacji (np.
  nagłówki zapytania), z kolei w innych należy podać je jawnie (wartości
  parametrów URL).
@@ -318,11 +318,11 @@ reference "sub:Testowanie-funkcjonalne"
 
 , ten elemenet procesu jest opcjonalny.
  Może być bowiem zastapiony danymi uzyskanymi przez wyrocznię, a ściślej
- mówiąc, zawartych w specyfikacji jako wartości pól 
+ mówiąc, zawartymi w specyfikacji jako wartości pól 
 \emph on
 „Annotations”
 \emph default
- lub wynikajacych wprost ze specyfikacji.
+ lub wynikajacymi wprost ze specyfikacji.
  
 \end_layout
 
@@ -338,10 +338,10 @@ ang.
 \end_layout
 
 \begin_layout Enumerate
-Generacja implmentacji przypadka testowego (
+Generowanie implmentacji przypadku testowego (
 \emph on
 ang.
- generate test case
+ generating test case
 \emph default
 ) - translacja przypadków testowych na kod źródłowy testów.
 \end_layout
@@ -352,8 +352,8 @@ Punkty 1-4 realizowane są przez komponent pierwszy - generator, natomiast
 \end_layout
 
 \begin_layout Standard
-Pamiętać należy, że testy aplikacji sieciowych takich jak mikrousługi, wymagają
- zawarcia w nich dodatkowego kodu, pozwalajacego na zestawienie połaczenia
+Należy pamiętać, że testy aplikacji sieciowych, takich jak mikrousługi wymagają
+ zawarcia w nich dodatkowego kodu, pozwalajacego na zestawienie połączenia
  HTTP, wysłanie zapytania oraz obsługę odpowiedzi.
  Ten fragment musi być jednak w pełni realizowany w procesie translacji,
  gdyż może wyglądać zupełnie inaczej dla różnych technologii.
@@ -432,7 +432,7 @@ Diagram klas zaprezentowanego rozwiązania.
 \end_layout
 
 \begin_layout Subsection
-Generacja kodu pośredniego
+Generowanie kodu pośredniego
 \end_layout
 
 \begin_layout Standard
@@ -467,8 +467,8 @@ Wygenerowany rezultat przetwarza klasa
 XmlIntermediateCodeGenerator
 \emph default
 .
- Operuje ona w pętli, działając dla każdego zasobu pierwszego rzedu zgodnie
- z kodem 
+ Operuje ona w pętli, działając dla każdego zasobu pierwszego rzędu zgodnie
+ z kodem przedstawionym w algorytmie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "alg:Przetwarzanie-zasobu-zdefiniowan"
@@ -629,7 +629,7 @@ IUseCaseBuilder
 \end_layout
 
 \begin_layout Enumerate
-Dla każdej metody zapytania kody odpowiedzi zdefiniowane w sekcji 
+Dla każdej metody zapytania kody odpowiedzi, zdefiniowane w sekcji 
 \begin_inset Quotes pld
 \end_inset
 
@@ -637,7 +637,7 @@ Annotations
 \begin_inset Quotes prd
 \end_inset
 
- zgadzaja sie z parami [parametr, kod odpowiedzi]
+, zgadzaja sie z parami [parametr, kod odpowiedzi].
 \end_layout
 
 \begin_layout Enumerate
@@ -651,11 +651,11 @@ Example
 
 \begin_deeper
 \begin_layout Enumerate
-Wszystkie wymagane pola istnieją
+Wszystkie wymagane pola istnieją,
 \end_layout
 
 \begin_layout Enumerate
-Wszystkie pola istniejace w odpowiedzi są zadeklarowane w schemacie 
+Wszystkie pola istniejące w odpowiedzi są zadeklarowane w schemacie.
 \end_layout
 
 \end_deeper
@@ -673,18 +673,18 @@ Wszystkie nagłówki HTTP odpowiedzi sa zgodne ze specyfikacją:
 
 \begin_deeper
 \begin_layout Enumerate
-wystepujace nagłówki sa zgodne z wzrorcem
+wystepujące nagłówki są zgodne z wzrorcem,
 \end_layout
 
 \begin_layout Enumerate
-wymagane nagłówki istnieją
+wymagane nagłówki istnieją.
 \end_layout
 
 \end_deeper
 \begin_layout Standard
 Jeśli jakikolwiek przypadek testowy (nawet jesli jego asercja nie polega
- na weryfikacji kodu odpowiedzi) zwróci kod błedu z klasy 500 (bład serwera),
- rezultatem testu bedzie bład.
+ na weryfikacji kodu odpowiedzi) zwróci kod błędu z klasy 500 (błąd serwera),
+ rezultatem testu bedzie błąd.
 \end_layout
 
 \begin_layout Subsection
@@ -692,7 +692,7 @@ Generacja kodu testów
 \end_layout
 
 \begin_layout Standard
-Każdy język, technologia i biblioteka przy pomocy których realizowane sa
+Każdy język, technologia i biblioteka, przy pomocy których realizowane sa
  testy, wymaga kompletnie innego kodu źródłowego.
  Cały czas jednak bazuje on na modelu przypadku testowego, który jest wspólny
  dla wszystkich technologii.
@@ -700,7 +700,7 @@ Każdy język, technologia i biblioteka przy pomocy których realizowane sa
 \end_layout
 
 \begin_layout Standard
-Aby efektywnie zrealizować generację dokumentów tego typu, użyto techniki
+Aby efektywnie zrealizować generowanie dokumentów tego typu, użyto techniki
  firmy Microsoft znanej jako szablony tekstowe T4 (
 \emph on
 ang.
@@ -841,7 +841,7 @@ Zawiera on następujące pola:
 \emph on
 Name
 \emph default
- - tekst nazywajacy zwięźle przypadek testowy 
+ - tekst nazywajacy zwięźle przypadek testowy,
 \end_layout
 
 \begin_layout Itemize
@@ -849,7 +849,7 @@ Name
 \emph on
 Link 
 \emph default
-- adres URL do wywołania 
+- adres URL do wywołania,
 \end_layout
 
 \begin_layout Itemize
@@ -857,7 +857,7 @@ Link
 \emph on
 Method -
 \emph default
- metoda zapytania HTTP 
+ metoda zapytania HTTP,
 \end_layout
 
 \begin_layout Itemize
@@ -865,35 +865,35 @@ Method -
 \emph on
 AssertRestrictionLevel
 \emph default
- - poziom werfikacji odpowiedzi 
+ - poziom werfikacji odpowiedzi,
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-0 - jakakolwiek odpowiedź z kodem innym niż z klasy 500
+0 - jakakolwiek odpowiedź z kodem innym niż z klasy 500,
 \end_layout
 
 \begin_layout Itemize
-1 - kod odpowiedzi zgodny z oczekiwanym
+1 - kod odpowiedzi zgodny z oczekiwanym,
 \end_layout
 
 \begin_layout Itemize
-2 - nagłówki odpowiedzi sa zgodne z wzorcem o ile istnieje, oraz ich istnieją
- jeśli zostały oznaczone jako obowiazkowe
+2 - nagłówki odpowiedzi sa zgodne z wzorcem o ile istnieją, oraz istnieją
+ jeśli zostały oznaczone jako obowiązkowe,
 \end_layout
 
 \begin_layout Itemize
-3 - format odpowiedzi jest zgodny z zadana wartoscia nagłówka
+3 - format odpowiedzi jest zgodny z zadaną wartością nagłówka
 \emph on
- Content- Type
+ Content- Type,
 \end_layout
 
 \begin_layout Itemize
-4 - struktura odpowiedzi jest zgodna ze zdefinowanym schematem
+4 - struktura odpowiedzi jest zgodna ze zdefinowanym schematem,
 \end_layout
 
 \begin_layout Itemize
-5 - tresc odpowiedzi jest w pełni zgodna z oczekiwana
+5 - treść odpowiedzi jest w pełni zgodna z oczekiwaną,
 \end_layout
 
 \end_deeper
@@ -902,7 +902,7 @@ AssertRestrictionLevel
 \emph on
 ResponseCode 
 \emph default
-- oczekiwany kod odpowiedzi 
+- oczekiwany kod odpowiedzi ,
 \end_layout
 
 \begin_layout Itemize
@@ -910,7 +910,7 @@ ResponseCode
 \emph on
 Headers 
 \emph default
-- lista nagłówków HTTP zapytania
+- lista nagłówków HTTP zapytania,
 \end_layout
 
 \begin_layout Itemize
@@ -918,8 +918,8 @@ Headers
 \emph on
 ResponseHeaders
 \emph default
- - lista oczekiwanych wartości naglówków odpowiedzi HTTP (z ewentualnymi
- wzorcami)
+ - lista oczekiwanych wartości nagłówków odpowiedzi HTTP (z ewentualnymi
+ wzorcami),
 \end_layout
 
 \begin_layout Itemize
@@ -927,7 +927,7 @@ ResponseHeaders
 \emph on
 Body
 \emph default
- - zawartość zapytania HTTP 
+ - zawartość zapytania HTTP,
 \end_layout
 
 \begin_layout Itemize
@@ -935,7 +935,7 @@ Body
 \emph on
 ResponseBody
 \emph default
- - zawartość odpowiedzi HTTP
+ - zawartość odpowiedzi HTTP.
 \end_layout
 
 \begin_layout Subsection
@@ -947,7 +947,7 @@ Samo wygenerowanie kodu testów stanowi już bardzo dużą automatyzację proces
  weryfikacji oprogramowania.
  Wciąż jednak testy takie muszą zostać manualnie wprowadzone do bazy kodu
  źródłowego, skompilowane oraz uruchomione.
- Proces ten jest jednak na tyle powtarzalny, że możliwe jest jesgo wykonanie
+ Proces ten jest jednak na tyle powtarzalny, że możliwe jest jego wykonanie
  za pomocą programu komputerowego.
  
 \end_layout
@@ -977,7 +977,7 @@ kopiuje z repozytorium zestaw narzędzi niezbędnych do przeprowadzenia testów;
 
 \begin_layout Enumerate
 uruchamia osobny proces wykonujący wszystkie testy zawarte w wygenerowanej
- bibliotece
+ bibliotece.
 \end_layout
 
 \begin_layout Standard

@@ -120,8 +120,8 @@ Aplikacja Instagram umożliwia umieszczanie na zdalnych serwerach fotografii,
 ang.
  media
 \emph default
-) jest może zostać przypisane tylko do jednego użytkownika systemu, przy
- czym każdy użytkownik może posiadać wiele takich mediów.
+) może zostać przypisane tylko do jednego użytkownika systemu, przy czym
+ każdy użytkownik może posiadać wiele takich mediów.
  Każde medium może posiadać zdefiniowane przez autora słowa kluczowe (
 \emph on
 ang.
@@ -129,7 +129,8 @@ ang.
 \emph default
 ) opisujące opublikowany przez niego zasób.
  Oprócz tego, na każdy z tych zasobów mogą reagować inni użytkownicy serwisu.
- Na Instagram zaimplementowano dwa rodzaje takich reakcji: polubienia (
+ W aplikacji Instagram zaimplementowano dwa rodzaje takich reakcji: polubienia
+ (
 \emph on
 ang.
  likes
@@ -146,7 +147,7 @@ ang.
 ang.
  location
 \emph default
-) .
+).
  Co więcej można uzyskać również informacje o powiązaniach pomiędzy użytkownikam
 i (
 \emph on
@@ -172,7 +173,7 @@ brak (
 ang.
  none
 \emph default
-) - brak powiązania lub relacja między dwoma tymi samymi użytkownikami
+) - brak powiązania lub relacja między dwoma tymi samymi użytkownikami,
 \end_layout
 
 \begin_layout Itemize
@@ -183,7 +184,7 @@ ang.
 \emph default
 ) - relacja śledzenia, czyli możliwości wyświetlania w przypadku użytkownika
  prywatnego, lub uzyskiwania powiadomień o aktywności użytkownika w przypadku
- kiedy użytkownik jest publiczny
+ kiedy użytkownik jest publiczny,
 \end_layout
 
 \begin_layout Itemize
@@ -194,7 +195,7 @@ ang.
 \emph default
 ) - relacja odwrotna do relacji śledzenia, tj.
  użytkownik będący drugim argumentem relacji ma możliwość śledzenia aktywności
- użytkownika będącego pierwszym argumentem relacji
+ użytkownika będącego pierwszym argumentem relacji,
 \end_layout
 
 \begin_layout Itemize
@@ -204,14 +205,14 @@ ang.
  requested-by
 \emph default
 ) - relacja mówiąca o tym, że użytkownik wysłał prośbę o umożliwienie śledzenia
- do innego użytkownika
+ do innego użytkownika.
 \end_layout
 
 \begin_layout Standard
 Informacje o wszystkich tych zasobach można pobrać na dwa sposoby.
- Pierwszym jest uzyskanie dostępu do strony internetowej za pomocą panelu
- logowania, drugim natomiast jest wykonywanie zapytań do serwisu znajdującego
- się pod adresem 
+ Pierwszym z nich jest uzyskanie dostępu do strony internetowej za pomocą
+ panelu logowania, drugim natomiast jest wykonywanie zapytań do serwisu
+ znajdującego się pod adresem 
 \emph on
 https://api.instagram.com 
 \emph default
@@ -219,9 +220,9 @@ w celu pozyskania w odpowiedzi samych danych (bez całości strony HTML).
 \end_layout
 
 \begin_layout Standard
-Sposób pierwszy jest polecany dla użytkowników korzystających z przeglądarek
+Pierwszy sposób jest polecany dla użytkowników korzystających z przeglądarek
  internetowych, które interpretują wizualnie zawartość plików HTML.
- Sposób drugi jest natomiast polecany dla programistów, którzy projektują
+ Drugi sposób jest natomiast polecany dla programistów, którzy projektują
  aplikacje użytkowe korzystające z tych danych
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -313,7 +314,7 @@ mode
  widoczne informacje jedynie do zbioru użytkowników, którzy dołączyli do
  danego klienta.
  Wymagało to więc wykorzystania istniejących kont Instagram, których właściciele
- zgodzili się udostępnić dane swoich kont dla badawczych celów niniejszej
+ zgodzili się udostępnić dane swoich kont dla celów badawczych niniejszej
  pracy.
  Nazwa klienta, który został utworzony w celach testów to 
 \emph on
@@ -520,7 +521,7 @@ status open
 \end_layout
 
 \begin_layout Standard
-Uruchamia ona aplikację, korzystając z pliku specyfikacji 
+Uruchamia ona aplikację korzystając z pliku specyfikacji 
 \emph on
 api.raml
 \emph default
@@ -594,7 +595,7 @@ Użytkownicy (
 ang.
  Users
 \emph default
-) - 
+),
 \end_layout
 
 \begin_layout Itemize
@@ -603,7 +604,7 @@ Powiązania między użytkownikami (
 ang.
  Relationships
 \emph default
-)
+),
 \end_layout
 
 \begin_layout Itemize
@@ -612,7 +613,7 @@ Zdjęcia lub filmy (
 ang.
  Media
 \emph default
-)
+),
 \end_layout
 
 \begin_layout Itemize
@@ -621,7 +622,7 @@ Komentarze (
 ang.
  Comments
 \emph default
-)
+),
 \end_layout
 
 \begin_layout Itemize
@@ -630,7 +631,7 @@ Polubienia (
 ang.
  Likes
 \emph default
-)
+),
 \end_layout
 
 \begin_layout Itemize
@@ -639,7 +640,7 @@ Słowa kluczowe (
 ang.
  Tags
 \emph default
-)
+),
 \end_layout
 
 \begin_layout Itemize
@@ -648,7 +649,7 @@ Lokalizacje (
 ang.
  Locations
 \emph default
-)
+).
 \end_layout
 
 \begin_layout Standard
@@ -1122,12 +1123,18 @@ Wyniki przeprowadzonych testów
 
 \begin_layout Standard
 Niedeterministyczne testy dotyczyły dodawania, usuwania oraz wyświetlania
- polubień, a więc następujących operacji HTTP pod wskazanym adresem (usunięto
- parametr 
+ polubień, a więc operacji HTTP pod wskazanym adresem zamieszczone w 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:Operacje-HTTP-wykonywane"
+
+\end_inset
+
+ (usunięto parametr 
 \emph on
 access_token
 \emph default
-, który w tym przypadku nie ma znacznia):
+, który w tym przypadku nie ma znacznia).
 \end_layout
 
 \begin_layout Standard
@@ -1137,15 +1144,50 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
 GET https://api.instagram.com/v1/media/1338612569593807801_287676068/likes
 \end_layout
 
 \begin_layout Plain Layout
+
 POST https://api.instagram.com/v1/media/1338612569593807801_287676068/likes
 \end_layout
 
 \begin_layout Plain Layout
+
 DELETE https://api.instagram.com/v1/media/1338612569593807801_287676068/likes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:Operacje-HTTP-wykonywane"
+
+\end_inset
+
+Operacje HTTP wykonywane w testach.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset

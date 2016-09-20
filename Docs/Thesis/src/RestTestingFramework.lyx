@@ -352,13 +352,14 @@ clearpage
 \end_layout
 
 \begin_layout Abstract
-W dobie rosnącego zapotrzebowania na skalowalne systemy informatyczne, coraz
- częściej stosowane są podejścia architektoniczne pozwalające na zapewnienie
+W dobie rosnącego zapotrzebowania na skalowalne systemy informatyczne coraz
+ częściej stosowane są techniki architektoniczne pozwalające na zapewnienie
  możliwości rozproszenia obliczeń i operacji.
  Popularnym ostatnimi czasy podejściem jest wyizolowanie wielu niewielkich
  komponentów zwanych mikrousługami, spełniających zasadę pojedynczej odpowiedzia
-lności, które komunikując się ze sobą w środowisku sieciowym, wspólnie realizują
- cel systemu.
+lności.
+ Komunikując się ze sobą w środowisku sieciowym, wspólnie realizują cel
+ systemu.
  Potencjalna mnogość takich komponentów wymaga od zespołu programistów wykonywan
 ia dodatkowych testów, które zweryfikują czy interfejsy wszystkich komponentów
  działają zgodnie z założeniami.

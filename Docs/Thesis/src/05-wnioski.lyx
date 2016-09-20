@@ -388,8 +388,8 @@ W pierwszej iteracji dodajemy nowe polubienie, następnie weryfikujemy czy
  W drugiej iteracji sprawdzamy, czy polubienie istnieje, ale zostało usunięte
  w iteracji 1., więc ten test złamie asercję.
  Następnie z sukcesem dodajemy i usuwamy polubienie.
- W trzeciej iteracji najpierw sprzewdzano wynik zapytania o polubienie,
- a następnie je usuwano - obie te operacje wygenerowały błąd.
+ W trzeciej iteracji najpierw sprawdzano wynik zapytania o polubienie, a
+ następnie je usuwano - obie te operacje wygenerowały błąd.
  Dodanie się powiodło.
  Idąc tym schematem w iteracji czwartej wystąpiły dwa błędy a w piątej i
  szóstej po jednym.
@@ -406,7 +406,7 @@ Wnioski
 \begin_layout Standard
 Prototyp mimo swojej prostoty, był w stanie wygenerować 27 w pełni poprawnych
  testów dla specyfikacji obejmującej jedynie 7 typów zasobów.
- Udało się stworzyć w pełni automatyczne narzędzie, które oprócz generacji,
+ Udało się stworzyć w pełni automatyczne narzędzie, które oprócz generowania,
  kompiluje i uruchamia testy bez jakiejkolwiek ingerencji użytkownika lub
  programisty.
  W znaczącym stopniu może usprawnić to proces weryfikacji i kontroli istniejącyc
@@ -469,7 +469,7 @@ Dobranie par operacji komplementarnych, czyli takich które się wzajemnie
 \end_layout
 
 \begin_layout Standard
-Dodanie do narzędzia takiej funkcjonalności pomagałoby zbadzć, nie tylko
+Dodanie do narzędzia takiej funkcjonalności pomagałoby zbadać, nie tylko
  bezpośrednią odpowiedź serwera na konkretne żądanie, ale również zweryfikować
  logikę biznesową aplikacji (np.
  polubienie dodane w jednym momencie, umożliwia jego usunięcie w kolejnym
@@ -522,8 +522,8 @@ Istotnie, zarówno wykonywanie testów jak i operacje użytkowników na działaj
  testowym).
  Eliminuje to jednak ważną wartość, jaką jest monitorowanie działającego
  systemu produkcyjnego.
- Aby rozwiazać ten problem, można podzielić testy na dwie grupy: inwazycjną
- i nieinwazycją.
+ Aby rozwiązać ten problem, można podzielić testy na dwie grupy: inwazycjną
+ i nieinwazyjną.
 \end_layout
 
 \begin_layout Standard
@@ -547,8 +547,8 @@ Drugą grupą, są testy nieinwazyjne.
  które zweryfikują np.
  czas odpowiedzi serwera.
  Testy nieinwazyjne mogą zostać uruchomione podczas działania aplikacji
- w środowisku produkcyjnym, cykliczne z nich korzystanie może pomóc wykryć
- niepożądane rozbiezności między oczkiwaną, a rzeczywistą jakością pracy
+ w środowisku produkcyjnym, cykliczne korzystanie z nich może pomóc wykryć
+ niepożądane rozbiezności między oczkiwaną a rzeczywistą jakością pracy
  serwisów.
 \end_layout
 
@@ -568,18 +568,18 @@ Prototyp, mimo, że spełnił wyznaczone cele, może zostać rozwinięty.
 \begin_layout Itemize
 wsparcie dla innych typów specyfikacji formalnych (Swagger, BluePrint) oraz
  wsparcie dla innych języków programowania (Java, Python, C++, JavaScript,
- Go)
+ Go),
 \end_layout
 
 \begin_layout Itemize
 rozwinięcie sposobu przeprowadzania testów (ścieżki wywołań, dobieranie
  par operacji komplementarnych, autoryzacja użytkowników OAuth 2.0, dodatki
- dla narzędzi ciągłej integracji - Jenkins/TeamCity)
+ dla narzędzi ciągłej integracji - Jenkins/TeamCity),
 \end_layout
 
 \begin_layout Itemize
-zaimplementowanie nowych kryteriów weryfikacji (czasa odpowiedzi, prędność
- przesyłu danych, wartość danych według przedziałów)
+zaimplementowanie nowych kryteriów weryfikacji (czas odpowiedzi, prędność
+ przesyłu danych, wartość danych według przedziałów).
 \end_layout
 
 \begin_layout Standard

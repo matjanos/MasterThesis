@@ -102,10 +102,10 @@ Service-Oriented Architecture
 ).
  SOA to architektura łącząca wiele komponentów, których komunikacja odbywa
  się nie w granicach procesu, ale również przez sieć komputerową.
- Ściślej mówiąc, spoób komunikacji nie powinien zależeć od fizycznej lokalizacji
- procesu wywołującego jak i wywoływanego.
- System w ten sam sposób powinien zachować się zarówno uruchomiony na jednej
- maszynie jak i na wielu maszynach mieszczących się na różnych kontynentach.
+ Ściślej mówiąc, sposób komunikacji nie powinien zależeć od fizycznej lokalizacj
+i procesu wywołującego jak i wywoływanego.
+ System tak samo powinien zachować się zarówno uruchomiony na jednej maszynie
+ jak i na wielu maszynach mieszczących się na różnych kontynentach.
  
 \end_layout
 
@@ -117,13 +117,14 @@ Taka granulacja umożliwia lepsze wykorzystanie zasobów, poprzez dedykowanie
 ang.
  fine-grained
 \emph default
-) aplikacji przeznaczonych do jednego zadania.
+) aplikacji przeznaczonych do jednego zadania
 \begin_inset CommandInset citation
 LatexCommand cite
 key "TankovicBogunovicGrbacEtAl2015"
 
 \end_inset
 
+.
  Pozwala to na skalowanie tylko obciążonej części przetwarzania, aby udrożnić
  wąskie gardło systemu.
 \end_layout
@@ -165,19 +166,19 @@ key "Evans2004"
 
 \end_inset
 
- i ostatnio bardzo często spotykanym paradygmatem prezentowania rzeczywistego
- świata w kodzie źródłowym.
+ i stała się ostatnio bardzo często spotykanym paradygmatem prezentowania
+ rzeczywistego świata w kodzie źródłowym.
  
 \end_layout
 
 \begin_layout Standard
-Według tego podejścia, cały proces wytwarzania oprogramowania, począwszy
+Według tego podejścia cały proces wytwarzania oprogramowania, począwszy
  od zbierania wymagań, przez analizę, projektowanie, implementację, aż po
- testowanie i wdrożenie powinno być oparte o wiedzę na temat wycinka rzeczywisto
-ści, który mapowany jest na oprogramowanie w celu ułatwienia lub przyspieszenia
+ testowanie i wdrożenie powinien być oparty o wiedzę na temat wycinka rzeczywist
+ości, który mapowany jest na oprogramowanie w celu ułatwienia lub przyspieszenia
  rozwiązywania problemów z nim związanych.
  Proces mapowania musi się odbywać przy ścisłej współpracy z ekspertami
- w zakresie domeny, gdyż pozwoli projektantom i analitykom zrozumieć w pełni
+ w zakresie domeny, gdyż pozwoli projektantom i analitykom w pełni zrozumieć
  odwzorowywane procesy, a także ułatwi przygotowanie systemu na ewentualne
  zmiany i rozszerzenia.
 \end_layout
@@ -190,18 +191,18 @@ ang.
  bounded context
 \emph default
 ).
- Aplikacja zbudowana zgodnie z DDD zawiera wiele takich kontektstów, wewnątrz
+ Aplikacja zbudowana zgodnie z DDD zawiera wiele takich kontekstów, wewnątrz
  których znajdują się modele opisujace dany fragment rzeczywistości.
- Ten fragment rzeczywistości to wydzielony fragment systemu, który może
+ Ten fragment rzeczywistości to wyodrębniony fragment systemu, który może
  zostać też logicznie wydzielony z punktu widzenia wymagań biznesowych.
- Kontekst, mimo że może dużą liczbę modeli i ich instancji to prezentuje
- na zewnątrz tylko te najważniejsze, które mają znaczenie z punktu widzenia
+ Kontekst, mimo że może posiadać dużą liczbę modeli i ich instancji to prezentuj
+e na zewnątrz tylko te najważniejsze, które mają znaczenie z punktu widzenia
  innych związanych kontekstów.
- Przykładem może być biblioteka system opisujący bibliotekę: kontekst związany
- zarządzający książkami może zawierać informacje na temat uszkodzeń książek,
- zamówień na nowe książki, harmonogramu prac renowacyjnych, itp., ale z punktu
- widzenia związanego kontektsu czytelników, znaczenie ma tylko to czy dana
- książka jest obecnie dostępna i można ją wypożyczyć.
+ Przykładem może być system opisujący bibliotekę: kontekst związany zarządzający
+ książkami może zawierać informacje na temat uszkodzeń książek, zamówień
+ na nowe książki, harmonogramu prac renowacyjnych, itp., ale z punktu widzenia
+ związanego kontektsu czytelników, znaczenie ma tylko to czy dana książka
+ jest obecnie dostępna i można ją wypożyczyć.
  W tym przykładzie zaprezentowany stan wypożyczenia książki i sama książka
  jest modelem prezentowanym na zewnątrz.
  Należy zwrócić jednak uwagę na to, że ukryte modele, mają wpływ na to czy
@@ -217,11 +218,11 @@ key "Newman2015,Evans2004"
 \end_layout
 
 \begin_layout Standard
-Projektowanie sterowane dziedziną stało się skutecznym sposobem podzielenia
+Projektowanie sterowane dziedziną stało się skutecznym sposobem podziału
  domeny problemu na mniejsze konteksty i jasnego określenia połączeń między
  nimi.
- Mimo, że ten proces proces sprawdza się zarówno w systemach monolitycznych
- jak i opartych o mikrousługi, to naturalnie definiuje granice poszczególnych
+ Mimo, że ten proces sprawdza się zarówno w systemach monolitycznych jak
+ i opartych o mikrousługi, to naturalnie definiuje granice poszczególnych
  usług
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -237,12 +238,12 @@ Zasada autonomiczności jako źródło problemów
 \end_layout
 
 \begin_layout Standard
-Tworzenie mikrousług zgodnie z zaleceniami twórców tego konceptu wymaga
+Zgodnie z zaleceniami twórców konceptu mikrousług, ich tworzenie wymaga
  również zmian w strukturach organizacji, która wytwarza system.
  Zmiana taka powinna polegać na zorganizowaniu całych zespołów wokół każdej
  usługi.
  Oczywiście każdy zespół może realizować prace związane z wieloma usługami,
- ale ważne jest aby jedna usługa była rozwijana i ustrzymywana przez jeden
+ ale ważne jest aby jedna usługa była rozwijana i utrzymywana przez jeden
  zespół.
  Podejście takie wymaga stworzenia kilkuosobowych zespołów, w których znajdują
  się graficy, testerzy, projektanci i programiści.
@@ -254,28 +255,36 @@ Tworzenie mikrousług zgodnie z zaleceniami twórców tego konceptu wymaga
 Problem pojawia się w momencie, kiedy niezależny zespół wprowadza zmiany,
  które wymagają zmian również po stronie konsumentów.
  Są to tzw.
- 
+ zmiany przełomowe
 \emph on
-zmiany przełomowe
+ 
+\emph default
+(
+\emph on
+ang.
+ breaking changes
+\emph default
+)
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Newman2015"
 
 \end_inset
 
+
+\emph on
 .
  
 \emph default
-Podczas projektowania interfejsów należy statrać się jak najrzadziej wykonywać
- takie zmiany.
- Wymaga to przede wszytkim bardzo dokładnej analizy dziedziny problemu,
- jaki rozwiązuje dana usługa, aby uwzględnić kierunki, w których może się
- ona rozwijać.
+Podczas projektowania interfejsów należy starać się jak najrzadziej dokonywać
+ takich zmian.
+ Wymaga to przede wszytkim bardzo dokładnej analizy dziedziny problemu jaki
+ rozwiązuje dana usługa, aby uwzględnić kierunki, w których może się ona
+ rozwijać.
  Unikanie zmian nie zawsze będzie możliwe, ale nie każda z nich jest zmianą
  przełomową.
- Np.
- dodanie pola do zwracanego obiektu nie powinno zmienić zachowania aplikacji
- konsumującej dane.
+ Na przykład dodanie pola do zwracanego obiektu nie powinno zmienić zachowania
+ aplikacji konsumującej dane.
  W tym miejscu należy też wspomnieć o tym, aby konsumentów implementować
  w sposób 
 \begin_inset Quotes pld
@@ -325,7 +334,7 @@ key "Newman2015"
 \end_inset
 
 .
- Pierwszym są pakiety udostępniane w postaci bibliotek współdzielonych,
+ Pierwszym z nich są pakiety udostępniane w postaci bibliotek współdzielonych,
  a drugim moduły, które mogą mieć wydzielony stos technologiczny.
  Każde z tych rozwiązań ma zarówno szereg zalet jak i wad, co sprawia, że
  powinny być zastosowane do różnych celów.
@@ -350,22 +359,22 @@ Biblioteki współdzielone mogą zostać wykorzystane w znakomitej większości
  duplikacji całych korzystających z niej aplikacji.
  Najlepszym zastosowaniem dla tego typu komponentów są współdzielone elementy
  systemu, które nie są kluczowe z punktu widzenia domeny, np.
- zbiory funkcji matematycznych lub klasy pomocnicze dla refleksji.
+ zbiory funkcji matematycznych lub klasy pomocnicze dla refleksji
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Newman2015"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
 Drugim wariantem jest wyekstrahowanie modułów.
- Moduł jest fragmentem kodu, który realizować powininen proces określony
+ Moduł jest fragmentem kodu, który powininen realizować proces określony
  w wymaganiach biznesowych systemu.
  Jest to wydzielona część domeny, która realizuje określone przez nią zadania.
- W szczególnym przypadku powinny posiadać własną warstwę dostępu do danych
+ W szczególnym przypadku powinien posiadać własną warstwę dostępu do danych
  lub warstwę prezentacji
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -384,7 +393,7 @@ key "Evans2004"
 .
  Związany kontekst jest raczej zbiorem modułów, istniejących w tym samym
  celu w sensie domeny.
- Dobrą praktyką jest więc tworzenie kilku warst aplikacji w osobnych modułach
+ Dobrą praktyką jest więc tworzenie kilku warstw aplikacji w osobnych modułach
  zawierających się w tej samej przestrzeni nazw, więc wydzielonym kontekście
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -444,8 +453,8 @@ key "DBLP:journals/csi/NavarroS16"
 
 .
  SOAP jest protokołem umożliwiającym przekazywanie obiektów zserializowanych
- do XML przez sieć, w celu wykorzystania ich jako parametry funkcji (od
- klienta do serwera) lub jako wynik operacji (od serwera do klienta).
+ do formatu XML przez sieć w celu wykorzystania ich jako parametry funkcji
+ (od klienta do serwera) lub jako wynik operacji (od serwera do klienta).
  Jest to protokół który pozwala na przekazywanie tych informacji między
  aplikacjami zaprogramowanymi w różnych technologiach poprzez odpowiednią
  serializację.
@@ -486,26 +495,26 @@ ang.
 \emph default
 ) dla systemów w modelu typu klient-serwer, ze znaczną liczbą aktywnych
  aplikacji klienckich.
- Jak wspomniano w rozdziale
+ Jak wspomniano w rozdziale 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Architektura-zorientowana-na"
 
 \end_inset
 
-, do komunikacji między mikrousługami powinno stosować się lekkich i szybkich
- rozwiązań, więc podejście REST, które jest sześciokrotnie szybsze niż starsze
- protokoły SOAP
+, do komunikacji między mikrousługami powinno stosować się lekkie i szybkie
+ rozwiązania, więc podejście REST, które jest sześciokrotnie szybsze niż
+ starsze protokoły SOAP
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Trachtenberg2003"
 
 \end_inset
 
-, nadają się idealnie do tego celu.
+, nadaje się idealnie do tego celu.
  Autor konceptu REST określił pięć wymagań, które umożliwiają bezpieczny
  dostęp do zasobów zachowując spójny stan systemu.
- Dodatkowo opisano dodatkowe wymaganie, które jest opcjonalne.
+ Dodatkowo opisano wymaganie, które jest opcjonalne.
  Opcjonalne wymaganie wydaje się być oksymoronem, ale w dalszej części tej
  sekcji zostanie ono jasno scharakteryzowane.
 \end_layout
@@ -534,14 +543,14 @@ Bezstanowość - niniejsza zasada wprowadza wymóg przekazywania wszystkich
  Zasada ta znacząco poprawia niezawodność systemu, gdyż w razie jakichkolwiek
  awarii, nie ma potrzeby odtwarzania stanu przetwarzania aby zrealizować
  poprawnie żądanie.
- Oprócz tego realizacja żądania jest przejrzysta, gdyż nie ma potrzeby analizowa
-nia jego zawartości, aby określić naturę wywołania.
- Poprawiona jest w końcu możliwość skalownia systemu, gdyż nie trzeba skalować
- magazynu przechowującego stany aplikacji wszystkich klientów.
+ Oprócz tego, realizacja żądania jest przejrzysta, gdyż nie ma potrzeby
+ analizowania jego zawartości, aby określić naturę wywołania.
+ Poprawiona jest, w końcu, możliwość rozbudowy systemu, gdyż nie trzeba
+ skalować magazynu przechowującego stany aplikacji wszystkich klientów.
 \end_layout
 
 \begin_layout Enumerate
-Możliwość przechowywanie w pamięci o krótkim czasie dostępu (
+Możliwość przechowywania w pamięci o krótkim czasie dostępu (
 \emph on
 ang.
  cachability
@@ -558,15 +567,15 @@ ang.
 
 \begin_layout Enumerate
 Ukrycie warstwowej architektury serwera - jest to zasada polegająca na ukrywaniu
- przed aplikacją kliencką faktu, że aplikacja kliencka jest w rzeczywistości
- zagregowaniem wielu mniejszych aplikacji serwerowych.
+ przed aplikacją kliencką faktu, że aplikacja serwerowa jest w rzeczywistości
+ zagregowaniem wielu mniejszych usług po stronie serwera.
  Daje to wiele korzyści, takich jak chociażby umożliwienie skalowania systemów,
  poprzez dodanie komponentu równoważącego obciążenie (
 \emph on
 ang.
  load balancer
 \emph default
- ).
+).
  Jest on wtedy równocześnie serwerem proxy, który w kolejnych warstwach
  może odwoływać się do różnych instancji tej samej aplikacji.
  Możliwe jest również mapowanie zasobów na różne aplikacje serwerowe, bez
@@ -596,7 +605,7 @@ key "DBLP:conf/icws/FokaefsS15"
 
 .
  Wadą jednolitego interfejsu jest to, że każda aplikacja uzyskuje pełną
- informację o zasobie, bez względu na to jaki ich podzbiór jest przez nią
+ informację o zasobie, bez względu na to jaki jaki podzbiór jest przez nią
  wymagany.
  W ramach tego niezmiennika wyróżnia się cztery punkty, opisujące dokładniej
  zasadę ujednoliconego interfejsu
@@ -634,9 +643,9 @@ Hipermedium jako silnik stanu aplikacji (
 ang.
  Hypermedia as the engine of application state
 \emph default
-) (HATEOAS) - zasada umożliwiająca zrozumienie zasobu i ich zależności dzięki
- rozróżnianiu ich przez stałe identyfikatory oraz reprezentowanie zależności
- przez przekazywanie tych identyfikatorów
+) (HATEOAS) - zasada umożliwiająca zrozumienie zasobu i jego zależności
+ dzięki rozróżnianiu go przez stałe identyfikatory oraz reprezentowanie
+ zależności przez przekazywanie tych identyfikatorów
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Costa2016"
@@ -657,14 +666,14 @@ Udostępnianie kodu na żądanie* - jest to zasada opcjonalna, która polega
  kodu JavaScript przez przeglądarki internetowe.
  Pozorna sprzeczność pojęcia opcjonalnego wymagania, może zostać wyjaśniona
  przez podkreślenie, że system implementujący REST powinien dać sposobność
- wykonania kodu do wykonania, ale wykorzystywanie też możliwości należy
- ograniczyć to szczególnych przypadków przy sprawdzonych warunkach.
+ wykonania kodu, ale wykorzystywanie tej możliwości należy ograniczyć do
+ szczególnych przypadków w kontrolowanych warunkach.
 \end_layout
 
 \begin_layout Standard
 Specyfika interfejsu typu REST uwydatnia, kwestie które powinny zostać rozważone
  podczas weryfikacji oprogramowania opartego o ten styl architektoniczny.
- Przetestować można wówczas nie tylko funkcjonalne właściwości serwisu,
+ Przetestować należy wówczas nie tylko funkcjonalne właściwości serwisu,
  ale również zgodność z założeniami stylu w którym jest on realizowany
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -693,7 +702,7 @@ ang.
 \emph default
 ), które zawierają skomplikowane funkcje trasowania wiadomości, kapsułkowania
  lub transformacji danych.
- Komponenty takie, jako że są wspólne dla całego systemu, są trudnos skalowalne,
+ Komponenty takie, jako że są wspólne dla całego systemu, są trudno skalowalne,
  więc generują duże ryzyko wystąpienia wąskiego gardła.
  Mechanizm komunikacji powinien być prostą częścią systemu spełniając zasadę
  
@@ -734,7 +743,7 @@ inteligentnych punktów końcowych
 
 \begin_layout Standard
 Wykorzystywanie prostych protokołów komunikacyjnych zrzuca niejako z programistó
-w, ciężar projektowania i implementowania mechanizmów komunikacji oraz dostarcza
+w ciężar projektowania i implementowania mechanizmów komunikacji oraz dostarcza
  całą gamę gotowych i sprawdzonych rozwiązań, które nie obciążają niepotrzebnie
  systemu.
  
@@ -765,8 +774,8 @@ ang.
  API gateway
 \emph default
 ).
- Brama taka ma za zadanie agregować żądania, możliwie mała ich ilość była
- wymieniana między aplikacją kliencką, a usługami
+ Brama taka ma za zadanie agregować żądania tak, aby możliwie mała ich liczba
+ była wymieniana między aplikacją kliencką, a usługami
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Newman2015"
@@ -778,7 +787,7 @@ key "Newman2015"
  użytkownicy końcowi dysponują limitowaną ilością przesyłanych danych w
  ramach ich pakietu internetowego.
  Ta koncepcja może być zastosowana w dwóch wariantach.
- Pierwszym jest jedna, monolityczna brama interfejsów, która używana jest
+ Pierwszym, jest jedna, monolityczna brama interfejsów, która używana jest
  kiedy mamy niewiele (najczęściej jedną) aplikację z niej korzystającą.
  Wariant drugi to odseparowane bramy dla wielu aplikacji końcowych (
 \emph on
@@ -927,7 +936,7 @@ name "sub:Definicja-terminu-oraz"
 \end_layout
 
 \begin_layout Standard
-Dokumentacja to artefakt, którego celem jest komunikowanie innym informacji
+Dokumentacja to artefakt, którego celem jest przekazywanie innym informacji
  o systemie, którego dotyczy
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -937,7 +946,7 @@ key "Forward2002"
 
 .
  Dokumentacja może również odnosić się do dokumentów stworzonych przez programis
-tów dla użytkowników nietechnicznych, znanego wtedy instrukcją
+tów dla użytkowników nietechnicznych, zwanych wtedy instrukcją
 \begin_inset CommandInset citation
 LatexCommand cite
 key "DBLP:journals/jss/ZhiGSGSR15"
@@ -959,8 +968,8 @@ key "Newman2015"
 \end_layout
 
 \begin_layout Standard
-W przypadku zbioru usług, często wykorzystywane są centralne dynamiczne
- rejesty usług, które udostępniają informację o tym jakie, usługi są dostępne
+W przypadku zbioru usług, często wykorzystywane są centralne, dynamiczne
+ rejesty usług, które udostępniają informację o tym jakie usługi są dostępne
  i w jaki sposób nawiązać z nimi łączność.
  Zazwyczaj nie udostępniają jednak informacji o tym jakie funkcje są przez
  te usługi oferowane.
@@ -977,7 +986,7 @@ key "Newman2015"
 \emph on
 HTTP
 \emph default
- - chodzi o metodą 
+ - chodzi o metodę 
 \emph on
 OPTIONS
 \emph default
@@ -997,7 +1006,7 @@ Formalna specyfikacja usług sieciowych
 \end_layout
 
 \begin_layout Standard
-Zauważyć należy, że dokumentacja techniczna nie musi być dokumentem pisanym
+Należy zauważyć, że dokumentacja techniczna nie musi być dokumentem pisanym
  w języku naturalnym, a jedynie precyzyjną informacją dla inżynierów pracujących
  nad systemem lub chcących uzyskać do niego dostęp
 \begin_inset CommandInset citation
@@ -1016,7 +1025,7 @@ reference "sub:Definicja-terminu-oraz"
 
  opisano możliwość udostępniania dokumentacji technicznej poprzez wywołanie
  odpowiedniego żądania.
- Pobrna dokumentacja może potem zostać wczytana automatycznie przez parser,
+ Pobrana dokumentacja może potem zostać wczytana automatycznie przez parser,
  który jest w stanie zinterpretować jej treść.
  Trudno byloby analizować dokumentację pisaną w języku naturalnym, więc
  powstało kilka technologii, które opisują interfersy w zrozumiały dla maszyny
@@ -1044,7 +1053,7 @@ RAML
 \end_layout
 
 \begin_layout Standard
-Wpomniany wcześniej, w punkcie
+Wpomniany wcześniej, w punkcie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Specyfikacja-SOAP-XML"
@@ -1073,7 +1082,8 @@ Koszty rozwoju i utrzymania
 \end_layout
 
 \begin_layout Standard
-Koszty wytworzenia dokumentacji szacunkowo wynoszą ok 11%
+Koszty wytworzenia dokumentacji szacunkowo wynoszą ok.
+ 11%
 \begin_inset CommandInset citation
 LatexCommand cite
 key "DBLP:conf/iwsm/Sanchez-RosadoRMCMG09"
@@ -1156,15 +1166,15 @@ Specyfikacja
 RAML 
 \emph default
 podzielona jest na dwie główne części: pierwsza to zbiór metadanych na temat
- całego serwisu, a drugi to zbiór zasobów oferowanych przez daną usługę
+ całego serwisu, a druga to zbiór zasobów oferowanych przez daną usługę
  wraz z ich szczegółową specyfikacją.
  Na część pierwszą składają się np.
- tytuł, wersję, bazowy adres internetowy, schemat struktury danych, informacje
+ tytuł, wersja, bazowy adres internetowy, schemat struktury danych, informacje
  na temat uzyskiwania autoryzacji lub typy danych.
  Szczegółowa specyfikacja zawarta w części drugiej dokumentacji podzielona
  jest głównie na hierarchicznie uporządkowane segmenty, z których każdy
  opisuje jakiś zasób.
- Na opis zasobu może składać się z następujących właściwości:
+ Opis zasobu może składać się z następujących właściwości:
 \end_layout
 
 \begin_layout Itemize
@@ -1273,7 +1283,7 @@ securedBy - definiuje schemat autoryzacji dostępu do zasobu.
 
 \begin_layout Standard
 Składnia RAML jest oczywiście dużo szersza i umożliwia jeszcze bardziej
- dokładne i szczegółowe definiowanie interfejsów REST.
+ szczegółowe definiowanie interfejsów REST.
  Z punktu widzenia tej pracy, są one jednak nieistotne a opisane wyżej elementy
  szczegółowo omówione będą w rozdziale 
 \begin_inset CommandInset ref
@@ -1307,8 +1317,8 @@ key "DBLP:conf/edoc/SaezAWM14"
 \end_layout
 
 \begin_layout Standard
-Mikrousługi jako koncepcja, wymaga również zapewnienia w pełni zautomatyzowanego
- dostarczania oprogramowania.
+Mikrousługi jako koncepcj, wymagają również zapewnienia w pełni zautomatyzowaneg
+o dostarczania oprogramowania.
  Oznacza to, że powinno się zrezygnować z testów ręcznych na rzecz rzetelnie
  sporządzonych testów automatycznych
 \begin_inset CommandInset citation
@@ -1344,7 +1354,7 @@ key "Arsie2014222"
 \end_inset
 
 .
- Testowanie funkcjonalne znane jest również jako stesowanie czarnoskrzynkowe
+ Testowanie funkcjonalne znane jest również jako tesowanie czarnoskrzynkowe
  lub testowanie oparte o specyfikację
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -1387,7 +1397,7 @@ key "DBLP:books/daglib/0017273"
 .
  Źródłem takich informacji są 
 \emph on
-wyrocznie 
+wyrocznie, 
 \emph default
 czyli byty (dokumenty, artefakty, wiedza ekspercka)
 \begin_inset CommandInset citation
@@ -1396,7 +1406,8 @@ key "DBLP:journals/tse/StocksC96"
 
 \end_inset
 
-, więc skoro testy te są oparte na specyfikacji, ona powinna służyć jako
+.
+ Skoro więc testy te są oparte na specyfikacji, ona powinna służyć jako
  wyrocznia.
  Powinna ona w takim razie definiować nie tylko sposób operowania na danych,
  ale również przykładowe dane wejściowe oraz oczekiwane wyniki.
@@ -1418,12 +1429,12 @@ reference "fig:Proces-tworzenia-testów"
  Następnie należy wybrać wartości wejściowe oraz przeanalizować zasady zachowani
 a funkcjonalności, w celu określenia oczekiwanego wyniku.
  Analiza w celu określenia rezultatu jest opcjonalna.
- Wynik można określi również przy pomocy wyroczni, więc zgodnie z zasadami
+ Wynik można określić również przy pomocy wyroczni, więc zgodnie z zasadami
  testowania czarnoskrzynkowego, można stworzyć specyfikację przypadku testowego
  bez wiedzy eksperckiej.
  Ostatnim krokiem jest wygenerownie przypadku testowego na podstawie jego
  specyfikacji.
- Wynikiem, może być na przykład dokument definiujący testy lub kod źródłowy
+ Wynikiem może być na przykład dokument definiujący testy lub kod źródłowy
  tesów.
 \end_layout
 
@@ -1561,8 +1572,8 @@ key "DBLP:conf/icsea/DownsHP10"
  jest spójny ze specyfikacją.
  Częstym bowiem problemem jest fakt, że kod ewoluuje, a jego specyfikacja
  zostaje zaniedbana.
- Powoduje to powstawanie rozbieżności i niespójności pomiędzy dokumentacją,
- specyfikacją, a rzeczywiście używanym oprogramowaniem
+ Powoduje to powstawanie rozbieżności i niespójności pomiędzy dokumentacją
+ i specyfikacją, a rzeczywiście używanym oprogramowaniem
 \begin_inset CommandInset citation
 LatexCommand cite
 key "DBLP:books/daglib/0028697"

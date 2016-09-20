@@ -77,7 +77,7 @@ Wstęp
 \end_layout
 
 \begin_layout Standard
-W ciągu ostatnich paru lat, w informatyce można zaobserwować wyjątkowo szybki
+W ciągu ostatnich lat, w informatyce można zaobserwować wyjątkowo szybki
  rozwój tematyki przetwarzania w chmurze obliczeniowej (ang.
  Cloud Computing), a co za tym idzie, zainteresowanie stylami i wzorcami
  architektonicznymi, które w efektywny sposób są w stanie wykorzystać potencjał
@@ -105,9 +105,9 @@ key "Fowler2014"
 \end_layout
 
 \begin_layout Standard
-Oczywistym jest, że wraz ze wzrostem skomplikowania i rozmiaru systemu bazująceg
-o na architekturze mikroserwisowej, powstaje coraz więcej usług, które komunikuj
-ą się ze sobą nieustannie.
+Naturalnie wraz ze wzrostem skomplikowania i rozmiaru systemu bazującego
+ na architekturze mikroserwisowej, powstaje coraz więcej usług, które komunikują
+ się ze sobą nieustannie.
  Nieodzownym elementem testowania takiego oprogramowania jest więc sprawdzanie
  punktów styku między usługami (and.
  end points) pod kątem ich poprawności i zgodności ze specyfikacją.
@@ -118,7 +118,7 @@ o na architekturze mikroserwisowej, powstaje coraz więcej usług, które komuni
 a między zespołami pracującymi nad połączonymi mikrousługami.
  Taka komunikacja ma na celu uzgodnienie sposobów integracji wielu komponentów
  w postaci mikrousług, a jej efektem jest ustalenie i spisanie dokumentacji
- technicznej, będącej podstawą pisania nowych konsumentów danej usługi.
+ technicznej będącej podstawą pisania nowych konsumentów danej usługi.
  Specyfikacja taka powinna być spójna i logiczna, dlatego często stosuje
  się języki formalne, które w swojej semantyce wykluczają lub minimalizują
  ryzyko sprzeczności lub niedomówień.
@@ -129,9 +129,9 @@ Cel pracy
 \end_layout
 
 \begin_layout Standard
-Niniejsza praca ma na celu zaprezentowanie modelu narzędzia do generowania
+Niniejsza praca ma na celu zaprezentowanie prototypu narzędzia do generowania
  testów połączeń między mikrousługami na podstawie ich specyfikacji zapisanej
- w języku RAML, zaimplementowanie tego modelu w języku C#, a także dokonanie
+ w języku RAML, zaimplementowanie tego projektu w języku C#, a także dokonanie
  weryfikacji istniejącego systemu opartego o komunikację REST w celu oceny
  skuteczności zaproponowanego rozwiązania.
 \end_layout
@@ -153,8 +153,8 @@ W rozdziale pierwszym zaprezentowany jest zarys obecnej sytuacji w dziedzinie
 \begin_layout Standard
 Rozdział drugi ma na celu wprowadzenie czytelnika w tematykę postawionego
  problemu oraz opisanie głównych pojęć związanych z tematyką pracy.
- Przeanalizowany zostanie styl architektoniczny oparty o mikrousługi, uwidacznia
-jąc przyczyny jego powstania, zasady działania oraz najbardziej znaczące
+ Przeanalizowany zostanie styl architektoniczny oparty o mikrousługi uwidaczniaj
+ąc przyczyny jego powstania, zasady działania oraz najbardziej znaczące
  zalety.
  Nieuniknione będzie również zidentyfikowanie słabych stron i procesów,
  które według publikacji, mogłyby je redukować.
@@ -167,7 +167,7 @@ API
 \emph default
 ), korzyści z nich płynących oraz standardów.
  Ta sekcja zostanie opisana na przykładzie języka RAML w wersji 1.0.
- W końcowej części tego rozdziału zaprezentowany zostanie idea testowania
+ W końcowej części tego rozdziału zaprezentowana zostanie idea testowania
  jednostkowego i integracyjnego, zasady pisania takich testów oraz korzyści
  z nich płynące.
  
@@ -175,9 +175,9 @@ API
 
 \begin_layout Standard
 Rozdział trzeci zawiera opis proponowanego przez autora rozwiązania.
- Począwszy od modelu tworzonego narzędzia, poprzez projekt architektury
- zaprezentowane zostanie rozwiązanie problemów związanych z rosnącą popularności
-ą komunikacji międzyusługowej.
+ Począwszy od modelu działania tworzonego narzędzia, poprzez projekt architektur
+y zaprezentowane zostanie rozwiązanie problemów związanych z rosnącą popularnośc
+ią komunikacji międzyusługowej.
  Rozdział uwzględnia rówież zmiany kultury pracy i dyscypliny deweloperskiej,
  która jest niezbęna przy stosowaniu takich rozwiązań procesowych.
  W końcowej części rozdziału spojrzymy na rezultaty implementacji, przedstawiają
@@ -195,8 +195,8 @@ W rozdziale czwartym skupimy się na weryfikacji proponowanego rozwiązania.
 \end_layout
 
 \begin_layout Standard
-Ostatni rozdział zawiera anailizę rezulatów testów wyszczególnonych w rozdziale
- czwartym`, a następnie kreślone zostaną wyciągnięte wnioski na podstawie
+Ostatni rozdział zawiera anailizę rezultatów testów wyszczególnonych w rozdziale
+ czwartym, a następnie sformułowane zostaną wyciągnięte wnioski na podstawie
  analizy wyników.
  W dalszej części, wybiegając w przyszłość, zidentyfikowane zostaną najważniejsz
 e ścieżki udoskonalenia narzędzia nakreślając tym samym kierunki rozwoju
