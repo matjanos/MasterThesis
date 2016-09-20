@@ -108,7 +108,7 @@ key "Fowler2014"
 Naturalnie wraz ze wzrostem skomplikowania i rozmiaru systemu bazującego
  na architekturze mikroserwisowej, powstaje coraz więcej usług, które komunikują
  się ze sobą nieustannie.
- Nieodzownym elementem testowania takiego oprogramowania jest więc sprawdzanie
+ Ważnym elementem testowania takiego oprogramowania jest więc sprawdzanie
  punktów styku między usługami (and.
  end points) pod kątem ich poprawności i zgodności ze specyfikacją.
  Zgodnie z wiedzą autora, w systemach zgodnych z architekturą mikroserwisową,
